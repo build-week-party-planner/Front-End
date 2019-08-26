@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
+import Event from './components/Event'
 
 import Facebook from './components/SocialLogin/FacebookAuth'
 
@@ -26,6 +27,7 @@ function App() {
         </a>
       </header>
       <Facebook loggedIn = {loggedIn}/>
+      <Event/>
     </div>
   );
 }
