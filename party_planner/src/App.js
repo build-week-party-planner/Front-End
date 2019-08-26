@@ -12,6 +12,7 @@ import './App.css';
 import Login from './components/Login';
 import Register from './components/Register'
 import Events from './components/Events';
+import Event from './components/Event'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
         <PrivateRoute path="/dashboard" component={Events}/>
+        <Route path="/events/:id" component={Event} />
       </div>
     </Router>
   );
