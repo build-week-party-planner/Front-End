@@ -13,12 +13,16 @@ class Facebook extends React.Component {
         }
     }
 
+    //  View this comment
+    // ? vIEW THIS COMMENT
+
     componentClicked = () => {
-        console.log('hello')
+        console.log('clicked')
     }
 
     responseFacebook = res => {
         console.log(res, 'res')
+        this.setState({...this.state, loggedIn: true})
     }
 
 
@@ -26,20 +30,20 @@ class Facebook extends React.Component {
 
         let fbContent
         this.state.loggedIn ? console.log('hello')
-            : fbContent = <FacebookLogin
+            : fbContent = ( <FacebookLogin
                 appId="2301746973409809"
                 fields="name,email,picture,friends"
-                scope="public_profile,email,user_friends"
-                onClick={this.componentClicked}
+                onClick={() => this.componentClicked}
                 callback={this.responseFacebook}
                 autoLoad={false}
-                // cookie={true}
-            // disableMobileRedirect={true}
-            />
-
+                cookie={true}
+                // scopes="email,user_friends"
+                // disableMobileRedirect={true}
+            /> )
         return (
             <div>
                 {fbContent}
+                {this.state.loggedIn? 'loggedIn' : 'Not logged In'}
             </div>
         )
     }
