@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Facebook from './components/SocialLogin/FacebookAuth'
+
 function App() {
+
+  const [ loggedIn, setLoggedIn ] = useState(false)
+
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +26,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Facebook loggedIn = {loggedIn}/>
     </div>
   );
 }
