@@ -39,7 +39,7 @@ const AddEvent = ({ touched, errors }) => {
                 type="date"
               />
               {touched.date && errors.date && <p>{errors.date}</p>}
-              <Button>Let's Go!</Button>
+              <Button type="submit">Let's Go!</Button>
             </Form>
           </Modal.Description>
         </Modal.Content>
