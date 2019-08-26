@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/Login';
-import Footer from './components/Footer'
-import NavBar from './components/NavBar'
 
-import Facebook from './components/SocialLogin/FacebookAuth'
+// Routing
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
+
+// CSS
+import 'semantic-ui-css/semantic.min.css'
+import './styles/App.scss';
+
+// Components
+import NavBar from './components/NavBar'
+import Login from './components/Login';
+import Register from './components/Register'
+import Events from './components/Events';
+import Footer from './components/Footer'
 
 function App() {
 
-  const [ loggedIn, setLoggedIn ] = useState(false)
 
+  
   return (
-    <div className="App"> 
-      <NavBar/>
-      <Footer/>
-    </div>
+
+    <Router>
+      <div className="App">
+        <NavBar/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/register" component={Register}/>
+        <PrivateRoute path="/dashboard" component={Events}/>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 

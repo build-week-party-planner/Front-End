@@ -2,6 +2,7 @@ import React from 'react'
 import { Segment } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'; 
 
+
 const Footer = () => {
   return(
     <Segment.Group>
@@ -11,8 +12,8 @@ const Footer = () => {
         <Segment><a>Privacy Policy</a></Segment>
       </Segment.Group>
       <Segment.Group horizontal>
-        <Segment>2019 Party Planner</Segment>
-        <Segment><a>Terms And Conditions</a></Segment>
+        <Segment>{'\u00A9'} 2019 Party Planner</Segment>
+        <Segment><a> Terms And Conditions</a></Segment>
       </Segment.Group>
     </Segment.Group>
 

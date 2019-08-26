@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <Menu>
       <Menu.Item header>Party Planner</Menu.Item>
-      <NavLink to='/'>
+      <NavLink to='/dashboard'>
         <Menu.Item name="My Events"/>
       </NavLink>
     </Menu>
