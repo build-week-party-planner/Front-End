@@ -13,10 +13,10 @@ function Login({touched, errors}) {
         <label className="label">Username: </label>
         <Field
           className="input"
-          name="username"
+          name="email"
           type="text"
         />
-        <p>{touched.username && errors.username}</p>
+        <p>{touched.email && errors.email}</p>
       </div>
       <div className="form-box">
         <label className="label">Password: </label>
@@ -35,32 +35,32 @@ function Login({touched, errors}) {
   )
 }
 
+
 export default withFormik({
-  mapPropsToValues() {
-    return {
-      username: "",
-      password: ""
-    };
-  },
-  validationSchema: Yup.object().shape({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().min(8).required("Password is ALSO required")
-  }),
-
-
-  //Bubble Sprint example to get token with post request
+    mapPropsToValues({email, password}) {
+      return {
+        email: email || "",
+        password: password || ""
+      };
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().required("Username is required"),
+      password: Yup.string().min(8).required("Password is ALSO required")
+    }),
   
-  //save token to local storage
-//   handleSubmit(values, formikBag) {
-//     // const url = "http://localhost:5000/api/login";
-//     axios
-//       .post(url, values)
-//       .then(results => {
-//         localStorage.setItem("token", results.data.payload);
-//         formikBag.props.history.push("/bubblepage");
-//       })
-//       .catch(error => {
-//         console.log("Error: ", error.response.data)
-//       })
-//   }
-})(Login);
+    
+    //save token to local storage
+    handleSubmit(values) {
+      const propsToSubmit = {"email": values.email, "password": values.password}
+      const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
+      axios
+      .post(url, propsToSubmit)
+        .then(results => {
+          // localStorage.setItem("token", results.data.payload);
+          console.log(results)
+        })
+        .catch(error => {
+          console.log("Error: ", error.response)
+        })
+    }
+  })(Login);
