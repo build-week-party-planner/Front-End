@@ -31,6 +31,8 @@ function Login({touched, errors}) {
       <button type="submit" className="button">
         Submit
       </button>
+      <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
+      <label for="remember_me">Keep me logged in</label>
     </Form>
   )
 }
@@ -40,12 +42,14 @@ export default withFormik({
     mapPropsToValues({email, password}) {
       return {
         email: email || "",
-        password: password || ""
+        password: password || "",
+        rememberMe: true
       };
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().required("Username is required"),
       password: Yup.string().min(8).required("Password is ALSO required")
+
     }),
   
     

@@ -12,9 +12,8 @@ export class UserProfile extends Component {
     };
     render() {
         const { values, handleChange } = this.props;
-        return (
-          <MuiThemeProvider>
-            <>
+        return (      
+            <MuiThemeProvider>
               <AppBar title="Enter User Details" />
               <TextField
                 hintText="Enter Your First Name"
@@ -43,8 +42,7 @@ export class UserProfile extends Component {
                 style={styles.button}
                 onClick={this.continue}
               />
-            </>
-          </MuiThemeProvider>
+            </MuiThemeProvider>
         );
       }
     }
