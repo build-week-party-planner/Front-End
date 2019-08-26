@@ -4,7 +4,7 @@ export const ADDING_EVENT = "ADDING_EVENT";
 export const ADD_EVENT_SUCCESS = "ADD_EVENT_SUCCESS";
 export const ADD_EVENT_FAILURE = "ADD_EVENT_FAILURE";
 
-export const addEvent = event => {
+export const addEvent = (event, history) => {
   return dispatch => {
     dispatch({ type: ADDING_EVENT});
     axiosWithAuth()

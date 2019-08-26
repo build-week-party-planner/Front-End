@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Form packages
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
+// Add event axios request
+import { addEvent } from '../actions/index';
+
+// Redux store
+import { connect } from 'react-redux';
+
 // Semantic UI components
 import { Button, Header, Modal } from 'semantic-ui-react';
 
-const AddEvent = ({ touched, errors }) => {
+const AddEvent = ({ addEvent, status, history, touched, errors }) => {
+
+  useEffect(() => {
+    status && addEvent(status, history)
+  }, [status])
+
   return (
     <div className="add-event-modal">
       <Modal trigger={<Button>New Event!</Button>}>
@@ -73,10 +84,12 @@ const FormikAddEvent = withFormik({
     date: Yup.string().required("Event date is required!")
   }),
 
-  handleSubmit(values, { resetForm }){
+  handleSubmit(values, { resetForm, setStatus }){
     resetForm();
-    console.log(values);
+    setStatus(values);
   }
-})(AddEvent)
+})(connect(
+  null, { addEvent } 
+)(AddEvent))
 
 export default FormikAddEvent;

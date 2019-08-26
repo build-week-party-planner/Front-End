@@ -1,7 +1,9 @@
-<<<<<<< HEAD
-=======
-import { tsPropertySignature } from "@babel/types";
->>>>>>> 6d196dcca6ad537acb3c34386877b553c52cdd76
+import {
+  ADDING_EVENT,
+  ADD_EVENT_SUCCESS,
+  ADD_EVENT_FAILURE
+} from '../actions/index';
+
 
 const initialState = {
     userId: null,
