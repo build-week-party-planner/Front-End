@@ -13,8 +13,13 @@ import NavBar from './components/NavBar'
 import Login from './components/Login';
 import Register from './components/Register'
 import Events from './components/Events';
-import Event from './components/Event'
+
+import SingleEvent from './components/Event'
+import FormikUpdateEvents from './components/UpdateEventForm'
+
+
 import Footer from './components/Footer'
+
 
 function App() {
 
@@ -26,8 +31,12 @@ function App() {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
         <PrivateRoute path="/dashboard" component={Events}/>
-        <Route path="/events/:id" component={Event} />
+
+        <Route path="/events/:id" component={SingleEvent} />
+        <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
+     
         <Footer/>
+
       </div>
     </Router>
   );
