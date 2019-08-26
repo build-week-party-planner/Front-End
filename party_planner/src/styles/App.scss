@@ -16,3 +16,12 @@
 .App-link {
   color: #61dafb;
 }
+
+//mixins and variables
+@import './mixins.scss';
+@import './variables.scss';
+
+
+@import './component-styles/NavBar.scss';
+@import './component-styles/Footer.scss';
+
