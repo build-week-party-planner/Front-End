@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 // Semantic UI components
 import { Button, Header, Modal } from 'semantic-ui-react';
 
-const AddEvent = () => {
+const AddEvent = ({ touched, errors }) => {
   return (
     <div className="add-event-modal">
       <Modal trigger={<Button>New Event!</Button>}>
@@ -20,21 +20,25 @@ const AddEvent = () => {
                 name="name"
                 type="text"
               />
+              {touched.name && errors.name && <p>{errors.name}</p>}
               <Field
                 placeholder="# of Guests"
                 name="guests"
                 type="number"
               />
+              {touched.guests && errors.guests && <p>{errors.guests}</p>}
               <Field
                 placeholder="Theme"
                 name="theme"
                 type="text"
               />
+              {touched.theme && errors.theme && <p>{errors.theme}</p>}
               <Field
                 placeholder="dd/mm/yyyy"
                 name="date"
                 type="date"
               />
+              {touched.date && errors.date && <p>{errors.date}</p>}
               <Button>Let's Go!</Button>
             </Form>
           </Modal.Description>
