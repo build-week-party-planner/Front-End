@@ -3,6 +3,9 @@ footer {
     flex-direction: column;
     background: $neutral-darkBlue;
     color: $primary-gray2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 
     p{
         margin: 0;
@@ -11,13 +14,27 @@ footer {
 
     a{
         color: $primary-gray2;
-        font-size: 1rem;
+        font-size: 1.2rem;
+        height: 30px;
+        width: 33%;
+    }
+
+    a:nth-child(-n+2){
+        border-right: 1px solid $primary-gray2;
     }
 
     .footer-content{
         display: flex;
         justify-content: space-between;
-        align-items: flex-end
+        align-items: flex-end;
+        margin: 15px 0px;
+    }
+
+    .copywrite-tos {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 5px;
     }
 
 }

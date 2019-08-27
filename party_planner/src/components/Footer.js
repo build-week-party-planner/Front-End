@@ -10,9 +10,9 @@ const Footer = () => {
         <a>Privacy Policy</a>
       </div>
 
-      <div className= "footer-content">
+      <div className= "copywrite-tos">
         <p>{'\u00A9'}  2019 Party Planner</p>
-        <a>Terms and Conditions</a>
+        <p>Terms and Conditions</p>
       </div>
     </footer>
   )
