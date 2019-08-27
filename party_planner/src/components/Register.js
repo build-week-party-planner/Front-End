@@ -3,10 +3,8 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { connect } from 'react-redux'
-import { handleSuccessfulRegister } from '../actions'
 
-function Register({touched, errors}) {
+function Register({touched, errors, history }) {
   return(
     <Form className="form">
       <h3>Register</h3>
@@ -49,13 +47,13 @@ export const FormikRegister = withFormik({
   }),
 
   //save token to local storage
-  handleSubmit(values) {
+  handleSubmit(values, props) {
     const propsToSubmit = {"email": values.email, "password": values.password}
     const url = "https://bw-party-planner.herokuapp.com/api/auth/register";
     axios
     .post(url, propsToSubmit)
       .then(results => {
-        console.log(results.data)
+        props.history.push('/login')
       })
       .catch(error => {
         console.log("Error: ", error.response)

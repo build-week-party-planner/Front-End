@@ -2,7 +2,10 @@ import {
     LOGIN_SUCCESS,
     GET_EVENTS_START,
     GET_EVENTS_SUCCESS,
-    GET_EVENTS_ERROR
+    GET_EVENTS_ERROR,
+    ADDING_EVENT,
+    ADD_EVENT_SUCCESS,
+    ADD_EVENT_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -11,36 +14,7 @@ const initialState = {
         : localStorage.getItem('user_id'),
     isLoading:false,
     error: '',
-    events: [
-        {
-            guests: 8,
-            theme: 'Cowboy',
-            date: '2019-09-12',
-            budget: 500,
-            id: 1
-        },
-        {
-            guests: 10,
-            theme: 'Space',
-            date: '2019-09-13',
-            budget: 1000,
-            id: 2
-        },
-        {
-            guests: 4,
-            theme: 'Race-Car',
-            date: '2019-09-12',
-            budget: 100,
-            id: 3
-        },
-        {
-            guests: 5,
-            theme: 'Halloween',
-            date: '2019-10-31',
-            budget: 1003,
-            id: 4,
-        }
-    ],
+    events: [],
     hasToken: false,
 }
 
@@ -68,6 +42,23 @@ export const globalReducer = (state = initialState, action) => {
                 isLoading:false,
                 error: action.payload
             }
+        case ADDING_EVENT:
+          return {
+            ...state,
+            isLoading: true,
+          }
+        case ADD_EVENT_SUCCESS:
+          return {
+            ...state,
+            isLoading: false,
+            events: [...state.events, action.payload]
+          }
+        case ADD_EVENT_FAILURE:
+          return {
+            ...state,
+            isLoading: false,
+            error: action.payload
+          }
         default:
             return state;
     }
