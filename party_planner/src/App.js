@@ -25,8 +25,8 @@ function App() {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard" component={Events}/>
-        <Route path="/events/:id" component={SingleEvent} />
-        <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
+        <PrivateRoute path="/events/:id" component={SingleEvent} />
+        <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
       </div>
     </Router>
   );

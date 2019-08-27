@@ -1,7 +1,14 @@
-import {LOGIN_SUCCESS} from '../actions'
+import {
+    LOGIN_SUCCESS,
+    GET_EVENTS_START,
+    GET_EVENTS_SUCCESS,
+    GET_EVENTS_ERROR
+} from '../actions'
 
 const initialState = {
-    userId: null,
+    userId: localStorage.getItem('user_id') === null ? 
+        null 
+        : localStorage.getItem('user_id'),
     isLoading:false,
     error: '',
     events: [
@@ -42,7 +49,24 @@ export const globalReducer = (state = initialState, action) => {
         case LOGIN_SUCCESS:
             return{
                 ...state,
-                userId : action.payload
+                id : localStorage.getItem("user_id")
+            }
+        case GET_EVENTS_START:
+            return{
+                ...state, 
+                isLoading: true
+            }
+        case GET_EVENTS_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                events: action.payload,
+            }
+        case GET_EVENTS_ERROR:
+            return{
+                ...state,
+                isLoading:false,
+                error: action.payload
             }
         default:
             return state;

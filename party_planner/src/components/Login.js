@@ -63,8 +63,9 @@ const FormikLogin = withFormik({
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          props.props.handleSuccessfulLogin(results.data.id)
+          localStorage.setItem("user_id", results.data.id)
           localStorage.setItem("token", results.data.token);
+          props.props.handleSuccessfulLogin(results.data.id)
           props.props.history.push('/dashboard')
         })
         .catch(error => {
