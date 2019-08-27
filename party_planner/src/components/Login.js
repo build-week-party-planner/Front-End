@@ -41,7 +41,6 @@ function Login(props) {
   )
 }
 
-
 const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
@@ -63,10 +62,10 @@ const FormikLogin = withFormik({
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          localStorage.setItem("user_id", results.data.id)
+          localStorage.setItem("user_id", results.data.id);
           localStorage.setItem("token", results.data.token);
-          props.props.handleSuccessfulLogin(results.data.id)
-          props.props.history.push('/dashboard')
+          props.props.handleSuccessfulLogin(results.data.id);
+          props.props.history.push('/dashboard');
         })
         .catch(error => {
           console.log("Error: ", error.response)

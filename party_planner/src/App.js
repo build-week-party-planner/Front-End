@@ -35,6 +35,7 @@ function App() {
         <PrivateRoute path="/dashboard" component={Events}/>
         <PrivateRoute path="/events/:id" component={SingleEvent} />
         <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
+        <Footer/>
       </div>
     </Router>
   );
