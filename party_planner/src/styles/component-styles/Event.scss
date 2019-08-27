@@ -13,6 +13,9 @@
         h3 {
             margin: 0;
         }
+        .ui.button, .ui.buttons .button, .ui.buttons .or{
+            background: gray;
+        }
     }
 
     .event-info-container {

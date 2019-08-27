@@ -14,3 +14,4 @@ export const getEvents = () => {
             .catch( err => dispatch({type: GET_EVENTS_ERROR, payload: err.response}))
     }
 }
+

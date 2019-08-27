@@ -19,7 +19,7 @@ const SingleEvent = props => {
             <div className = 'event-header'>
                 <Button Icon>
                     <Icon name='angle left' />
-                    <Link to = ''>
+                    <Link to = '/dashboard'>
                     </Link>
                 </Button>
                 
