@@ -10,8 +10,8 @@ import './styles/App.scss';
 
 // Components
 import NavBar from './components/NavBar'
-import Login from './components/Login';
-import Register from './components/Register'
+// import Login from './components/Login';
+import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 
 import SingleEvent from './components/Event'
@@ -30,15 +30,12 @@ function App() {
     <Router>
       <div className="App">
         <NavBar/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={Register}/>
+        {/* <Route exact path="/login" component={Login}/> */}
+        <Route exact path="/register" component={FormikRegister}/>
         <Route path="/dashboard" component={Events}/>
-
         <Route path="/events/:id" component={SingleEvent} />
         <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
-     
         <Footer/>
-
       </div>
     </Router>
   );

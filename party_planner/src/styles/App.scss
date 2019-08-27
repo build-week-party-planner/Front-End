@@ -1,5 +1,19 @@
+//mixins and variables
+@import './mixins.scss';
+@import './variables.scss';
+
+
+@import './component-styles/NavBar.scss';
+@import './component-styles/Footer.scss';
+
+@import './component-styles/Event.scss';
+
+
 .App {
+  @include flex(column, center, center);
   text-align: center;
+
+
 }
 
 .App-header {
@@ -18,11 +32,5 @@
 }
 
 
-//mixins and variables
-@import './mixins.scss';
-@import './variables.scss';
 
-
-@import './component-styles/NavBar.scss';
-@import './component-styles/Footer.scss';
 

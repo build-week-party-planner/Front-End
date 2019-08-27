@@ -3,7 +3,8 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import { connect } from 'react-redux'
+import { handleSuccessfulRegister } from '../actions'
 
 function Register({touched, errors}) {
   return(
@@ -35,7 +36,7 @@ function Register({touched, errors}) {
   )
 }
 
-export default withFormik({
+export const FormikRegister = withFormik({
   mapPropsToValues({email, password}) {
     return {
       email: email || "",
@@ -44,17 +45,17 @@ export default withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().required("Username is required"),
-    password: Yup.string().min(8).required("Password is ALSO required")
+    // password: Yup.string().min(8).required("Password is ALSO required")
   }),
 
   //save token to local storage
-  handleSubmit(values, formikBag) {
+  handleSubmit(values) {
     const propsToSubmit = {"email": values.email, "password": values.password}
     const url = "https://bw-party-planner.herokuapp.com/api/auth/register";
     axios
     .post(url, propsToSubmit)
       .then(results => {
-        console.log(results)
+        console.log(results.data)
       })
       .catch(error => {
         console.log("Error: ", error.response)
@@ -62,69 +63,6 @@ export default withFormik({
   }
 })(Register);
 
-
-// import React, { Component } from 'react'
-// import UserProfile from './UserProfile'
-
-// export class Register extends Component {
-
-//     //create the state:
-//     state= {
-//         step: 1,
-//         firstName: '',
-//         lastName: '',
-//         email: '',
-//         city: '',
-//         state: '',
-//         bio: ''
-//     }
-
-//     //method: proceed to next step
-//     nextStep = () => {
-//         const { step } = this.state;
-//         this.setState({
-//             step: step + 1
-//         });
-//     }
-//     //method: go back to previous step 
-//     prevStep = () => {
-//         const { step } = this.state;
-//         this.setState({
-//             step: step - 1
-//         });
-//     }
-
-//     //handle change
-//     handleChange = input => e => {
-//         this.setState({[input]: e.target.value})
-//     }
-//     render() {
-//         const { step } = this.state;
-//         const { firstName, lastName, email, city, state, bio } = this.state;
-//         const values = { firstName, lastName, email, city, state, bio }
-
-//         switch(step) {
-//             case 1: 
-//                 return(
-//                     <UserProfile
-//                         nextStep={this.nextStep}
-//                         handleChange={this.handleChange}
-//                         values={values}
-//                     />
-//                 )
-//             case 2: 
-//                 return(
-//                     <h1>Confirm</h1>
-//             )
-//             case 3: 
-//                 return(
-//                     <h1>Success</h1>
-//             )
-//         }
-//     }
-// }
-
-// export default Register
 
 
 
