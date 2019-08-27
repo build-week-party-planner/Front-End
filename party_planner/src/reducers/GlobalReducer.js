@@ -9,9 +9,7 @@ import {
 } from '../actions'
 
 const initialState = {
-    userId: localStorage.getItem('user_id') === null ? 
-        null 
-        : localStorage.getItem('user_id'),
+    userId: null,
     isLoading:false,
     error: '',
     events: [],
@@ -23,7 +21,7 @@ export const globalReducer = (state = initialState, action) => {
         case LOGIN_SUCCESS:
             return{
                 ...state,
-                id : localStorage.getItem("user_id")
+                userId: localStorage.getItem("user_id")
             }
         case GET_EVENTS_START:
             return{

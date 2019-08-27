@@ -5,6 +5,7 @@ import axios from "axios";
 import { connect } from 'react-redux'
 import { handleSuccessfulLogin } from '../actions'
 import { Button } from 'semantic-ui-react';
+import { getEvents } from '../actions/index'
 
 
 function Login(props) {
@@ -57,9 +58,9 @@ const FormikLogin = withFormik({
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          console.log(results)
           localStorage.setItem("user_id", results.data.id);
           localStorage.setItem("token", results.data.token);
+          props.props.getEvents();
           props.props.handleSuccessfulLogin(results.data.id)
           props.props.history.push(`/dashboard/${results.data.id}`)
         })
@@ -74,4 +75,4 @@ const FormikLogin = withFormik({
       state
     }
   }
-  export default connect(mapStateToProps,{handleSuccessfulLogin})(FormikLogin)
+  export default connect(mapStateToProps,{handleSuccessfulLogin, getEvents})(FormikLogin)
