@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <Menu>
       <Menu.Item header>Party Planner</Menu.Item>
-      <NavLink to='/dashboard'>
+      <NavLink to={`/dashboard/${localStorage.getItem('user_id')}`}>
         <Menu.Item name="My Events"/>
       </NavLink>
       <Link to="/login">
