@@ -36,7 +36,6 @@ function Login(props) {
   )
 }
 
-
 const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
@@ -47,20 +46,23 @@ const FormikLogin = withFormik({
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().required("Username is required"),
-      // password: Yup.string().min(8).required("Password is ALSO required")
+      password: Yup.string().min(8).required("Password is ALSO required")
     }),
   
     
     //save token to local storage
     handleSubmit(values, props) {
-      console.log(props)
       const propsToSubmit = {"email": values.email, "password": values.password}
       const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
       axios
       .post(url, propsToSubmit)
         .then(results => {
           console.log(results)
+<<<<<<< HEAD
           localStorage.setItem("user_id", results.data.id)
+=======
+          localStorage.setItem("user_id", results.data.id);
+>>>>>>> 1a61377c670ea33ca6454f4d695d2f888f1f4597
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
           props.props.history.push(`/dashboard/${results.data.id}`)
