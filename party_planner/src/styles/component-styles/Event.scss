@@ -13,8 +13,10 @@
         h3 {
             margin: 0;
         }
-        .ui.button, .ui.buttons .button, .ui.buttons .or{
-            background: gray;
+        .ui.button{
+            background: $primary-gray2;
+            font-size: 1.4rem;
+            width: 5px;
         }
     }
 
