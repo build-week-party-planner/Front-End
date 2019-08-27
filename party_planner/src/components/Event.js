@@ -2,47 +2,72 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 import { getEvents } from '../actions/index'
 import { deleteEvent } from '../actions/eventActions';
 
 const SingleEvent = props => {
 
-  useEffect(()=> {
+  useEffect(() => {
     props.getEvents()
   }, [])
 
-    let targetEvent = props.events.filter(event =>{ 
-        if(event.id.toString() === props.match.params.id){
-            return event
-        }})
+  let targetEvent = props.events.filter(event => {
+    if (event.id.toString() === props.match.params.id) {
+      return event
+    }
+  })
 
-    const targetObject = {...targetEvent[0]}
+  const targetObject = { ...targetEvent[0] }
 
-    return(
-        <div className = 'event-container'>
-            <p>Theme: {targetObject.theme}</p>
-            <p>Guests: {targetObject.guests}</p>
-            <p>Events: {targetObject.date}</p>
-            <p>Budget: ${targetObject.budget}</p>
-            <img src = ''></img>
-            <button>
-                <Link to = {`/events/${targetObject.id}/edit`}>
-                    Edit Your Event
-                </Link>
-            </button>
-            <Button onClick={() => props.deleteEvent(targetObject)}color="red">Delete Event</Button>
+  return (
+    <div className='event-container'>
+      <div className='event-header'>
+        <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
+          <Button Icon>
+            <Icon name='angle left' />
+          </Button>
+        </Link>
+
+        <h3>{targetObject.name}</h3>
+        <Link to={`/events/${targetObject.id}/edit`}>
+          <Button Icon>
+            <Icon name='edit' />
+          </Button>
+        </Link>
+      </div>
+      <img src=''></img>
+      <div className='event-info-container'>
+        <div className='event-info'>
+          <p>Theme:</p>
+          <p>{targetObject.theme}</p>
         </div>
-    
-    )
+        <div className='event-info'>
+          <p>Date:</p>
+          <p>{targetObject.date}</p>
+        </div>
+        <div className='event-info'>
+          <p>Guests:</p>
+          <p>{targetObject.guests}</p>
+        </div>
+        <div className='event-info'>
+          <p>Budget:</p>
+          <p>${targetObject.budget}</p>
+        </div>
+        <Button onClick={() => props.deleteEvent(targetObject)}color="red" style={{width: 'max-content'}}>Delete</Button>
+        
+      </div>
+
+    </div>
+  )
 
 }
 
 const mapStateToProps = state => {
-    return{
-        events: state.events
-    }
+  return {
+    events: state.events
+  }
 }
 
-export default connect(mapStateToProps,{ getEvents, deleteEvent })(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)
