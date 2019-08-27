@@ -7,7 +7,7 @@ import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-function Login({ touched, errors, values, handleChange, styles }) {
+function Login({ touched, errors, values, handleChange }) {
   return(
     <Form className="form">
       <MuiThemeProvider>
@@ -30,10 +30,7 @@ function Login({ touched, errors, values, handleChange, styles }) {
           <p>{touched.password && errors.password}</p>
           <RaisedButton
                 label="Login"
-                primary={true}
-                // style={styles.button}
-                // onClick={continue}
-              />
+          />
           <br />
         <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
         <label for="remember_me">Keep me logged in</label>
@@ -43,7 +40,6 @@ function Login({ touched, errors, values, handleChange, styles }) {
   
   )
 }
-
 
 export default withFormik({
     mapPropsToValues({email, password}) {
@@ -55,8 +51,7 @@ export default withFormik({
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().required("Username is required"),
-      password: Yup.string().min(8).required("Password is ALSO required")
-
+      // password: Yup.string().min(8).required("Password is ALSO required")
     }),
   
     
