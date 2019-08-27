@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Routing
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -6,25 +6,33 @@ import PrivateRoute from './utils/PrivateRoute';
 
 // CSS
 import 'semantic-ui-css/semantic.min.css'
-import './App.css';
+import './styles/App.scss';
 
 // Components
+import NavBar from './components/NavBar'
 import Login from './components/Login';
-import Register from './components/Register'
+import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 
+import SingleEvent from './components/Event'
+import FormikUpdateEvents from './components/UpdateEventForm'
+
+
+import Footer from './components/Footer'
+
+
 function App() {
-
-
   
   return (
-    <Router>
       <div className="App">
+        <NavBar/>
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={Register}/>
-        <PrivateRoute path="/dashboard" component={Events}/>
+        <Route exact path="/register" component={FormikRegister}/>
+        <PrivateRoute path="/dashboard/:id" component={Events}/>
+        <PrivateRoute path="/events/:id" component={SingleEvent} />
+        <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
+        <Footer />
       </div>
-    </Router>
   );
 }
 

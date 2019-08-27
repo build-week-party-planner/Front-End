@@ -1,0 +1,43 @@
+.event-container {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+
+    font-size: 1.3rem;
+    padding: 4%;
+
+    .event-header {
+        @include flex(row, space-between, center);
+        margin-bottom: 25px;
+
+        h3 {
+            margin: 0;
+        }
+        .ui.button{
+            background: $primary-gray2;
+            font-size: 1.4rem;
+            width: 5px;
+        }
+    }
+
+    .event-info-container {
+        display: flex;
+        flex-direction: column;
+        background: $primary-gray2;
+        
+        .event-info {
+            @include flex(column, space-around, space-between);
+            margin: 10px;
+
+            p {
+                margin: 0;
+
+                }
+            p:nth-child(even){
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+        }
+    }
+
+}
