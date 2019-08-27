@@ -1,22 +1,20 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
 
 
 const Footer = () => {
   return(
-    <Segment.Group>
-      <Segment.Group horizontal>
-        <Segment><a>Contact Us</a></Segment>
-        <Segment><a>Support</a></Segment>
-        <Segment><a>Privacy Policy</a></Segment>
-      </Segment.Group>
-      <Segment.Group horizontal>
-        <Segment>{'\u00A9'} 2019 Party Planner</Segment>
-        <Segment><a> Terms And Conditions</a></Segment>
-      </Segment.Group>
-    </Segment.Group>
+    <footer>
+      <div className= "footer-content">
+        <a>Contact Us </a>
+        <a>Support</a>
+        <a>Privacy Policy</a>
+      </div>
 
+      <div className= "footer-content">
+        <p>2019 Party Planner</p>
+        <a>Terms and Conditions</a>
+      </div>
+    </footer>
   )
 } 
-
 export default Footer

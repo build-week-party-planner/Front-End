@@ -1,3 +1,17 @@
-.ui.segments:last-child {
-    background: $primary-color;
+footer {
+    display: flex;
+    flex-direction: column;
+    background: $neutral-darkBlue;
+    color: $primary-gray2;
+
+    a{
+        color: $primary-gray2;
+        font-size: 1rem;
+    }
+
+    .footer-content{
+        display: flex;
+        justify-content: space-between;
+    }
+
 }

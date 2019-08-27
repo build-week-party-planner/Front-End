@@ -1,3 +1,18 @@
 .ui.menu:first-child {
-    background: $background-color
+  background: $primary-gray2;
+  justify-content: space-between;
+
+
+  .header.item {
+    border: none;
+  }
+
+  .item{
+    border: none;
+  }
+
+}//.ui.menu:first-child
+
+.ui.menu .item::before{
+  background: none;
 }
