@@ -2,12 +2,9 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux'
 import { handleSuccessfulLogin } from '../actions'
+import { Button } from 'semantic-ui-react';
 
 
 function Login(props) {
@@ -17,32 +14,23 @@ function Login(props) {
 
   return(
     <Form className="form">
-      <MuiThemeProvider>
-        <AppBar title="Party Planner - LOGIN" />
-          <TextField
+          <Field
             hintText="Enter your email"
             name="email"
             type="text"
-            onChange={handleChange('email')}
-            defaultValue={values.firstName}
           />
           <p>{touched.email && errors.email}</p>
-          <TextField
+          <Field
             hintText="Password"
             name="password"
             type="password"
-            onChange={handleChange('password')}
-            defaultValue={values.password}
           />
           <p>{touched.password && errors.password}</p>
-          <RaisedButton
-                label="Login"
-          />
+          <Button>Log In</Button>
           <br />
         <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
         <label for="remember_me">Keep me logged in</label>
-      </MuiThemeProvider>
-  
+
     </Form>
   
   )
@@ -74,7 +62,7 @@ const FormikLogin = withFormik({
           localStorage.setItem("user_id", results.data.id)
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
-          props.props.history.push('/dashboard')
+          props.props.history.push(`/dashboard/${results.data.id}`)
         })
         .catch(error => {
           console.log("Error: ", error.response)

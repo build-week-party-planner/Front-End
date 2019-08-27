@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Routing
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -23,20 +23,16 @@ import Footer from './components/Footer'
 
 function App() {
 
-
-  
   return (
-
-    <Router>
       <div className="App">
         <NavBar/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={FormikRegister}/>
-        <PrivateRoute path="/dashboard" component={Events}/>
+        <PrivateRoute path="/dashboard/:id" component={Events}/>
         <PrivateRoute path="/events/:id" component={SingleEvent} />
         <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
+        <Footer />
       </div>
-    </Router>
   );
 }
 
