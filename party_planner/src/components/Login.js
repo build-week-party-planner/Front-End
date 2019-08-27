@@ -23,16 +23,16 @@ function Login(props) {
             hintText="Enter your email"
             name="email"
             type="text"
-            onChange={handleChange('email')}
-            defaultValue={values.firstName}
+            onChange={props.handleChange('email')}
+            defaultValue={props.values.firstName}
           />
           <p>{touched.email && errors.email}</p>
           <TextField
             hintText="Password"
             name="password"
             type="password"
-            onChange={handleChange('password')}
-            defaultValue={values.password}
+            onChange={props.handleChange('password')}
+            defaultValue={props.values.password}
           />
           <p>{touched.password && errors.password}</p>
           <RaisedButton
@@ -58,7 +58,7 @@ const FormikLogin = withFormik({
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().required("Username is required"),
-      // password: Yup.string().min(8).required("Password is ALSO required")
+      password: Yup.string().min(8).required("Password is ALSO required")
     }),
   
     
