@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux'
+import { getEvents } from '../actions'
 
 // AddEvent component
 import FormikAddEvent from './AddEvent';
 
-const Events = () => {
+const Events = props => {
+
+  useEffect(()=> {
+    props.getEvents()
+    console.log(props.events)
+  },[])
+
   return (
     <FormikAddEvent />
   )
 }
 
+const mapStateToProps = state => {
+  return{
+    events : state.events
+  }
+}
 
-export default Events;
+export default connect(mapStateToProps , {getEvents})(Events)

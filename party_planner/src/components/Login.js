@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import axios from "axios";
 
 
-function Login({touched, errors}) {
+function Login(props) {
+
+  const {touched} = props
+  const {errors} = props
+
   return(
     <Form className="form">
       <h1>Welcome to the Party Planner!</h1>
@@ -50,14 +54,15 @@ export default withFormik({
   
     
     //save token to local storage
-    handleSubmit(values) {
+    handleSubmit(values, props) {
+      console.log(props)
       const propsToSubmit = {"email": values.email, "password": values.password}
       const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          // localStorage.setItem("token", results.data.payload);
-          console.log(results)
+          localStorage.setItem("token", results.data.token);
+          props.props.history.push('/dashboard')
         })
         .catch(error => {
           console.log("Error: ", error.response)

@@ -31,7 +31,7 @@ const initialState = {
             theme: 'Halloween',
             date: '2019-10-31',
             budget: 1003,
-            id: 4
+            id: 4,
         }
     ],
     hasToken: false,
