@@ -4,7 +4,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function Register({touched, errors, history }) {
+function Register({ touched, errors }) {
   return(
     <Form className="form">
       <h3>Register</h3>
@@ -53,7 +53,7 @@ export const FormikRegister = withFormik({
     axios
     .post(url, propsToSubmit)
       .then(results => {
-        props.history.push('/login')
+        props.props.history.push('/login')
       })
       .catch(error => {
         console.log("Error: ", error.response)

@@ -15,21 +15,21 @@ function Login(props) {
   return(
     <Form className="form">
           <Field
-            hintText="Enter your email"
+            placeholder="Enter your email"
             name="email"
             type="text"
           />
           <p>{touched.email && errors.email}</p>
           <Field
-            hintText="Password"
+            placeholder="Password"
             name="password"
             type="password"
           />
           <p>{touched.password && errors.password}</p>
           <Button>Log In</Button>
           <br />
-        <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
-        <label for="remember_me">Keep me logged in</label>
+        {/* <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
+        <label for="remember_me">Keep me logged in</label> */}
 
     </Form>
   
@@ -59,6 +59,7 @@ const FormikLogin = withFormik({
       axios
       .post(url, propsToSubmit)
         .then(results => {
+          console.log(results)
           localStorage.setItem("user_id", results.data.id)
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
