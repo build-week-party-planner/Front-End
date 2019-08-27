@@ -4,6 +4,7 @@ import React from 'react';
 import FormikAddEvent from './AddEvent';
 
 const Events = ({ history }) => {
+
   return (
     <FormikAddEvent history={history} />
   )

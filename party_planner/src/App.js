@@ -24,13 +24,11 @@ import Footer from './components/Footer'
 function App() {
 
   return (
-
-    <Router>
       <div className="App">
         <NavBar/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
-        <PrivateRoute path="/dashboard" component={Events}/>
+        <PrivateRoute path="/dashboard/:id" component={Events}/>
 
         <Route path="/events/:id" component={SingleEvent} />
         <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
@@ -38,7 +36,6 @@ function App() {
         <Footer/>
 
       </div>
-    </Router>
   );
 }
 
