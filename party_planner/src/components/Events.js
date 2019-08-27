@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import { getEvents } from '../actions/index'
+
 
 // AddEvent component
 import FormikAddEvent from './AddEvent';
@@ -13,12 +13,6 @@ import { Link } from 'react-router-dom';
 
 const Events = ({ getEvents, history, match, events }) => {
 
-
-  useEffect(()=> {
-    getEvents()
-  }, [events.length])
-
-  console.log(events)
 
   const authObjects = events.filter(event => {
     return event.user_id == match.params.id;
@@ -48,4 +42,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getEvents})(Events)
+export default connect(mapStateToProps, {})(Events)

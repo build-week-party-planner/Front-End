@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-import { Button, Icon } from 'semantic-ui-react';
-
 import { getEvents } from '../actions/index'
+import { connect } from 'react-redux'
+import { Button, Icon } from 'semantic-ui-react';
 import { deleteEvent } from '../actions/eventActions';
 
 const SingleEvent = props => {
@@ -70,4 +68,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)
+export default connect(mapStateToProps,{getEvents, deleteEvent})(SingleEvent)
