@@ -7,9 +7,9 @@ import FormikAddEvent from './AddEvent';
 
 const Events = props => {
 
+
   useEffect(()=> {
     props.getEvents()
-    console.log(props.events)
   },[])
 
   return (
