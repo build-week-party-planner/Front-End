@@ -52,12 +52,12 @@ const FormikLogin = withFormik({
     
     //save token to local storage
     handleSubmit(values, props) {
-      console.log(props)
       const propsToSubmit = {"email": values.email, "password": values.password}
       const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
       axios
       .post(url, propsToSubmit)
         .then(results => {
+          console.log(results)
           localStorage.setItem("user_id", results.data.id);
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
