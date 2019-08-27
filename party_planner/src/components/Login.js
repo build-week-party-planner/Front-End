@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { connect } from 'react-redux'
 import { handleSuccessfulLogin } from '../actions'
+import { Button } from 'semantic-ui-react';
 
 
 function Login(props) {
@@ -13,31 +14,25 @@ function Login(props) {
 
   return(
     <Form className="form">
-      <h1>Welcome to the Party Planner!</h1>
-      <h3>Login</h3>
-      <div className="form-box">
-        <label className="label">Username: </label>
-        <Field
-          className="input"
-          name="email"
-          type="text"
-        />
-        <p>{touched.email && errors.email}</p>
-      </div>
-      <div className="form-box">
-        <label className="label">Password: </label>
-        <Field 
-          className="input"
-          name="password"
-          type="password"
-          autoComplete="off"
-        />
-        <p>{touched.password && errors.password}</p>
-      </div>
-      <button type="submit" className="button">
-        Submit
-      </button>
+          <Field
+            hintText="Enter your email"
+            name="email"
+            type="text"
+          />
+          <p>{touched.email && errors.email}</p>
+          <Field
+            hintText="Password"
+            name="password"
+            type="password"
+          />
+          <p>{touched.password && errors.password}</p>
+          <Button>Log In</Button>
+          <br />
+        <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
+        <label for="remember_me">Keep me logged in</label>
+
     </Form>
+  
   )
 }
 
@@ -46,12 +41,13 @@ const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
         email: email || "",
-        password: password || ""
+        password: password || "",
+        rememberMe: true
       };
     },
     validationSchema: Yup.object().shape({
       email: Yup.string().required("Username is required"),
-      password: Yup.string().min(8).required("Password is ALSO required")
+      // password: Yup.string().min(8).required("Password is ALSO required")
     }),
   
     
