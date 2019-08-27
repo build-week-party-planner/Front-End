@@ -5,49 +5,53 @@ import axios from "axios";
 import { connect } from 'react-redux'
 import { handleSuccessfulLogin } from '../actions'
 import { Button } from 'semantic-ui-react';
-
 import { getEvents } from '../actions/index'
 
 
-
 function Login(props) {
- const {touched} = props
- const {errors} = props
- return(
-   <Form className="form">
-         <Field
-           hintText="Enter your email"
-           name="email"
-           type="text"
-         />
-         <p>{touched.email && errors.email}</p>
-         <Field
-           hintText="Password"
-           name="password"
-           type="password"
-         />
-         <p>{touched.password && errors.password}</p>
-         <Button>Log In</Button>
-         <br />
-       <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
-       <label for="remember_me">Keep me logged in</label>
-   </Form>
- )
-}
-const FormikLogin = withFormik({
-   mapPropsToValues({email, password}) {
-     return {
-       email: email || "",
-       password: password || "",
-       rememberMe: true
-     };
-   },
-   validationSchema: Yup.object().shape({
-     email: Yup.string().required("Username is required"),
-     password: Yup.string().min(8).required("Password is ALSO required")
-   }),
-   //save token to local storage
 
+  const {touched} = props
+  const {errors} = props
+
+  
+  return(
+    <Form className="form">
+          <Field
+            hinttext="Enter your email"
+            name="email"
+            type="text"
+          />
+          <p>{touched.email && errors.email}</p>
+          <Field
+            hinttext="Password"
+            name="password"
+            type="password"
+          />
+          <p>{touched.password && errors.password}</p>
+          <Button>Log In</Button>
+          <br />
+        <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
+        <label htmlFor="remember_me">Keep me logged in</label>
+
+    </Form>
+  
+  )
+}
+
+const FormikLogin = withFormik({
+    mapPropsToValues({email, password}) {
+      return {
+        email: email || "",
+        password: password || "",
+        rememberMe: true
+      };
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().required("Username is required"),
+      password: Yup.string().min(8).required("Password is ALSO required")
+    }),
+  
+    
     //save token to local storage
     handleSubmit(values, props) {
       const propsToSubmit = {"email": values.email, "password": values.password}
@@ -73,4 +77,3 @@ const FormikLogin = withFormik({
     }
   }
   export default connect(mapStateToProps,{handleSuccessfulLogin, getEvents})(FormikLogin)
-
