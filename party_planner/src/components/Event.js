@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { Button } from 'semantic-ui-react';
 
+import { getEvents } from '../actions/index'
+import { deleteEvent } from '../actions/eventActions';
 
 const SingleEvent = props => {
 
-    let targetEvent = props.events.filter( event =>{ 
+  useEffect(()=> {
+    props.getEvents()
+  }, [])
+
+    let targetEvent = props.events.filter(event =>{ 
         if(event.id.toString() === props.match.params.id){
             return event
         }})
@@ -25,6 +32,7 @@ const SingleEvent = props => {
                     Edit Your Event
                 </Link>
             </button>
+            <Button onClick={() => props.deleteEvent(targetObject)}color="red">Delete Event</Button>
         </div>
     
     )
@@ -37,4 +45,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{})(SingleEvent)
+export default connect(mapStateToProps,{ getEvents, deleteEvent })(SingleEvent)

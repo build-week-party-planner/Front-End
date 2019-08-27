@@ -10,7 +10,6 @@ import EventOnDashboard from './EventOnDashboard';
 
 import { Link } from 'react-router-dom';
 
-import { axiosWithAuth } from '../utils/AxiosWithAuth'
 
 const Events = ({ getEvents, history, match, events }) => {
 

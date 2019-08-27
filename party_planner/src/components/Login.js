@@ -58,11 +58,7 @@ const FormikLogin = withFormik({
       .post(url, propsToSubmit)
         .then(results => {
           console.log(results)
-<<<<<<< HEAD
-          localStorage.setItem("user_id", results.data.id)
-=======
           localStorage.setItem("user_id", results.data.id);
->>>>>>> 1a61377c670ea33ca6454f4d695d2f888f1f4597
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
           props.props.history.push(`/dashboard/${results.data.id}`)
