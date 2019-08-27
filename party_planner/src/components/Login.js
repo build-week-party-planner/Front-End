@@ -6,8 +6,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux'
+import { handleSuccessfulLogin } from '../actions'
 
-function Login({ touched, errors, values, handleChange }) {
+
+function Login(props) {
+
+  const {touched} = props
+  const {errors} = props
+
   return(
     <Form className="form">
       <MuiThemeProvider>
@@ -41,7 +48,8 @@ function Login({ touched, errors, values, handleChange }) {
   )
 }
 
-export default withFormik({
+
+const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
         email: email || "",
@@ -56,14 +64,17 @@ export default withFormik({
   
     
     //save token to local storage
-    handleSubmit(values) {
+    handleSubmit(values, props) {
+      console.log(props)
       const propsToSubmit = {"email": values.email, "password": values.password}
       const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          localStorage.setItem("token", results.data.payload);
-          console.log(results)
+          localStorage.setItem("user_id", results.data.id)
+          localStorage.setItem("token", results.data.token);
+          props.props.handleSuccessfulLogin(results.data.id)
+          props.props.history.push('/dashboard')
         })
         .catch(error => {
           console.log("Error: ", error.response)
@@ -71,3 +82,9 @@ export default withFormik({
     }
   })(Login);
 
+  const mapStateToProps = state => {
+    return{
+      state
+    }
+  }
+  export default connect(mapStateToProps,{handleSuccessfulLogin})(FormikLogin)
