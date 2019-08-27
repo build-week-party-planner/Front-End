@@ -3,9 +3,9 @@ import React from 'react';
 // AddEvent component
 import FormikAddEvent from './AddEvent';
 
-const Events = () => {
+const Events = ({ history }) => {
   return (
-    <FormikAddEvent />
+    <FormikAddEvent history={history} />
   )
 }
 

@@ -9,7 +9,11 @@ export const addEvent = (event, history) => {
     dispatch({ type: ADDING_EVENT});
     axiosWithAuth()
       .post('https://bw-party-planner.herokuapp.com/api/party', event)
-        .then(res => console.log(res))
-        .catch(err => console.log(err.response))
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
   }
 }

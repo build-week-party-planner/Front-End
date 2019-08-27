@@ -85,8 +85,17 @@ const FormikAddEvent = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setStatus }){
+    const propsToSubmit = {
+      "name": values.name,
+      "guests": values.guests, 
+      "theme": values.theme, 
+      "date": values.date,
+      "budget": values.budget,
+      "user_id": 2,
+      "id": Date.now(),
+    }
+    setStatus(propsToSubmit);
     resetForm();
-    setStatus(values);
   }
 })(connect(
   null, { addEvent } 
