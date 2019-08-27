@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 
-const Event = props => {
+const SingleEvent = props => {
 
     let targetEvent = props.events.filter( event =>{ 
         if(event.id.toString() === props.match.params.id){
             return event
         }})
-    
-        console.log(targetEvent)
+
     const targetObject = {...targetEvent[0]}
 
     return(
@@ -20,6 +20,11 @@ const Event = props => {
             <p>Events: {targetObject.date}</p>
             <p>Budget: ${targetObject.budget}</p>
             <img src = ''></img>
+            <button>
+                <Link to = {`/events/${targetObject.id}/edit`}>
+                    Edit Your Event
+                </Link>
+            </button>
         </div>
     
     )
@@ -32,4 +37,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{})(Event)
+export default connect(mapStateToProps,{})(SingleEvent)
