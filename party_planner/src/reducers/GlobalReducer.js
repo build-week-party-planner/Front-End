@@ -1,4 +1,4 @@
-import { tsPropertySignature } from "@babel/types";
+import {REGISTER_SUCCESS} from '../actions'
 
 const initialState = {
     userId: null,
@@ -39,6 +39,11 @@ const initialState = {
 
 export const globalReducer = (state = initialState, action) => {
     switch(action.type){
+        case REGISTER_SUCCESS:
+            return{
+                ...state,
+                userId : action.payload
+            }
         default:
             return state;
     }

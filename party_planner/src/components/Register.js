@@ -3,7 +3,8 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import { connect } from 'react-redux'
+import { handleSuccessfulRegister } from '../actions'
 
 function Register({touched, errors}) {
   return(
@@ -35,7 +36,7 @@ function Register({touched, errors}) {
   )
 }
 
-export default withFormik({
+const FormikRegister = withFormik({
   mapPropsToValues({email, password}) {
     return {
       email: email || "",
@@ -54,6 +55,7 @@ export default withFormik({
     axios
     .post(url, propsToSubmit)
       .then(results => {
+        formikBag.props.handleSuccessfulRegister(results.data.id)
         console.log(results)
       })
       .catch(error => {
@@ -62,6 +64,11 @@ export default withFormik({
   }
 })(Register);
 
+const mapPropsToState = state =>{
+  return state 
+}
+
+export default connect (mapPropsToState, {handleSuccessfulRegister})(FormikRegister)
 
 // import React, { Component } from 'react'
 // import UserProfile from './UserProfile'

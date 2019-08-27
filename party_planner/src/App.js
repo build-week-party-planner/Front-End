@@ -10,7 +10,7 @@ import './App.css';
 
 // Components
 import Login from './components/Login';
-import Register from './components/Register'
+import FormikRegister from './components/Register'
 import Events from './components/Events';
 import SingleEvent from './components/Event'
 import FormikUpdateEvents from './components/UpdateEventForm'
@@ -23,7 +23,7 @@ function App() {
     <Router>
       <div className="App">
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={Register}/>
+        <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard" component={Events}/>
         <Route path="/events/:id" component={SingleEvent} />
         <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
