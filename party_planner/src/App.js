@@ -33,17 +33,8 @@ function App() {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard" component={Events}/>
-<<<<<<< HEAD
         <PrivateRoute path="/events/:id" component={SingleEvent} />
         <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
-=======
-
-        <Route path="/events/:id" component={SingleEvent} />
-        <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
-     
-        <Footer/>
-
->>>>>>> a45825527cbebb50c0cbabeca1702bb9fc4802e5
       </div>
     </Router>
   );
