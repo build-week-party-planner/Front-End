@@ -4,6 +4,11 @@ footer {
     background: $neutral-darkBlue;
     color: $primary-gray2;
 
+    p{
+        margin: 0;
+        font-size: .7rem
+    }
+
     a{
         color: $primary-gray2;
         font-size: 1rem;
@@ -12,6 +17,7 @@ footer {
     .footer-content{
         display: flex;
         justify-content: space-between;
+        align-items: flex-end
     }
 
 }

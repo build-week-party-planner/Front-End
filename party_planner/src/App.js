@@ -32,7 +32,7 @@ function App() {
         <NavBar/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
-        <PrivateRoute path="/dashboard" component={Events}/>
+        <Route path="/dashboard" component={Events}/>
 
         <Route path="/events/:id" component={SingleEvent} />
         <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />

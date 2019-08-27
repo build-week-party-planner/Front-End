@@ -11,7 +11,7 @@ const Footer = () => {
       </div>
 
       <div className= "footer-content">
-        <p>2019 Party Planner</p>
+        <p>{'\u00A9'}  2019 Party Planner</p>
         <a>Terms and Conditions</a>
       </div>
     </footer>
