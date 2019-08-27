@@ -1,12 +1,14 @@
 import {
-  ADDING_EVENT,
-  ADD_EVENT_SUCCESS,
-  ADD_EVENT_FAILURE
-} from '../actions/index';
-
+    LOGIN_SUCCESS,
+    GET_EVENTS_START,
+    GET_EVENTS_SUCCESS,
+    GET_EVENTS_ERROR
+} from '../actions'
 
 const initialState = {
-    userId: null,
+    userId: localStorage.getItem('user_id') === null ? 
+        null 
+        : localStorage.getItem('user_id'),
     isLoading:false,
     error: '',
     events: [
@@ -36,7 +38,7 @@ const initialState = {
             theme: 'Halloween',
             date: '2019-10-31',
             budget: 1003,
-            id: 4
+            id: 4,
         }
     ],
     hasToken: false,
@@ -44,6 +46,28 @@ const initialState = {
 
 export const globalReducer = (state = initialState, action) => {
     switch(action.type){
+        case LOGIN_SUCCESS:
+            return{
+                ...state,
+                id : localStorage.getItem("user_id")
+            }
+        case GET_EVENTS_START:
+            return{
+                ...state, 
+                isLoading: true
+            }
+        case GET_EVENTS_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                events: action.payload,
+            }
+        case GET_EVENTS_ERROR:
+            return{
+                ...state,
+                isLoading:false,
+                error: action.payload
+            }
         default:
             return state;
     }

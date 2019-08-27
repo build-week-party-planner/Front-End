@@ -2,9 +2,15 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { connect } from 'react-redux'
+import { handleSuccessfulLogin } from '../actions'
 
 
-function Login({touched, errors}) {
+function Login(props) {
+
+  const {touched} = props
+  const {errors} = props
+
   return(
     <Form className="form">
       <h1>Welcome to the Party Planner!</h1>
@@ -36,7 +42,7 @@ function Login({touched, errors}) {
 }
 
 
-export default withFormik({
+const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
         email: email || "",
@@ -50,17 +56,27 @@ export default withFormik({
   
     
     //save token to local storage
-    handleSubmit(values) {
+    handleSubmit(values, props) {
+      console.log(props)
       const propsToSubmit = {"email": values.email, "password": values.password}
       const url = "https://bw-party-planner.herokuapp.com/api/auth/login";
       axios
       .post(url, propsToSubmit)
         .then(results => {
-          console.log(results)
+          localStorage.setItem("user_id", results.data.id)
           localStorage.setItem("token", results.data.token);
+          props.props.handleSuccessfulLogin(results.data.id)
+          props.props.history.push(`/dashboard/${results.data.id}`)
         })
         .catch(error => {
           console.log("Error: ", error.response)
         })
     }
   })(Login);
+
+  const mapStateToProps = state => {
+    return{
+      state
+    }
+  }
+  export default connect(mapStateToProps,{handleSuccessfulLogin})(FormikLogin)

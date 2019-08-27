@@ -11,7 +11,7 @@ import './styles/App.scss';
 // Components
 import NavBar from './components/NavBar'
 import Login from './components/Login';
-import Register from './components/Register'
+import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 
 import SingleEvent from './components/Event'
@@ -27,14 +27,10 @@ function App() {
       <div className="App">
         <NavBar/>
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={Register}/>
+        <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard/:id" component={Events}/>
-
-        <Route path="/events/:id" component={SingleEvent} />
-        <Route exact path="/events/:id/edit" component={FormikUpdateEvents} />
-     
-        <Footer/>
-
+        <PrivateRoute path="/events/:id" component={SingleEvent} />
+        <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
       </div>
   );
 }
