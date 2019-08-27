@@ -14,7 +14,7 @@ export class UserProfile extends Component {
         const { values, handleChange } = this.props;
         return (      
             <MuiThemeProvider>
-              <AppBar title="Enter User Details" />
+              <AppBar title="Party Planner - REGISTER" />
               <TextField
                 hintText="Enter Your First Name"
                 floatingLabelText="First Name"
