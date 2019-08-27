@@ -19,8 +19,6 @@ const Events = ({ getEvents, history, match, events }) => {
     getEvents()
   }, [events.length])
 
-  console.log(events)
-
   const authObjects = events.filter(event => {
     return event.user_id == match.params.id;
   })

@@ -1,6 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getEvents } from '../actions/index'
+import { connect } from 'react-redux'
 
 
 
@@ -37,4 +38,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,{})(SingleEvent)
+export default connect(mapStateToProps,{getEvents})(SingleEvent)

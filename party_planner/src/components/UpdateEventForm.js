@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { connect } from 'react-redux'
 
 const UpdateEvent = props =>{
-
+    
     return(
         <Form>
             <h2>Update Form</h2>
