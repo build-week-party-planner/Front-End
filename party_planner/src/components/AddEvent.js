@@ -13,15 +13,15 @@ import { connect } from 'react-redux';
 // Semantic UI components
 import { Button, Header, Modal } from 'semantic-ui-react';
 
-const AddEvent = ({ addEvent, status, history, touched, errors }) => {
+const AddEvent = ({ addEvent, status, history, match, touched, errors }) => {
 
   useEffect(() => {
-    status && addEvent(status, history)
+    status && addEvent(status, history, match)
   }, [status])
 
   return (
     <div className="add-event-modal">
-      <Modal trigger={<Button>New Event!</Button>}>
+      <Modal trigger={<Button>New Event!</Button>} closeIcon>
         <Modal.Content>
           <Modal.Description>
             <Header>New Event</Header>

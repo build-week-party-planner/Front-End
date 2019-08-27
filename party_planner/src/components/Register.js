@@ -3,8 +3,6 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { connect } from 'react-redux'
-import { handleSuccessfulRegister } from '../actions'
 
 function Register({touched, errors}) {
   return(
@@ -55,7 +53,6 @@ export const FormikRegister = withFormik({
     axios
     .post(url, propsToSubmit)
       .then(results => {
-        console.log(results)
         formikBag.props.history.push('/login')
       })
       .catch(error => {
