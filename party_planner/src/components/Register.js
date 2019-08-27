@@ -36,7 +36,7 @@ function Register({touched, errors}) {
   )
 }
 
-const FormikRegister = withFormik({
+export const FormikRegister = withFormik({
   mapPropsToValues({email, password}) {
     return {
       email: email || "",
@@ -55,8 +55,8 @@ const FormikRegister = withFormik({
     axios
     .post(url, propsToSubmit)
       .then(results => {
-        formikBag.props.handleSuccessfulRegister(results.data.id)
         console.log(results)
+        formikBag.props.history.push('/login')
       })
       .catch(error => {
         console.log("Error: ", error.response)
@@ -64,11 +64,7 @@ const FormikRegister = withFormik({
   }
 })(Register);
 
-const mapPropsToState = state =>{
-  return state 
-}
 
-export default connect (mapPropsToState, {handleSuccessfulRegister})(FormikRegister)
 
 // import React, { Component } from 'react'
 // import UserProfile from './UserProfile'

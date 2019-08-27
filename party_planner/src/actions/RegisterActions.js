@@ -1,10 +1,8 @@
-import { dispatch } from "rxjs/internal/observable/range";
-
-export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 
 
-export const handleSuccessfulRegister = payload => {
+export const handleSuccessfulLogin = payload => {
     return dispatch => {
-        dispatch({type: REGISTER_SUCCESS, payload: payload})
+        dispatch({type: LOGIN_SUCCESS, payload: payload})
     }
 }

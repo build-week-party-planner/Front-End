@@ -1,5 +1,5 @@
 export { getEvents } from './eventActions'
 export { 
-    handleSuccessfulRegister,
-    REGISTER_SUCCESS
+    handleSuccessfulLogin,
+    LOGIN_SUCCESS
  } from './RegisterActions'

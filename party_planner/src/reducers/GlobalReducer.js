@@ -1,4 +1,4 @@
-import {REGISTER_SUCCESS} from '../actions'
+import {LOGIN_SUCCESS} from '../actions'
 
 const initialState = {
     userId: null,
@@ -39,7 +39,7 @@ const initialState = {
 
 export const globalReducer = (state = initialState, action) => {
     switch(action.type){
-        case REGISTER_SUCCESS:
+        case LOGIN_SUCCESS:
             return{
                 ...state,
                 userId : action.payload

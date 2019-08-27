@@ -2,6 +2,8 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { connect } from 'react-redux'
+import { handleSuccessfulLogin } from '../actions'
 
 
 function Login(props) {
@@ -40,7 +42,7 @@ function Login(props) {
 }
 
 
-export default withFormik({
+const FormikLogin = withFormik({
     mapPropsToValues({email, password}) {
       return {
         email: email || "",
@@ -61,6 +63,7 @@ export default withFormik({
       axios
       .post(url, propsToSubmit)
         .then(results => {
+          props.props.handleSuccessfulLogin(results.data.id)
           localStorage.setItem("token", results.data.token);
           props.props.history.push('/dashboard')
         })
@@ -69,3 +72,10 @@ export default withFormik({
         })
     }
   })(Login);
+
+  const mapStateToProps = state => {
+    return{
+      state
+    }
+  }
+  export default connect(mapStateToProps,{handleSuccessfulLogin})(FormikLogin)

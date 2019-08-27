@@ -10,7 +10,7 @@ import './App.css';
 
 // Components
 import Login from './components/Login';
-import FormikRegister from './components/Register'
+import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 import SingleEvent from './components/Event'
 import FormikUpdateEvents from './components/UpdateEventForm'
