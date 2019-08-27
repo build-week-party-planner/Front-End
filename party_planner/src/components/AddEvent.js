@@ -17,6 +17,7 @@ const AddEvent = ({ addEvent, status, history, match, touched, errors }) => {
 
   useEffect(() => {
     status && addEvent(status, history, match)
+    history.push(`/dashboard/${localStorage.getItem('user_id')}`)
   }, [status])
 
   return (
@@ -91,11 +92,12 @@ const FormikAddEvent = withFormik({
       "theme": values.theme, 
       "date": values.date,
       "budget": values.budget,
-      "user_id": 2,
+      "user_id": localStorage.getItem('user_id'),
       "id": Date.now(),
     }
     setStatus(propsToSubmit);
     resetForm();
+    // window.location.reload();
   }
 })(connect(
   null, { addEvent } 

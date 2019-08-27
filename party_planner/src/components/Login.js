@@ -15,21 +15,21 @@ function Login(props) {
   return(
     <Form className="form">
           <Field
-            hintText="Enter your email"
+            placeholder="Enter your email"
             name="email"
             type="text"
           />
           <p>{touched.email && errors.email}</p>
           <Field
-            hintText="Password"
+            placeholder="Password"
             name="password"
             type="password"
           />
           <p>{touched.password && errors.password}</p>
           <Button>Log In</Button>
           <br />
-        <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
-        <label for="remember_me">Keep me logged in</label>
+        {/* <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
+        <label for="remember_me">Keep me logged in</label> */}
 
     </Form>
   
@@ -58,7 +58,11 @@ const FormikLogin = withFormik({
       .post(url, propsToSubmit)
         .then(results => {
           console.log(results)
+<<<<<<< HEAD
+          localStorage.setItem("user_id", results.data.id)
+=======
           localStorage.setItem("user_id", results.data.id);
+>>>>>>> 1a61377c670ea33ca6454f4d695d2f888f1f4597
           localStorage.setItem("token", results.data.token);
           props.props.handleSuccessfulLogin(results.data.id)
           props.props.history.push(`/dashboard/${results.data.id}`)

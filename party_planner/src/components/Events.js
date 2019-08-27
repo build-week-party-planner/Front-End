@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getEvents } from '../actions/index'
 
@@ -10,22 +10,28 @@ import EventOnDashboard from './EventOnDashboard';
 
 import { Link } from 'react-router-dom';
 
+import { axiosWithAuth } from '../utils/AxiosWithAuth'
+
 const Events = ({ getEvents, history, match, events }) => {
 
 
   useEffect(()=> {
     getEvents()
-  },[match.params.id])
+  }, [events.length])
 
   console.log(events)
 
+  const authObjects = events.filter(event => {
+    return event.user_id == match.params.id;
+  })
+
   return (
     <>
+
     <FormikAddEvent history={history} match={match} />
 
-    {events && events.filter(event => event.user_id == match.params.id).map(event => (
-      <Link to={`/events/${event.id}`}><EventOnDashboard 
-        key={event.id}
+    {authObjects.map(event => (
+      <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard 
         budget={event.budget}
         date={event.date}
         guests={event.guests}
@@ -39,7 +45,7 @@ const Events = ({ getEvents, history, match, events }) => {
 
 const mapStateToProps = state => {
   return{
-    events : state.events
+    events : state.events,
   }
 }
 
