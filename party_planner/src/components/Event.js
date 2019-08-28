@@ -7,6 +7,7 @@ import { deleteEvent } from '../actions/eventActions';
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
+import FormikUpdateEvents from './UpdateEventForm';
 
 const SingleEvent = props => {
 
@@ -26,18 +27,23 @@ const SingleEvent = props => {
   return (
     <div className='event-container'>
       <div className='event-header'>
-        <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
-          <Button Icon>
-            <Icon name='angle left' />
-          </Button>
-        </Link>
 
-        <h3>{targetObject.name}</h3>
-        <Link to={`/events/${targetObject.id}/edit`}>
-          <Button Icon>
-            <Icon name='edit' />
-          </Button>
-        </Link>
+        <div className="headerTop">
+          <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
+            <Button Icon>
+              <Icon name='angle left' />
+            </Button>
+          </Link>
+
+          <h3>{targetObject.name}</h3>
+
+          <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
+        </div>
+
+        <div className="new-photo">
+          Add Photo
+        </div>
+
       </div>
       <img src=''></img>
       <div className='event-info-container'>
@@ -57,16 +63,15 @@ const SingleEvent = props => {
           <p>Budget:</p>
           <p>${targetObject.budget}</p>
         </div>
-        <Button onClick={() => props.deleteEvent(targetObject, props.history)}color="red" style={{width: 'max-content'}}>Delete</Button>
       </div>
-    <div className = 'lists-container'>
+      <div className='lists-container'>
         <h3>Lists :</h3>
-        <div className = 'btn-list-container'>
-            <ShoppingList match = {props.match}/>
-            <TodoList match = {props.match}/>
-            <EntertainmentList match = {props.match}/>
+        <div className='btn-list-container'>
+          <ShoppingList match={props.match} />
+          <TodoList match={props.match} />
+          <EntertainmentList match={props.match} />
         </div>
-    </div>
+      </div>
     </div>
   )
 
@@ -78,4 +83,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{getEvents, deleteEvent})(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)

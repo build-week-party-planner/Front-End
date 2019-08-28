@@ -1,48 +1,88 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, Form, withFormik } from 'formik'
 import * as Yup from 'yup'
 import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom';
+import { Modal, Button, Header, Icon } from 'semantic-ui-react';
 
 import { updateEvent } from '../actions/eventActions';
 
-const UpdateEvent = ({ history, match, updateEvent, status }) => {
+import ConfirmDelete from './ConfirmDelete';
+
+const UpdateEvent = ({ deleteEvent, targetObject, touched, errors, history, match, updateEvent, status }) => {
+
+  console.log(match)
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const [pageTwoModal, setPageTwoModal] = useState(false);
 
   useEffect(() => {
     status && updateEvent(status, match.params.id, history);
   }, [status])
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  }
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  }
+
   return (
-    <Form>
-      <h2>Update Form</h2>
-      <Field
-        name='name'
-        placeholder='Event Name. . .'
-        type='text'
-      />
-      <Field
-        name='theme'
-        placeholder='Event Theme...'
-        type='text'
-      />
-      <Field
-        name='date'
-        placeholder='Event Date. . .'
-        type='date'
-      />
-      <Field
-        name='guests'
-        placeholder='Guests Invited. . .'
-        type='number'
-      />
-      <Field
-        name='budget'
-        placeholder='Event Budget. . .'
-        type='number'
-      />
-      <button type='submit'>Update Event</button>
-    </Form>
+    <div className="add-event-modal">
+      <Modal open={modalOpen} onClose={handleModalClose} trigger={<Button onClick={handleModalOpen} Icon><Icon name="edit" /></Button>} closeIcon>
+        <Modal.Content>
+          <Modal.Description>
+            <Header>Update Event</Header>
+            <ConfirmDelete deleteEvent={deleteEvent} targetObject={targetObject} history={history} />
+            <Form>
+              {pageTwoModal === false &&
+                <>
+                  <Field
+                    placeholder="Event Name"
+                    name="name"
+                    type="text"
+                  />
+                  {touched.name && errors.name && <p>{errors.name}</p>}
+                  <Field
+                    placeholder="# of Guests"
+                    name="guests"
+                    type="number"
+                  />
+                  {touched.guests && errors.guests && <p>{errors.guests}</p>}
+                  <Field
+                    placeholder="dd/mm/yyyy"
+                    name="date"
+                    type="date"
+                  />
+                  {touched.date && errors.date && <p>{errors.date}</p>}
+                  <Button type="button" onClick={() => setPageTwoModal(true)}>Next</Button>
+                </>
+              }
+              {pageTwoModal &&
+                <>
+                  <Field
+                    placeholder="Event budget"
+                    name="budget"
+                    type="number"
+                  />
+                  {touched.budget && errors.budget && <p>{errors.budget}</p>}
+                  <Field
+                    placeholder="Theme"
+                    name="theme"
+                    type="text"
+                  />
+                  {touched.theme && errors.theme && <p>{errors.theme}</p>}
+                  <Button onClick={() => setTimeout(function () { handleModalClose(); }, 0.1)}>Let's Go!</Button>
+                </>
+              }
+
+            </Form>
+          </Modal.Description>
+        </Modal.Content>
+      </Modal>
+    </div>
   )
 }
 
@@ -72,7 +112,7 @@ const FormikUpdateEvents = withFormik({
     date: Yup.string(),
     budget: Yup.number()
   }),
-  handleSubmit(values, { resetForm, setStatus } ) {
+  handleSubmit(values, { resetForm, setStatus }) {
     resetForm();
     setStatus(values);
   }

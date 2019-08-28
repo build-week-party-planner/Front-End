@@ -50,7 +50,6 @@ export const updateEvent = (event, id, history) => {
       .put(`https://bw-party-planner.herokuapp.com/api/party/${id}`, event)
       .then(res => {
         dispatch({ type: UPDATE_EVENT_SUCCESS, payload: res.data })
-        history.push(`/dashboard/${localStorage.getItem('user_id')}`)
       })
       .catch(err => {
         dispatch({ type: UPDATE_EVENT_FAILURE, payload: err.response})
