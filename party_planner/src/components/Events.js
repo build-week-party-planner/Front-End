@@ -30,9 +30,9 @@ const Events = ({ history, match, events }) => {
       </div>
 
       {authObjects.map(event => (
-        <div className = 'events-container'>
+        <div key={event.id} className = 'events-container'>
           <Button>
-            <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard 
+            <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard
               name={event.name}
             /></Link>
           </Button>

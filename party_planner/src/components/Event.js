@@ -7,6 +7,7 @@ import { deleteEvent } from '../actions/eventActions';
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
+import FormikUpdateEvents from './UpdateEventForm';
 
 const SingleEvent = props => {
 
@@ -34,11 +35,8 @@ const SingleEvent = props => {
 
         <h3>{targetObject.name}</h3>
         
-        <Link to={`/events/${targetObject.id}/edit`}>
-          <Button Icon>
-            <Icon name='edit' />
-          </Button>
-        </Link>
+        <FormikUpdateEvents history={props.history} match={props.match} />
+
       </div>
       <img src=''></img>
       <div className='event-info-container'>
