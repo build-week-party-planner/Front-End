@@ -18,7 +18,6 @@ const ShoppingList = props => {
         props.getShoppingItems()
     },[])
 
-    console.log(match.match.params.id)
     const shoppingItems = props.shoppingListItems.filter(item => {
         if(item.shopping_list_id.toString() === match.match.params.id){
             return item

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Routing
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 
 // CSS
@@ -15,7 +15,6 @@ import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 
 import SingleEvent from './components/Event'
-import FormikUpdateEvents from './components/UpdateEventForm'
 
 
 import Footer from './components/Footer'
@@ -30,7 +29,6 @@ function App() {
         <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard/:id" component={Events}/>
         <PrivateRoute path="/events/:id" component={SingleEvent} />
-        <PrivateRoute exact path="/events/:id/edit" component={FormikUpdateEvents} />
         <Footer />
       </div>
   );
