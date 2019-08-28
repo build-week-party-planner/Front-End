@@ -33,3 +33,71 @@ export const deleteEvent = (event, history) => {
   }
 }
 
+//! CRUD FOR SHOPPING LIST
+
+export const CREATE_EVENT_SHOPPING_LIST_START = "CREATE_EVENT_SHOPPING_LIST_START"
+export const CREATE_EVENT_SHOPPING_LIST_SUCCESS = "CREATE_EVENT_SHOPPING_LIST_SUCCESS"
+export const CREATE_EVENT_SHOPPING_LIST_ERROR = "CREATE_EVENT_SHOPPING_LIST_ERROR"
+
+export const createEventShoppingList = values => {
+  return dispatch =>{
+    dispatch({type: CREATE_EVENT_SHOPPING_LIST_START})
+    axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/shoppinglist', values)
+      .then( res => console.log(res))
+      .catch( err => console.log(err))
+  }
+}
+
+// ! CRUD for shopping list items
+
+export const ADD_SHOPPING_ITEM_START = "ADD_SHOPPING_ITEM_START"
+export const ADD_SHOPPING_ITEM_SUCCESS = "ADD_SHOPPING_ITEM_SUCCESS"
+export const ADD_SHOPPING_ITEM_ERROR = "ADD_SHOPPING_ITEM_ERROR"
+
+export const addShoppingItem = values => {
+  return dispatch => {
+    dispatch({type: ADD_SHOPPING_ITEM_START})
+      axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/items', values)
+      .then( res => dispatch({type: ADD_SHOPPING_ITEM_SUCCESS, payload: res.data}))
+      .catch( err => console.log('errOnPostItem', err))
+  }
+}
+
+export const GET_SHOPPING_ITEM_START = "GET_SHOPPING_ITEM_START"
+export const GET_SHOPPING_ITEM_SUCCESS = "GET_SHOPPING_ITEM_SUCCESS"
+export const GET_SHOPPING_ITEM_ERROR = "GET_SHOPPING_ITEM_ERROR"
+
+export const getShoppingItems = () => {
+  return dispatch => {
+    dispatch({type: GET_SHOPPING_ITEM_START})
+    axiosWithAuth()
+    .get('https://bw-party-planner.herokuapp.com/api/items')
+    .then( res => dispatch({type: GET_SHOPPING_ITEM_SUCCESS, payload: res.data}))
+    .catch( err => dispatch({type: GET_SHOPPING_ITEM_ERROR, payload: err.response}))
+  }
+}
+
+//!! CRUD FOR TODOLIST 
+export const CREATE_EVENT_TODO_LIST_START = "CREATE_EVENT_TODO_LIST_START"
+export const CREATE_EVENT_TODO_LIST_SUCCESS = "CREATE_EVENT_TODO_LIST_SUCCESS"
+export const CREATE_EVENT_TODO_LIST_ERROR = "CREATE_EVENT_TODO_LIST_ERROR"
+
+export const createEventTodoList = values => {
+  return dispatch =>{
+    dispatch({type: CREATE_EVENT_TODO_LIST_START})
+    axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/todolist', values)
+      .then( res => console.log(res))
+      .catch( err => console.log(err))
+  }
+}
+
+
+
+
+
+
+
+
