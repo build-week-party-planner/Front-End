@@ -9,6 +9,9 @@ import {
     DELETING_EVENT,
     DELETE_EVENT_SUCCESS,
     DELETE_EVENT_FAILURE,
+    UPDATING_EVENT,
+    UPDATE_EVENT_SUCCESS,
+    UPDATE_EVENT_FAILURE,
     GET_SHOPPING_ITEM_START,
     GET_SHOPPING_ITEM_SUCCESS,
     GET_SHOPPING_ITEM_ERROR,
@@ -78,6 +81,23 @@ export const globalReducer = (state = initialState, action) => {
             events: state.events.filter(event => event.id !== action.payload.id)
           }
         case DELETE_EVENT_FAILURE:
+          return {
+            ...state,
+            isLoading: false,
+            error: action.payload
+          }
+        case UPDATING_EVENT:
+          return {
+            ...state,
+            isLoading: true
+          }
+        case UPDATE_EVENT_SUCCESS:
+          return {
+            ...state,
+            isLoading: false,
+            events: state.events.map(event => event.id === action.payload.id ? action.payload : event)
+          }
+        case UPDATE_EVENT_FAILURE:
           return {
             ...state,
             isLoading: false,

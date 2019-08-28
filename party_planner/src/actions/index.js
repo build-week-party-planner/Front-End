@@ -5,6 +5,13 @@ export {
   ADD_EVENT_FAILURE
 } from './AddEventActions';
 
+export {
+  updateEvent,
+  UPDATING_EVENT,
+  UPDATE_EVENT_SUCCESS,
+  UPDATE_EVENT_FAILURE
+} from './eventActions';
+
 export { 
     getEvents,
     GET_EVENTS_START,

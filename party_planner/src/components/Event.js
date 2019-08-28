@@ -8,10 +8,6 @@ import ShoppingList from './Lists/ShoppingList'
 
 const SingleEvent = props => {
 
-  useEffect(() => {
-    props.getEvents()
-  }, [])
-
 
   let targetEvent = props.events.filter(event => {
     if (event.id.toString() === props.match.params.id) {
@@ -20,6 +16,10 @@ const SingleEvent = props => {
   })
 
   const targetObject = { ...targetEvent[0] }
+
+  useEffect(() => {
+    props.getEvents()
+  }, [])
 
   return (
     <div className='event-container'>
