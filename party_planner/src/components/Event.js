@@ -10,9 +10,6 @@ import EntertainmentList from './Lists/Entertainment'
 
 const SingleEvent = props => {
 
-  useEffect(() => {
-    props.getEvents()
-  }, [])
 
   let targetEvent = props.events.filter(event => {
     if (event.id.toString() === props.match.params.id) {
@@ -21,6 +18,10 @@ const SingleEvent = props => {
   })
 
   const targetObject = { ...targetEvent[0] }
+
+  useEffect(() => {
+    props.getEvents()
+  }, [])
 
   return (
     <div className='event-container'>
