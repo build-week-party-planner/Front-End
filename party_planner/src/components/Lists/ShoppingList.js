@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
 import { getShoppingItems, updateShoppingItems } from '../../actions'
 import FormikShoppingForm from './ShoppingListForm';
-import { Checkbox } from 'semantic-ui-react'
 import ShoppingItem from './ShoppingItem'
 
 

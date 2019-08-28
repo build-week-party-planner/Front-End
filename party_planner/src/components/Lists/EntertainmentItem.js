@@ -3,13 +3,14 @@ import { Checkbox } from "semantic-ui-react";
 
 const EntertainmentItem = props => {
   const { item } = props;
-  const [ checked, setChecked ] = useState(false)
+  let initialState = item.completed
   const updateCompleted = () => {
-      setChecked(!checked)
+    initialState = !initialState
+    item.completed = initialState
   }
   return (
     <div>
-        {checked ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>: <p>{item.name}</p>}
+        {item.completed ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>: <p>{item.name}</p>}
         <p>Cost: ${item.price}</p>
         <Checkbox label="Completed" onClick = {updateCompleted}/>
     </div>

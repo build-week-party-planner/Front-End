@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { Button, Header, Modal } from 'semantic-ui-react';
 import FormikEntertainmentForm from './EntertainementForm'
-import { getEventEntertainment } from '../../actions'
-import { Checkbox } from 'semantic-ui-react'
+import { getEventEntertainment, updateEntertainmentItems } from '../../actions'
 import EntertainmentItem from './EntertainmentItem'
 
 
@@ -37,6 +36,7 @@ const EntertainmentList = props => {
                         :'Your entertainment list is currently empty. Click below to add an item.'
                     }
                     <FormikEntertainmentForm match = {match}/>
+                    <Button onClick = { () => props.updateEntertainmentItems(entertainmentList)}>Update Entertainment</Button>
                     </Modal.Content>
             </Modal>
         </div>
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
        entertainment : state.entertainmentList
     }
 }
-export default connect(mapStateToProps, {getEventEntertainment})(EntertainmentList)
+export default connect(mapStateToProps, {getEventEntertainment, updateEntertainmentItems})(EntertainmentList)

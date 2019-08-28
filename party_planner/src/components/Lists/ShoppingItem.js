@@ -9,7 +9,6 @@ const ShoppingItem = props => {
   const updateCompleted = () => {
     initialState = !initialState
     item.purchased = initialState
-    console.log(item.completed)
   }
   return (
     <div>
