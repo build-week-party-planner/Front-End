@@ -5,9 +5,7 @@ import axios from "axios";
 import { connect } from 'react-redux'
 import { handleSuccessfulLogin } from '../actions'
 import { Button } from 'semantic-ui-react';
-
 import { getEvents } from '../actions/index'
-
 
 
 function Login(props) {

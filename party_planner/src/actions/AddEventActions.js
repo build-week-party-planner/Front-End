@@ -10,7 +10,6 @@ export const addEvent = (event) => {
     axiosWithAuth()
       .post('https://bw-party-planner.herokuapp.com/api/party', event)
         .then(res => {
-          console.log(res)
           dispatch({ type: ADD_EVENT_SUCCESS, payload: res.data })
         })
         .catch(err => {
