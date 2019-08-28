@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-
+import { Button } from 'semantic-ui-react';
 
 // AddEvent component
 import FormikAddEvent from './AddEvent';
@@ -19,20 +19,27 @@ const Events = ({ history, match, events }) => {
   })
 
   return (
-    <>
+    <div className = "my-events">
+      <header>
+        <h2>My Events</h2>
+        <Button color="red" style={{width: 'max-content'}}>
+          Delete
+          </Button>
+      </header>
+      <div className = 'events-container new-event'>
+        <FormikAddEvent history={history} match={match} />
+      </div>
 
-    <FormikAddEvent history={history} match={match} />
-
-    {authObjects.map(event => (
-      <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard 
-        budget={event.budget}
-        date={event.date}
-        guests={event.guests}
-        name={event.name}
-        theme={event.theme}
-      /></Link>
-    ))}
-    </>
+      {authObjects.map(event => (
+        <div className = 'events-container'>
+          <Button>
+            <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard 
+              name={event.name}
+            /></Link>
+          </Button>
+        </div>
+      ))}
+    </div>
   )
 }
 

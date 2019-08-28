@@ -1,0 +1,47 @@
+.my-events{
+
+    header {
+        @include flex(row, space-between, center);
+        h2{
+            margin: 0;
+            color: $primary-blue2;
+
+        }
+
+    }
+    .events-container {
+        @include flex(row, center, center);
+        width: 300px;
+        height: 100px;
+        background: gray;
+        margin: 10px 0px;
+        border-radius: 10px;
+
+        h1{
+            color: $primary-blue2;
+            margin: 0;
+            font-size: 1.6rem
+        }
+    
+    
+        .ui.button {
+            background: white;
+            color: $primary-blue2;
+            height: 50px;
+            border-radius: 10px;
+        }
+
+    }//.events-container
+    
+    .new-event {
+        background: rgba(255, 255, 255, .7);
+        border: 2.2px solid $primary-blue2;
+
+        .ui.button {
+            font-size: 1.4rem;
+            color: $primary-blue2;
+        }
+
+    }//new-event
+
+}//my-events
