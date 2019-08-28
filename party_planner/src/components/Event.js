@@ -33,6 +33,7 @@ const SingleEvent = props => {
         </Link>
 
         <h3>{targetObject.name}</h3>
+        
         <Link to={`/events/${targetObject.id}/edit`}>
           <Button Icon>
             <Icon name='edit' />
