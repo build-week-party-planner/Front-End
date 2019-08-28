@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Field, Form, withFormik } from 'formik'
+import { Field, Form, withFormik } from 'formik'
 import * as Yup from 'yup'
 import { connect } from 'react-redux'
 

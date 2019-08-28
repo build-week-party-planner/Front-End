@@ -5,7 +5,10 @@ import {
     GET_EVENTS_ERROR,
     ADDING_EVENT,
     ADD_EVENT_SUCCESS,
-    ADD_EVENT_FAILURE
+    ADD_EVENT_FAILURE,
+    DELETING_EVENT,
+    DELETE_EVENT_SUCCESS,
+    DELETE_EVENT_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -52,6 +55,23 @@ export const globalReducer = (state = initialState, action) => {
             events: [...state.events, action.payload]
           }
         case ADD_EVENT_FAILURE:
+          return {
+            ...state,
+            isLoading: false,
+            error: action.payload
+          }
+        case DELETING_EVENT:
+          return {
+            ...state,
+            isLoading: true
+          }
+        case DELETE_EVENT_SUCCESS:
+          return {
+            ...state,
+            isLoading: false,
+            events: state.events.filter(event => event.id !== action.payload.id)
+          }
+        case DELETE_EVENT_FAILURE:
           return {
             ...state,
             isLoading: false,

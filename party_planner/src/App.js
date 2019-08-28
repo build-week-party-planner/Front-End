@@ -25,7 +25,7 @@ function App() {
   
   return (
       <div className="App">
-        <NavBar/>
+        <Route path = "/" component={NavBar}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={FormikRegister}/>
         <PrivateRoute path="/dashboard/:id" component={Events}/>

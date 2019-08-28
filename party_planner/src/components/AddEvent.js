@@ -17,7 +17,6 @@ const AddEvent = ({ addEvent, status, history, match, touched, errors }) => {
 
   useEffect(() => {
     status && addEvent(status, history, match)
-    history.push(`/dashboard/${localStorage.getItem('user_id')}`)
   }, [status])
 
   return (
