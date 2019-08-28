@@ -16,3 +16,9 @@ export {
     handleSuccessfulLogin,
     LOGIN_SUCCESS
  } from './RegisterActions'
+
+export {
+  DELETING_EVENT,
+  DELETE_EVENT_SUCCESS,
+  DELETE_EVENT_FAILURE
+} from './eventActions';
