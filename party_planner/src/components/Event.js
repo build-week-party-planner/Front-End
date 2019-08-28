@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react';
 import { deleteEvent } from '../actions/eventActions';
 import ShoppingList from './Lists/ShoppingList'
+import TodoList from './Lists/ToDo'
+import EntertainmentList from './Lists/Entertainment'
 
 const SingleEvent = props => {
 
@@ -60,9 +62,8 @@ const SingleEvent = props => {
         <h3>Lists :</h3>
         <div className = 'btn-list-container'>
             <ShoppingList match = {props.match}/>
-            <button>Entertainment</button>
-            <button>To Do List</button>
-            <button>Add A Category</button>
+            <TodoList match = {props.match}/>
+            <EntertainmentList match = {props.match}/>
         </div>
     </div>
     </div>
