@@ -3,18 +3,10 @@
 @import './variables.scss';
 
 
-@import './component-styles/Footer.scss';
-
-@import './component-styles/Events.scss';
-@import './component-styles/Event.scss';
-@import './component-styles/NavBar.scss';
-
 
 .App {
   @include flex(column, center, center);
   text-align: center;
-
-
 }
 
 .App-header {
@@ -32,6 +24,11 @@
   color: #61dafb;
 }
 
+
+@import './component-styles/Events.scss';
+@import './component-styles/Event.scss';
+@import './component-styles/NavBar.scss';
+@import './component-styles/Footer.scss';
 
 
 

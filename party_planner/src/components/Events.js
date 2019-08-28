@@ -21,9 +21,6 @@ const Events = ({ history, match, events }) => {
     <div className = "my-events">
       <header>
         <h2>My Events</h2>
-        <Button color="red" style={{width: 'max-content'}}>
-          Delete
-          </Button>
       </header>
       <div className = 'events-container new-event'>
         <FormikAddEvent history={history} match={match} />

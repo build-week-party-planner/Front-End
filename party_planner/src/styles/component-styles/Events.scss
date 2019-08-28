@@ -15,6 +15,7 @@
         height: 100px;
         margin: 15px 0px;
         border-radius: 10px;
+        background: $primary-blue3;
         background-image: url(../../images/example-photo.JPG);
 
         h1{
@@ -25,7 +26,7 @@
     
     
         .ui.button {
-            background: rgba(255, 255, 255, .6);
+            background: rgba(255, 255, 255, .5);
             backdrop-filter: blur(8px);
             color: $primary-blue2;
             height: 50px;
