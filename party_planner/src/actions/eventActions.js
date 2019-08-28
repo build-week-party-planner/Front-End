@@ -104,6 +104,30 @@ export const getShoppingItems = () => {
   }
 }
 
+export const UPDATE_SHOPPING_ITEM_START = "UPDATE_SHOPPING_ITEM_START"
+export const UPDATE_SHOPPING_ITEM_SUCCESS = "UPDATE_SHOPPING_ITEM_SUCCESS"
+export const UPDATE_SHOPPING_ITEM_ERROR = "UPDATE_SHOPPING_ITEM_ERROR"
+
+export const updateShoppingItems = (arr) => {
+
+  for(let i = 0; i < arr.length; i++ ){
+    let valuesToSubmit = {
+      name: arr[i].name,
+      purchased: arr[i].purchased,
+      shopping_list_id: arr[i].shopping_list_id,
+      price: arr[i].price
+    }
+    return dispatch => {
+      dispatch({type: UPDATE_EVENT_TODO_LIST_START})
+      axiosWithAuth()
+        .put(`https://bw-party-planner.herokuapp.com/api/items/${arr[i].id}`, valuesToSubmit)
+        .then( res => dispatch({type: UPDATE_EVENT_TODO_LIST_SUCCESS, payload: res.data}))
+        .catch( err => dispatch({type: UPDATE_SHOPPING_ITEM_ERROR, payload: err.response}))
+   } 
+  }
+
+}
+
 //!! CRUD FOR TODOLIST 
 export const CREATE_EVENT_TODO_LIST_START = "CREATE_EVENT_TODO_LIST_START"
 export const CREATE_EVENT_TODO_LIST_SUCCESS = "CREATE_EVENT_TODO_LIST_SUCCESS"

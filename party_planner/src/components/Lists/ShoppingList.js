@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
-import { getShoppingItems } from '../../actions'
+import { getShoppingItems, updateShoppingItems } from '../../actions'
 import FormikShoppingForm from './ShoppingListForm';
 import { Checkbox } from 'semantic-ui-react'
 import ShoppingItem from './ShoppingItem'
@@ -17,7 +17,6 @@ const ShoppingList = props => {
         props.getShoppingItems()
     },[])
 
-    console.log(match.match.params.id)
     const shoppingItems = props.shoppingListItems.filter(item => {
         if(item.shopping_list_id.toString() === match.match.params.id){
             return item
@@ -39,6 +38,7 @@ const ShoppingList = props => {
                         :'Your shopping list is currently empty. Click below to add an item.'
                     }
                     <FormikShoppingForm match = {match}/>
+                    <Button onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button>
                     </Modal.Content>
             </Modal>
         </div>
@@ -50,4 +50,4 @@ const mapStateToProps = state => {
         shoppingListItems : state.shoppingListItems
     }
 }
-export default connect(mapStateToProps, { getShoppingItems })(ShoppingList)
+export default connect(mapStateToProps, { getShoppingItems, updateShoppingItems })(ShoppingList)

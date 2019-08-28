@@ -31,7 +31,10 @@ import {
     GET_EVENTS_ENTERTAINMENT_ERROR,
     UPDATE_EVENT_TODO_LIST_START,
     UPDATE_EVENT_TODO_LIST_SUCCESS,
-    UPDATE_EVENT_TODO_LIST_ERROR
+    UPDATE_EVENT_TODO_LIST_ERROR,
+    UPDATE_SHOPPING_ITEM_START,
+    UPDATE_SHOPPING_ITEM_SUCCESS,
+    UPDATE_SHOPPING_ITEM_ERROR
 } from '../actions'
 
 const initialState = {
@@ -239,6 +242,28 @@ export const globalReducer = (state = initialState, action) => {
             ...state,
             isLoading:false,
             err: action.payload
+          }
+        case UPDATE_EVENT_TODO_LIST_ERROR:
+          return{
+            ...state, err: action.payload, isLoading:false
+          }
+        case UPDATE_SHOPPING_ITEM_START:
+          return{
+            ...state,
+            shoppingListItems: state.shoppingListItems.filter( item => {
+              if(item.id === action.payload.id){
+                return action.payload
+              }else{
+                return item
+              }
+            }),
+            isLoading: false
+          }
+        case UPDATE_SHOPPING_ITEM_ERROR:
+          return{
+            ...state,
+            error: action.payload,
+            isLoading: false,
           }
         default:
             return state;

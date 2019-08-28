@@ -5,7 +5,7 @@ const ToDoItem = props => {
 
   const { item } = props;
 
-  let initialState = false
+  let initialState = item.completed
   
   const updateCompleted = () => {
     initialState = !initialState

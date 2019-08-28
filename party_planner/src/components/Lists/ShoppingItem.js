@@ -3,15 +3,19 @@ import { Checkbox } from "semantic-ui-react";
 
 const ShoppingItem = props => {
   const { item } = props;
-  const [ checked, setChecked ] = useState(false)
+
+  let initialState = item.purchased
+  
   const updateCompleted = () => {
-      setChecked(!checked)
+    initialState = !initialState
+    item.purchased = initialState
+    console.log(item.completed)
   }
   return (
     <div>
-        {checked ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>: <p>{item.name}</p>}
+        {item.purchased ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>: <p>{item.name}</p>}
         <p>Cost: ${item.price}</p>
-        <Checkbox label="Completed" onClick = {updateCompleted}/>
+        <Checkbox label="Purchased" onClick = {updateCompleted}/>
     </div>
   );
 };
