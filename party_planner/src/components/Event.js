@@ -4,6 +4,9 @@ import { getEvents } from '../actions/index'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react';
 import { deleteEvent } from '../actions/eventActions';
+import ShoppingList from './Lists/ShoppingList'
+import TodoList from './Lists/ToDo'
+import EntertainmentList from './Lists/Entertainment'
 
 const SingleEvent = props => {
 
@@ -55,9 +58,15 @@ const SingleEvent = props => {
           <p>${targetObject.budget}</p>
         </div>
         <Button onClick={() => props.deleteEvent(targetObject, props.history)}color="red" style={{width: 'max-content'}}>Delete</Button>
-        
       </div>
-
+    <div className = 'lists-container'>
+        <h3>Lists :</h3>
+        <div className = 'btn-list-container'>
+            <ShoppingList match = {props.match}/>
+            <TodoList match = {props.match}/>
+            <EntertainmentList match = {props.match}/>
+        </div>
+    </div>
     </div>
   )
 
