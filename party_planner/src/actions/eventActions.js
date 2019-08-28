@@ -10,6 +10,11 @@ export const DELETING_EVENT = "DELETING_EVENT"
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS"
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
 
+export const UPDATING_EVENT = "UPDATING_EVENT"
+export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS"
+export const UPDATE_EVENT_FAILURE = "UPDATE_EVENT_FAILURE"
+
+// get full list of events
 
 export const getEvents = () => {
   return dispatch => {
@@ -21,6 +26,8 @@ export const getEvents = () => {
   }
 }
 
+// delete event
+
 export const deleteEvent = (event, history) => {
   return dispatch => {
     dispatch({ type: DELETING_EVENT })
@@ -31,6 +38,23 @@ export const deleteEvent = (event, history) => {
         history.push(`/dashboard/${localStorage.getItem('user_id')}`)
       })
       .catch(err => dispatch({ type: DELETE_EVENT_FAILURE, payload: err.response }))
+  }
+}
+
+// update event
+
+export const updateEvent = (event, id, history) => {
+  return dispatch => {
+    dispatch({ type: UPDATING_EVENT })
+    axiosWithAuth()
+      .put(`https://bw-party-planner.herokuapp.com/api/party/${id}`, event)
+      .then(res => {
+        dispatch({ type: UPDATE_EVENT_SUCCESS, payload: res.data })
+        history.push(`/dashboard/${localStorage.getItem('user_id')}`)
+      })
+      .catch(err => {
+        dispatch({ type: UPDATE_EVENT_FAILURE, payload: err.response})
+      })
   }
 }
 
