@@ -11,6 +11,7 @@ const SingleEvent = props => {
     props.getEvents()
   }, [])
 
+
   let targetEvent = props.events.filter(event => {
     if (event.id.toString() === props.match.params.id) {
       return event
