@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import { Button, Header, Modal } from 'semantic-ui-react';
 import FormikTodoForm from './ToDoForm';
 import { getEventTodoList } from '../../actions'
+import ToDoItem from './ToDoItem'
+import { updateToDoList } from '../../actions'
 
 
 const TodoList = props => {
 
+    console.log(props)
 
     const match = props
 
@@ -14,13 +17,12 @@ const TodoList = props => {
         props.getEventTodoList()
     },[])
 
-    const todoList = props.todoItems.filter(item => {
+    let todoList = props.todoItems.filter(item => {
         if(item.todo_list_id.toString() === match.match.params.id){
             return item
         }
     })
-
-
+    
     return(
         <div className = 'modal-container'>
             <Modal trigger={<Button>To Do List</Button>} closeIcon>
@@ -29,14 +31,13 @@ const TodoList = props => {
                     {todoList.length ? 
                         todoList.map( item => {
                             return(
-                                <div>
-                                    <p>{item.name}</p>
-                                </div>
+                                <ToDoItem item = {item}/>
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'
                     }
                     <FormikTodoForm match = {match}/>
+                    <Button onClick = {() => props.updateToDoList(todoList)}>Update Changes</Button>
                     </Modal.Content>
             </Modal>
         </div>
@@ -48,4 +49,4 @@ const mapStateToProps = state => {
        todoItems : state.todoItems
     }
 }
-export default connect(mapStateToProps, {getEventTodoList})(TodoList)
+export default connect(mapStateToProps, {getEventTodoList, updateToDoList})(TodoList)

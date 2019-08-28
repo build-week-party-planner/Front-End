@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { Form, Field, withFormik, Formik} from 'formik'
-import * as Yup from 'yup'
 import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
-import { getShoppingItems } from '../../actions'
-import ShoppingListForm from './ShoppingListForm'
+import { getShoppingItems, updateShoppingItems } from '../../actions'
 import FormikShoppingForm from './ShoppingListForm';
-import { addShoppingItem } from '../../actions'
+import ShoppingItem from './ShoppingItem'
+
 
 
 const ShoppingList = props => {
@@ -33,15 +31,13 @@ const ShoppingList = props => {
                     {shoppingItems.length ? 
                         shoppingItems.map( item => {
                             return(
-                                <div>
-                                    <p>{item.name}</p>
-                                    <p>{item.price}</p>
-                                </div>
+                                <ShoppingItem item = {item}/>
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'
                     }
                     <FormikShoppingForm match = {match}/>
+                    <Button onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button>
                     </Modal.Content>
             </Modal>
         </div>
@@ -53,4 +49,4 @@ const mapStateToProps = state => {
         shoppingListItems : state.shoppingListItems
     }
 }
-export default connect(mapStateToProps, { getShoppingItems })(ShoppingList)
+export default connect(mapStateToProps, { getShoppingItems, updateShoppingItems })(ShoppingList)
