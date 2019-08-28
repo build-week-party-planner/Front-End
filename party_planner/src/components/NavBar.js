@@ -4,8 +4,6 @@ import { NavLink, Link } from 'react-router-dom'
 
 const NavBar = props => {
 
-  console.log(props.location.pathname)
-
   return (
     <Menu>
       <Menu.Item header>Party Planner</Menu.Item>

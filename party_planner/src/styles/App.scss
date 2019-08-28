@@ -7,6 +7,7 @@
 .App {
   @include flex(column, center, center);
   text-align: center;
+  min-height: 100vh
 }
 
 .App-header {
@@ -23,7 +24,12 @@
 .App-link {
   color: #61dafb;
 }
-
+.content {
+  margin-top: 45px;
+  @include flex(column, center, center);
+  flex: 1 0 auto;
+  width: 100%;
+}
 
 @import './component-styles/Events.scss';
 @import './component-styles/Event.scss';
