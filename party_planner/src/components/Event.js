@@ -35,7 +35,7 @@ const SingleEvent = props => {
 
         <h3>{targetObject.name}</h3>
         
-        <FormikUpdateEvents history={props.history} match={props.match} />
+        <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
 
       </div>
       <img src=''></img>
@@ -56,7 +56,6 @@ const SingleEvent = props => {
           <p>Budget:</p>
           <p>${targetObject.budget}</p>
         </div>
-        <Button onClick={() => props.deleteEvent(targetObject, props.history)}color="red" style={{width: 'max-content'}}>Delete</Button>
       </div>
     <div className = 'lists-container'>
         <h3>Lists :</h3>

@@ -7,7 +7,9 @@ import { Modal, Button, Header, Icon } from 'semantic-ui-react';
 
 import { updateEvent } from '../actions/eventActions';
 
-const UpdateEvent = ({ touched, errors, history, match, updateEvent, status }) => {
+import ConfirmDelete from './ConfirmDelete';
+
+const UpdateEvent = ({ deleteEvent, targetObject, touched, errors, history, match, updateEvent, status }) => {
 
   console.log(match)
 
@@ -33,6 +35,7 @@ const UpdateEvent = ({ touched, errors, history, match, updateEvent, status }) =
         <Modal.Content>
           <Modal.Description>
             <Header>Update Event</Header>
+            <ConfirmDelete deleteEvent={deleteEvent} targetObject={targetObject} history={history} />
             <Form>
               {pageTwoModal === false &&
                 <>
