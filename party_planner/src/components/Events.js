@@ -13,11 +13,10 @@ import { Link } from 'react-router-dom';
 
 const Events = ({ history, match, events }) => {
 
-
   const authObjects = events.filter(event => {
     return event.user_id == match.params.id;
   })
-
+  
   return (
     <div className = "my-events">
       <header>

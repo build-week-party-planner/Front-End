@@ -13,9 +13,9 @@
         @include flex(row, center, center);
         width: 300px;
         height: 100px;
-        background: gray;
-        margin: 10px 0px;
+        margin: 15px 0px;
         border-radius: 10px;
+        background-image: url(../../images/example-photo.JPG);
 
         h1{
             color: $primary-blue2;
@@ -25,16 +25,18 @@
     
     
         .ui.button {
-            background: white;
+            background: rgba(255, 255, 255, .6);
+            backdrop-filter: blur(8px);
             color: $primary-blue2;
             height: 50px;
             border-radius: 10px;
+            
         }
 
     }//.events-container
     
     .new-event {
-        background: rgba(255, 255, 255, .7);
+        background: white;
         border: 2.2px solid $primary-blue2;
 
         .ui.button {

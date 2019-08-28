@@ -23,7 +23,7 @@
     .event-info-container {
         display: flex;
         flex-direction: column;
-        background: $primary-gray2;
+        background: white;
         
         .event-info {
             @include flex(column, space-around, space-between);
