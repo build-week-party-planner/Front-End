@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { Form, Field, withFormik, Formik} from 'formik'
-import * as Yup from 'yup'
 import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
 import { getShoppingItems } from '../../actions'
-import ShoppingListForm from './ShoppingListForm'
 import FormikShoppingForm from './ShoppingListForm';
-import { addShoppingItem } from '../../actions'
+import { Checkbox } from 'semantic-ui-react'
+import ShoppingItem from './ShoppingItem'
+
 
 
 const ShoppingList = props => {
@@ -34,10 +33,7 @@ const ShoppingList = props => {
                     {shoppingItems.length ? 
                         shoppingItems.map( item => {
                             return(
-                                <div>
-                                    <p>{item.name}</p>
-                                    <p>{item.price}</p>
-                                </div>
+                                <ShoppingItem item = {item}/>
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'

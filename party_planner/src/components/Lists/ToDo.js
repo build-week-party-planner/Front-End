@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Button, Header, Modal } from 'semantic-ui-react';
 import FormikTodoForm from './ToDoForm';
 import { getEventTodoList } from '../../actions'
+import { Checkbox } from 'semantic-ui-react'
+import ToDoItem from './ToDoItem'
 
 
 const TodoList = props => {
@@ -29,9 +31,7 @@ const TodoList = props => {
                     {todoList.length ? 
                         todoList.map( item => {
                             return(
-                                <div>
-                                    <p>{item.name}</p>
-                                </div>
+                                <ToDoItem item = {item}/>
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'

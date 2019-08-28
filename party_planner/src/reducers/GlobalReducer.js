@@ -39,7 +39,8 @@ const initialState = {
     hasToken: false,
     shoppingListItems : [],
     todoItems: [],
-    entertainmentList: []
+    entertainmentList: [],
+    purchasedItems: []
 }
 
 export const globalReducer = (state = initialState, action) => {

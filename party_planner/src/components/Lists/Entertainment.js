@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Button, Header, Modal } from 'semantic-ui-react';
 import FormikEntertainmentForm from './EntertainementForm'
 import { getEventEntertainment } from '../../actions'
-
+import { Checkbox } from 'semantic-ui-react'
+import EntertainmentItem from './EntertainmentItem'
 
 
 const EntertainmentList = props => {
@@ -30,10 +31,7 @@ const EntertainmentList = props => {
                     {entertainmentList.length ? 
                         entertainmentList.map( item => {
                             return(
-                                <div>
-                                    <p>{item.name}</p>
-                                    <p>{item.price}</p>
-                                </div>
+                               <EntertainmentItem item = {item}/>
                             )
                         })
                         :'Your entertainment list is currently empty. Click below to add an item.'
