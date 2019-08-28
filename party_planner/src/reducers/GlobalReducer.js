@@ -14,6 +14,18 @@ import {
     GET_SHOPPING_ITEM_ERROR,
     ADD_SHOPPING_ITEM_SUCCESS,
     ADD_SHOPPING_ITEM_START,
+    ADD_EVENT_TODO_START,
+    ADD_EVENT_TODO_SUCCESS,
+    ADD_EVENT_TODO_ERROR,
+    GET_EVENT_TODO_LIST_ERROR,
+    GET_EVENT_TODO_LIST_START,
+    GET_EVENT_TODO_LIST_SUCCESS,
+    ADD_EVENT_ENTERTAINMENT_START,
+    ADD_EVENT_ENTERTAINMENT_SUCCESS,
+    ADD_EVENT_ENTERTAINMENT_ERROR,
+    GET_EVENTS_ENTERTAINMENT_START,
+    GET_EVENTS_ENTERTAINMENT_SUCCESS,
+    GET_EVENTS_ENTERTAINMENT_ERROR,
 } from '../actions'
 
 const initialState = {
@@ -23,6 +35,8 @@ const initialState = {
     events: [],
     hasToken: false,
     shoppingListItems : [],
+    todoItems: [],
+    entertainmentList: []
 }
 
 export const globalReducer = (state = initialState, action) => {
@@ -92,6 +106,7 @@ export const globalReducer = (state = initialState, action) => {
           return{
             ...state,
             isLoading: false,
+            shoppingListItems: action.payload
           }
         case GET_SHOPPING_ITEM_ERROR:
           return{
@@ -109,6 +124,74 @@ export const globalReducer = (state = initialState, action) => {
             ...state,
             isLoading: false,
             shoppingListItems: [...state.shoppingListItems, action.payload]
+          }
+        case ADD_EVENT_TODO_START:
+          return{
+            ...state, 
+            isLoading: true,
+          }
+        case ADD_EVENT_TODO_SUCCESS:
+          return{
+            ...state,
+            todoItems:[...state.todoItems, action.payload],
+            isLoading: false
+          }
+        case ADD_EVENT_TODO_ERROR:
+          return{
+            ...state, 
+            error: action.payload,
+            isLoading: false
+          }
+        case GET_EVENT_TODO_LIST_START:
+          return{
+            ...state,
+            isLoading: true,
+          }
+        case GET_EVENT_TODO_LIST_SUCCESS:
+          return{
+            ...state,
+            todoItems: action.payload,
+            isLoading: false
+          }
+        case GET_EVENT_TODO_LIST_ERROR:
+          return{
+            ...state,
+            error: action.payload,
+            isLoading:false
+          }
+        case GET_EVENTS_ENTERTAINMENT_START:
+          return{
+            ...state,
+            isLoading: true,
+          }
+        case GET_EVENTS_ENTERTAINMENT_SUCCESS:
+          return{
+            ...state,
+            entertainmentList: action.payload,
+            isLoading: false
+          }
+        case GET_EVENTS_ENTERTAINMENT_ERROR:
+          return{
+            ...state,
+            err: action.payload,
+            isLoading: false
+          }
+        case ADD_EVENT_ENTERTAINMENT_START:
+          return{
+            ...state,
+            isLoading: true
+          }
+        case ADD_EVENT_ENTERTAINMENT_SUCCESS:
+          return{
+            ...state,
+            entertainmentList: [...state.entertainmentList, action.payload],
+            isLoading: false
+          }
+        case ADD_EVENT_ENTERTAINMENT_ERROR:
+          return{
+            ...state,
+            err: action.payload,
+            isLoading: false
           }
         default:
             return state;

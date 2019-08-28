@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { Form, Field, withFormik} from 'formik'
 import * as Yup from 'yup'
-import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
 import { addShoppingItem } from '../../actions'
 
 const ShoppingListForm = props => {

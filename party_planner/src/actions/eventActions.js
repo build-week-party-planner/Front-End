@@ -1,4 +1,5 @@
 import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import { ActionAccessibility } from 'material-ui/svg-icons';
 
 
 export const GET_EVENTS_START = "GET_EVENTS_START"
@@ -94,9 +95,64 @@ export const createEventTodoList = values => {
   }
 }
 
+export const ADD_EVENT_TODO_START = "ADD_EVENT_TODO_START"
+export const ADD_EVENT_TODO_SUCCESS = "ADD_EVENT_TODO_SUCCESS"
+export const ADD_EVENT_TODO_ERROR = "ADD_EVENT_TODO_ERROR"
+
+export const addEventTodo = values => {
+  return dispatch =>{
+    dispatch({type: ADD_EVENT_TODO_START})
+    axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/todo', values)
+      .then( res => dispatch({type: ADD_EVENT_TODO_SUCCESS, payload: res.data}))
+      .catch( err => dispatch({type: ADD_EVENT_TODO_ERROR, payload: err.response}))
+  }
+}
+
+export const GET_EVENT_TODO_LIST_START = "GET_EVENT_TODO_LIST_START"
+export const GET_EVENT_TODO_LIST_SUCCESS = "GET_EVENT_TODO_LIST_SUCCESS"
+export const GET_EVENT_TODO_LIST_ERROR = "GET_EVENT_TODO_LIST_ERROR"
+
+export const getEventTodoList = () => {
+  return dispatch =>{
+    dispatch({type: GET_EVENT_TODO_LIST_START})
+    axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/todolist')
+      .then( res => dispatch({type: GET_EVENT_TODO_LIST_SUCCESS, payload: res.data}))
+      .catch( err => dispatch({type: GET_EVENT_TODO_LIST_ERROR, payload: err.response}))
+  }
+}
+
+// ! Entertainment CRUD
+
+export const ADD_EVENT_ENTERTAINMENT_START = "ADD_EVENT_ENTERTAINMENT_START"
+export const ADD_EVENT_ENTERTAINMENT_SUCCESS = "ADD_EVENT_ENTERTAINMENT_SUCCESS"
+export const ADD_EVENT_ENTERTAINMENT_ERROR = "ADD_EVENT_ENTERTAINMENT_ERROR"
 
 
+export const addEntertainment = (values) => {
+  return dispatch => {
+    dispatch({type: ADD_EVENT_ENTERTAINMENT_START})
+    axiosWithAuth()
+      .post('https://bw-party-planner.herokuapp.com/api/entertainment', values)
+      .then( res => dispatch({type:ADD_EVENT_ENTERTAINMENT_SUCCESS, payload: res.data}))
+      .catch( err => dispatch({ type : ADD_EVENT_ENTERTAINMENT_ERROR, payload: err.response}))
+  }
+}
 
+export const GET_EVENTS_ENTERTAINMENT_START = "GET_EVENT_ENTERTAINMENT_START"
+export const GET_EVENTS_ENTERTAINMENT_SUCCESS = "GET_EVENT_ENTERTAINMENT_SUCCESS"
+export const GET_EVENTS_ENTERTAINMENT_ERROR = "GET_EVENT_ENTERTAINMENT_ERROR"
+
+export const getEventEntertainment = () => {
+  return dispatch => {
+  dispatch({type: GET_EVENTS_ENTERTAINMENT_START})
+  axiosWithAuth()
+    .get('https://bw-party-planner.herokuapp.com/api/entertainment')
+    .then(res => dispatch({type: GET_EVENTS_ENTERTAINMENT_SUCCESS, payload: res.data}))
+    .catch(err => dispatch({type: GET_EVENTS_ENTERTAINMENT_ERROR, payload: err.response}))
+  }
+}
 
 
 

@@ -16,7 +16,7 @@ const ShoppingList = props => {
 
     useEffect(() => {
         props.getShoppingItems()
-    },[props.shoppingListItems])
+    },[])
 
     console.log(match.match.params.id)
     const shoppingItems = props.shoppingListItems.filter(item => {
@@ -41,10 +41,10 @@ const ShoppingList = props => {
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'
-                }
-                </Modal.Content>
+                    }
+                    <FormikShoppingForm match = {match}/>
+                    </Modal.Content>
             </Modal>
-            <FormikShoppingForm match = {match}/>
         </div>
     )
 }
@@ -54,4 +54,4 @@ const mapStateToProps = state => {
         shoppingListItems : state.shoppingListItems
     }
 }
-export default connect(mapStateToProps, {getShoppingItems, addShoppingItem})(ShoppingList)
+export default connect(mapStateToProps, { getShoppingItems })(ShoppingList)
