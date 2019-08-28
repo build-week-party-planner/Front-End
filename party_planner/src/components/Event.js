@@ -27,15 +27,22 @@ const SingleEvent = props => {
   return (
     <div className='event-container'>
       <div className='event-header'>
-        <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
-          <Button Icon>
-            <Icon name='angle left' />
-          </Button>
-        </Link>
 
-        <h3>{targetObject.name}</h3>
-        
-        <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
+        <div className="headerTop">
+          <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
+            <Button Icon>
+              <Icon name='angle left' />
+            </Button>
+          </Link>
+
+          <h3>{targetObject.name}</h3>
+
+          <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
+        </div>
+
+        <div className="new-photo">
+          Add Photo
+        </div>
 
       </div>
       <img src=''></img>
@@ -57,14 +64,14 @@ const SingleEvent = props => {
           <p>${targetObject.budget}</p>
         </div>
       </div>
-    <div className = 'lists-container'>
+      <div className='lists-container'>
         <h3>Lists :</h3>
-        <div className = 'btn-list-container'>
-            <ShoppingList match = {props.match}/>
-            <TodoList match = {props.match}/>
-            <EntertainmentList match = {props.match}/>
+        <div className='btn-list-container'>
+          <ShoppingList match={props.match} />
+          <TodoList match={props.match} />
+          <EntertainmentList match={props.match} />
         </div>
-    </div>
+      </div>
     </div>
   )
 
@@ -76,4 +83,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{getEvents, deleteEvent})(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)
