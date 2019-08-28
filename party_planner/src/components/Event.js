@@ -53,7 +53,7 @@ const SingleEvent = props => {
           <p>Budget:</p>
           <p>${targetObject.budget}</p>
         </div>
-        <Button onClick={() => props.deleteEvent(targetObject)}color="red" style={{width: 'max-content'}}>Delete</Button>
+        <Button onClick={() => props.deleteEvent(targetObject, props.history)}color="red" style={{width: 'max-content'}}>Delete</Button>
         
       </div>
 

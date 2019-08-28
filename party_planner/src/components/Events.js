@@ -11,7 +11,7 @@ import EventOnDashboard from './EventOnDashboard';
 import { Link } from 'react-router-dom';
 
 
-const Events = ({ getEvents, history, match, events }) => {
+const Events = ({ history, match, events }) => {
 
 
   const authObjects = events.filter(event => {
@@ -38,7 +38,7 @@ const Events = ({ getEvents, history, match, events }) => {
 
 const mapStateToProps = state => {
   return{
-    events : state.events,
+    events : state.events
   }
 }
 
