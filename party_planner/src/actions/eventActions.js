@@ -1,6 +1,4 @@
 import { axiosWithAuth } from '../utils/AxiosWithAuth'
-import { ActionAccessibility } from 'material-ui/svg-icons';
-
 
 export const GET_EVENTS_START = "GET_EVENTS_START"
 export const GET_EVENTS_SUCCESS = "GET_EVENTS_SUCCESS"
@@ -13,6 +11,9 @@ export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE"
 export const UPDATING_EVENT = "UPDATING_EVENT"
 export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS"
 export const UPDATE_EVENT_FAILURE = "UPDATE_EVENT_FAILURE"
+
+
+
 
 // get full list of events
 
