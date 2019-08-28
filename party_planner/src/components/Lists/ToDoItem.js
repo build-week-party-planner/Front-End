@@ -5,16 +5,17 @@ const ToDoItem = props => {
 
   const { item } = props;
 
-  const [ checked, setChecked ] = useState(false)
+  let initialState = false
   
   const updateCompleted = () => {
-      setChecked(!checked)
-      console.log(checked)
+    initialState = !initialState
+    item.completed = initialState
+    console.log(item.completed)
   }
 
   return (
     <div>
-        {checked ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p> : <p>{item.name}</p>}
+        {item.completed ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p> : <p>{item.name}</p>}
         <Checkbox label="Completed" onClick = {updateCompleted}/>
     </div>
   );

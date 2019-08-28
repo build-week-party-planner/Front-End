@@ -29,6 +29,9 @@ import {
     GET_EVENTS_ENTERTAINMENT_START,
     GET_EVENTS_ENTERTAINMENT_SUCCESS,
     GET_EVENTS_ENTERTAINMENT_ERROR,
+    UPDATE_EVENT_TODO_LIST_START,
+    UPDATE_EVENT_TODO_LIST_SUCCESS,
+    UPDATE_EVENT_TODO_LIST_ERROR
 } from '../actions'
 
 const initialState = {
@@ -212,7 +215,30 @@ export const globalReducer = (state = initialState, action) => {
           return{
             ...state,
             err: action.payload,
+            isLoading: true
+          }
+        case UPDATE_EVENT_TODO_LIST_START:
+          return{
+            ...state,
+            isLoading: false,
+          }
+        case UPDATE_EVENT_TODO_LIST_SUCCESS:
+          return{
+            ...state,
+            todoItems: state.todoItems.filter(item => {
+              if(item.id === action.payload.id){
+                return action.payload
+              }else{
+                return item
+              }
+            }),
             isLoading: false
+          }
+        case UPDATE_EVENT_TODO_LIST_SUCCESS:
+          return{
+            ...state,
+            isLoading:false,
+            err: action.payload
           }
         default:
             return state;
