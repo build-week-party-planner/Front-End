@@ -25,11 +25,7 @@ const Events = ({ history, match, events }) => {
 
     {authObjects.map(event => (
       <Link key={event.id} to={`/events/${event.id}`}><EventOnDashboard 
-        budget={event.budget}
-        date={event.date}
-        guests={event.guests}
         name={event.name}
-        theme={event.theme}
       /></Link>
     ))}
     </>
