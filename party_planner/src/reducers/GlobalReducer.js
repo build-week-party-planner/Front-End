@@ -8,7 +8,12 @@ import {
     ADD_EVENT_FAILURE,
     DELETING_EVENT,
     DELETE_EVENT_SUCCESS,
-    DELETE_EVENT_FAILURE
+    DELETE_EVENT_FAILURE,
+    GET_SHOPPING_ITEM_START,
+    GET_SHOPPING_ITEM_SUCCESS,
+    GET_SHOPPING_ITEM_ERROR,
+    ADD_SHOPPING_ITEM_SUCCESS,
+    ADD_SHOPPING_ITEM_START,
 } from '../actions'
 
 const initialState = {
@@ -17,6 +22,7 @@ const initialState = {
     error: '',
     events: [],
     hasToken: false,
+    shoppingListItems : [],
 }
 
 export const globalReducer = (state = initialState, action) => {
@@ -76,6 +82,33 @@ export const globalReducer = (state = initialState, action) => {
             ...state,
             isLoading: false,
             error: action.payload
+          }
+        case GET_SHOPPING_ITEM_START:
+          return{
+            ...state,
+            isLoading: true,
+          }
+        case GET_SHOPPING_ITEM_SUCCESS:
+          return{
+            ...state,
+            isLoading: false,
+          }
+        case GET_SHOPPING_ITEM_ERROR:
+          return{
+            ...state,
+            isLoading: false,
+            error: action.payload
+          }
+        case ADD_SHOPPING_ITEM_START:
+          return{
+            ...state, 
+            isLoading: true
+          }
+        case ADD_SHOPPING_ITEM_SUCCESS:
+          return{
+            ...state,
+            isLoading: false,
+            shoppingListItems: [...state.shoppingListItems, action.payload]
           }
         default:
             return state;

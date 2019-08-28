@@ -5,16 +5,23 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 // Add event axios request
-import { addEvent } from '../actions/index';
+import { addEvent, createEventShoppingList, createEventTodoList } from '../actions/index';
 
 // Redux store
 import { connect } from 'react-redux';
 
 // Semantic UI components
 import { Button, Header, Modal } from 'semantic-ui-react';
+import { SocialPartyMode } from 'material-ui/svg-icons';
 
-const AddEvent = ({ addEvent, status, history, match, touched, errors }) => {
+const AddEvent = props => {
 
+  const {addEvent} = props
+  const {status} = props
+  const {history} = props
+  const {match} = props
+  const { touched } = props
+  const { errors } = props
   useEffect(() => {
     status && addEvent(status, history, match)
   }, [status])
@@ -84,7 +91,8 @@ const FormikAddEvent = withFormik({
     date: Yup.string().required("Event date is required!")
   }),
 
-  handleSubmit(values, { resetForm, setStatus }){
+  handleSubmit(values, props){
+    // resetForm, setStatus, postEventShoppingList
     const propsToSubmit = {
       "name": values.name,
       "guests": values.guests, 
@@ -94,12 +102,22 @@ const FormikAddEvent = withFormik({
       "user_id": localStorage.getItem('user_id'),
       "id": Date.now(),
     }
-    setStatus(propsToSubmit);
-    resetForm();
+    props.setStatus(propsToSubmit);
+    
+    const listCreatorValues = {
+      "party_id": propsToSubmit.id
+    }
+    props.props.createEventShoppingList(listCreatorValues)
+    props.props.createEventTodoList(listCreatorValues)
+    props.resetForm();
     // window.location.reload();
   }
-})(connect(
-  null, { addEvent } 
-)(AddEvent))
+})(AddEvent)
 
-export default FormikAddEvent;
+const mapStateToProps = state => {
+  return {
+    ...state
+  }
+}
+
+export default connect(mapStateToProps, { addEvent, createEventShoppingList, createEventTodoList})(FormikAddEvent)
