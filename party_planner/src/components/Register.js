@@ -4,38 +4,38 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+import {Button} from 'semantic-ui-react';
+
 function Register({ touched, errors }) {
-  return(
+  return (
+    <>
+    <h1>Register</h1>
     <Form className="form">
-      <h3>Register</h3>
-      <div className="form-box">
-        <label className="label">Email: </label>
-        <Field
-          className="input"
-          name="email"
-          type="text"
-        />
-        <p>{touched.email && errors.email}</p>
-      </div>
-      <div className="form-box">
-        <label className="label">Password: </label>
-        <Field 
-          className="input"
-          name="password"
-          type="password"
-          autoComplete="off"
-        />
-        <p>{touched.password && errors.password}</p>
-      </div>
-      <button type="submit" className="button">
-        Submit
-      </button>
-    </Form>
+    <div className='ui input'>
+     <Field
+       placeholder="Enter your email"
+       name="email"
+       type="text"
+     />
+     </div>
+     <p>{touched.email && errors.email}</p>
+     <div className='ui input'>
+     <Field
+       placeholder="Password"
+       name="password"
+       type="password"
+     />
+     </div>
+     <p>{touched.password && errors.password}</p>
+     <Button color="blue">Log In</Button>
+     <br />
+</Form>
+</>
   )
 }
 
 export const FormikRegister = withFormik({
-  mapPropsToValues({email, password}) {
+  mapPropsToValues({ email, password }) {
     return {
       email: email || "",
       password: password || ""
@@ -48,10 +48,10 @@ export const FormikRegister = withFormik({
 
   //save token to local storage
   handleSubmit(values, props) {
-    const propsToSubmit = {"email": values.email, "password": values.password}
+    const propsToSubmit = { "email": values.email, "password": values.password }
     const url = "https://bw-party-planner.herokuapp.com/api/auth/register";
     axios
-    .post(url, propsToSubmit)
+      .post(url, propsToSubmit)
       .then(results => {
         props.props.history.push('/login')
       })

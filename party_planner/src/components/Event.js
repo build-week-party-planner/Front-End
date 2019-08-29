@@ -11,14 +11,7 @@ import { connect } from 'react-redux'
 
 import { deleteEvent } from '../actions/eventActions';
 
-<<<<<<< HEAD
-//components
-=======
 import { Button, Icon } from 'semantic-ui-react';
-
-
-
->>>>>>> a2307d462a29a842e7381444835a952d0349c2c7
 
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
