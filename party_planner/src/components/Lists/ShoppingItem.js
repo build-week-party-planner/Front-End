@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Checkbox } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { updateShoppingItems } from '../../actions'
@@ -24,22 +24,28 @@ const ShoppingItem = props => {
     setModalPosition(2)
   }
 
+  const [toggled, setToggled] = useState(false);
 
+  const clickCheckbox = () => {
+    // updateCompleted();
+    setToggled(!toggled);
+  }
 
 
   return (
 
-    <div onClick={() => updateCompleted()} 
+    <div
     style={{ display: 'flex', 
     flexDirection: 'column' }}
+    className={toggled ? 'strikethrough' : null}
     >
       {modalPosition === 1 ?
         item.purchased ?
           <h3>{modalPosition === 1 ?
-            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            <Checkbox style={{marginRight: '1rem'}} defaultChecked/> :
             null}{item.name} <Button onClick={updateCompleted}primary style={{fontSize:'12px', padding: '0.5rem'}}>Edit</Button></h3>
           : <h3>{modalPosition === 1 ?
-            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            <Checkbox style={{marginRight: '1rem'}} /> :
             null}{item.name} <Button onClick={updateCompleted} primary style={{fontSize:'12px', padding: '0.5rem'}}>Edit</Button></h3>
         : null}
       {item.price ?

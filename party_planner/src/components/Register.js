@@ -6,7 +6,7 @@ import axios from "axios";
 
 import {Button} from 'semantic-ui-react';
 
-function Register({ touched, errors }) {
+function Register({ touched, errors, status }) {
   return (
     <>
     <h1>Register</h1>
@@ -29,6 +29,7 @@ function Register({ touched, errors }) {
      <p>{touched.password && errors.password}</p>
      <Button color="blue">Register</Button>
      <br />
+     {status && <h3 style={{color: 'red'}}>Please try again, error during signup</h3>}
 </Form>
 </>
   )
@@ -56,7 +57,8 @@ export const FormikRegister = withFormik({
         props.props.history.push('/login')
       })
       .catch(error => {
-        console.log("Error: ", error.response)
+        console.log(error)
+        props.setStatus(error.response.data.message)
       })
   }
 })(Register);
