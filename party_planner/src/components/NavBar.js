@@ -25,10 +25,10 @@ const NavBar = props => {
           />
         </Link>
 
-        {(!localStorage.email)
+        {(!localStorage.emailDisplay)
           ? <span></span>
           : <Link>
-              <h1 id= "email-letter">{localStorage.email.charAt(0)}</h1>
+              <h1 id= "email-letter">{localStorage.emailDisplay}</h1>
             </Link>
         }
       </Menu.Menu>
