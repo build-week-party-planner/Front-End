@@ -112,6 +112,14 @@
           padding: 1rem;
         }
       }
+      .ui.button.add-event-btn {
+        margin-top: 1rem;
+        width: 175px;
+        color: rgb(104, 75, 246);
+        background: none;
+        border: 2px solid rgb(104, 75, 246);
+        border-radius: 7px;
+      }
     }
   }
 }

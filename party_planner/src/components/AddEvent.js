@@ -50,7 +50,7 @@ const AddEvent = props => {
           <Modal.Description className="add-event-form">
             <div className="form-header">
             {pageTwoModal && <Icon className="first-page" name="arrow left" onClick={() => setPageTwoModal(false)}/>}
-            <Header style={{fontSize: "2rem", marginBottom: 0, marginTop: 0}}>New Event</Header>
+            <Header style={{fontSize: "1.8rem", marginBottom: 0, marginTop: 0, marginLeft: pageTwoModal || '7rem', marginRight: pageTwoModal && '7rem'}}>New Event</Header>
             {pageTwoModal || <Icon className="second-page" name='arrow right' onClick={() => setPageTwoModal(true)}/>}
             </div>
             <Form className="form-inputs">
@@ -84,7 +84,7 @@ const AddEvent = props => {
                   <i aria-hidden="true" className="calendar alternate outline icon"></i>
                   </div>
                   {touched.date && errors.date && <p>{errors.date}</p>}
-                  <Button type="button" onClick={() => setPageTwoModal(true)}>Next</Button>
+                  <Button className="add-event-btn" type="button" onClick={() => setPageTwoModal(true)}>Next</Button>
                 </>
               }
               {pageTwoModal &&
@@ -108,7 +108,7 @@ const AddEvent = props => {
                   />
                   </div>
                   {touched.theme && errors.theme && <p>{errors.theme}</p>}
-                  <Button onClick={() => submitModal()}>Let's Go!</Button>
+                  <Button className="add-event-btn" onClick={() => submitModal()}>Let's Go!</Button>
                 </>
               }
 
