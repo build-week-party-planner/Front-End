@@ -2,8 +2,6 @@
 @import './mixins.scss';
 @import './variables.scss';
 
-
-
 .App {
   @include flex(column, center, center);
   text-align: center;
@@ -25,15 +23,15 @@
   color: #61dafb;
 }
 .content {
-  margin-top: 45px;
-  @include flex(column, center, center);
+  margin-top: 65px;
+  @include flex(column, start, center);
   flex: 1 0 auto;
   width: 100%;
 }
 
+@import './component-styles/NavBar.scss';
 @import './component-styles/Events.scss';
 @import './component-styles/Event.scss';
-@import './component-styles/NavBar.scss';
 @import './component-styles/Footer.scss';
 
 
