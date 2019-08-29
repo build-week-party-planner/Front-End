@@ -37,7 +37,10 @@ import {
     UPDATE_SHOPPING_ITEM_ERROR,
     UPDATE_ENTERTAINMENT_ITEMS_START,
     UPDATE_ENTERTAINMENT_ITEMS_SUCCESS,
-    UPDATE_ENTERTAINMENT_ITEMS_ERROR
+    UPDATE_ENTERTAINMENT_ITEMS_ERROR,
+    DELETE_ENTERTAINMENT_ITEMS_START,
+    DELETE_ENTERTAINMENT_ITEMS_SUCCESS,
+    DELETE_ENTERTAINMENT_ITEMS_ERROR
 } from '../actions'
 
 const initialState = {
@@ -294,6 +297,21 @@ export const globalReducer = (state = initialState, action) => {
           return{
             ...state,
             error: action.payload,
+            isLoading: false
+          }
+        case DELETE_ENTERTAINMENT_ITEMS_START:
+          return{
+            ...state, isLoading: true
+          }
+        case DELETE_ENTERTAINMENT_ITEMS_SUCCESS:
+          return{
+            ...state,
+            entertainmentList: state.entertainmentList.filter( item => item.id !== action.payload),
+            isLoading: false,
+          }
+        case DELETE_ENTERTAINMENT_ITEMS_ERROR:
+          return{
+            ...state,
             isLoading: false
           }
         default:

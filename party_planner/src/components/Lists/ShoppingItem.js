@@ -9,7 +9,6 @@ import * as Yup from 'yup'
 const ShoppingItem = props => {
   const { item } = props;
   const { setModalPosition} = props
-  const { increaseModalPosition} = props
   const { modalPosition } = props
   const { setItemToRender } = props
 

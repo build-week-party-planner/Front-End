@@ -4,7 +4,6 @@ import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
 import { getShoppingItems, updateShoppingItems } from '../../actions'
 import FormikShoppingForm from './ShoppingListForm';
 import ShoppingItem from './ShoppingItem'
-import { Form, Field, withFormik} from 'formik'
 import * as Yup from 'yup'
 
 
@@ -41,7 +40,6 @@ const ShoppingList = props => {
             return item
         }
     })
-
     const handleChange = event => {
         console.log(dataToSend)
         dataToSend = {...dataToSend, [event.target.name] : Number(event.target.value)}
