@@ -11,8 +11,6 @@ import ConfirmDelete from './ConfirmDelete';
 
 const UpdateEvent = ({ deleteEvent, targetObject, touched, errors, history, match, updateEvent, status }) => {
 
-  console.log(match)
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const [pageTwoModal, setPageTwoModal] = useState(false);

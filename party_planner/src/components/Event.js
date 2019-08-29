@@ -9,9 +9,12 @@ import { Button, Icon } from 'semantic-ui-react';
 //redux
 import { getEvents } from '../actions/index'
 import { connect } from 'react-redux'
+
 import { deleteEvent } from '../actions/eventActions';
 
 //components
+import { Button, Icon } from 'semantic-ui-react';
+
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
@@ -32,6 +35,7 @@ const SingleEvent = props => {
     props.getEvents()
   }, [])
 
+
   return (
     <div className='event-container'>
       <div className='event-header'>
@@ -47,11 +51,6 @@ const SingleEvent = props => {
 
           <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
         </div>
-
-        <div className="new-photo">
-          Add Photo
-        </div>
-
       </div>
       <img src=''></img>
       <div className='event-info-container'>
@@ -91,4 +90,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent, uploadImg })(SingleEvent)
