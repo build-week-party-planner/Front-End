@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import { deleteEvent } from '../actions/eventActions';
 
 //components
+
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
