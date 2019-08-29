@@ -10,9 +10,10 @@ const ShoppingListForm = props => {
     return(
         <>
         {modalPosition === 1 ?
-        <div class = 'shopping-list-form-container'>
-            <Form>
+        <div class = 'list-form-container'>
+            <Form className='list-form'>
                  <h2>Add Item</h2>
+                    {props.touched.item && props.errors.item && <p>{props.errors.item}</p>}
                     <Field type = 'text' name = 'item' placeholder = 'Item. . .'/>
                     <button type = 'submit'>Add Item</button>
             </Form>

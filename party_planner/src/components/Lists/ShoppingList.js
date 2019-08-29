@@ -57,13 +57,13 @@ const ShoppingList = props => {
 
     return(
         <div className = 'modal-container'>
-            <Modal trigger={<Button>Shopping List</Button>} closeIcon>
-                <Modal.Content>
-                    <Header>Shopping List</Header>
+            <Modal className="listModalContainer" trigger={<Button>Shopping List</Button>} closeIcon>
+                <Modal.Content className="list-content">
+                    <Header style={{color:'rgb(16, 30, 68)', textAlign: 'center', fontSize: "1.8rem"}}>Shopping List</Header>
                     {shoppingItems.length && modalPosition === 1?
                         shoppingItems.map( item => {
                             return(
-                                <ShoppingItem item = {item} 
+                                <ShoppingItem key={item.id} item = {item} 
                                 setModalPosition = { setModalPosition }
                                 modalPosition = {modalPosition}
                                 setItemToRender = { setItemToRender }/>
