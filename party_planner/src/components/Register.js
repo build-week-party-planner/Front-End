@@ -27,7 +27,7 @@ function Register({ touched, errors }) {
      />
      </div>
      <p>{touched.password && errors.password}</p>
-     <Button color="blue">Log In</Button>
+     <Button color="blue">Register</Button>
      <br />
 </Form>
 </>

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { transcode } from 'buffer';
 
 const Track = styled.div`
     width:60%;
@@ -45,11 +46,22 @@ const ProgressBar = props => {
 
     let remainingBudget = party.budget - totalSpent
 
+    let remainingPercent = 100 - currentPercent
+
+    const limit = (min, currentVal, max) => {
+        return Math.min(Math.max(min, currentVal), max)
+    }
+
     return(
         <div> 
         <h3>Current Budget Progress</h3>
             <Track>
-                <Thumb percentage ={currentPercent}>${remainingBudget} Left</Thumb>
+                {currentPercent < 100 ? 
+                    <Thumb percentage ={limit(0,currentPercent,100)}/> 
+                    : <Thumb percentage = {limit(0,currentPercent,100)} style={{backgroundColor: 'red'}}/>}
+                    {currentPercent < 100 ? 
+                        <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-100%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Remaining</p>
+                        : <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-100%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Over Budget</p>}
             </Track>
         </div>
     )
