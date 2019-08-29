@@ -15,7 +15,7 @@ const ToDoItem = props => {
 
   return (
     <div>
-        {item.completed ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p> : <p>{item.name}</p>}
+        {item.completed ? <h3 style = {{textDecorationLine: 'line-through'}}>{item.name}</h3> : <h3>{item.name}</h3>}
         <Checkbox label="Completed" onClick = {updateCompleted}/>
     </div>
   );

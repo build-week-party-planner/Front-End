@@ -57,9 +57,9 @@ const ShoppingList = props => {
 
     return(
         <div className = 'modal-container'>
-            <Modal trigger={<Button>Shopping List</Button>} closeIcon>
-                <Modal.Content>
-                    <Header>Shopping List</Header>
+            <Modal className="listModalContainer" trigger={<Button>Shopping List</Button>} closeIcon>
+                <Modal.Content className="list-content">
+                    <Header style={{color:'rgb(16, 30, 68)', textAlign: 'center', fontSize: "1.8rem"}}>Shopping List</Header>
                     {shoppingItems.length && modalPosition === 1?
                         shoppingItems.map( item => {
                             return(
@@ -81,7 +81,7 @@ const ShoppingList = props => {
                       )}) 
                       : null}
                     <FormikShoppingForm modalPosition = {modalPosition} match = {match}/>
-                    {modalPosition === 1 && <Button onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button>}
+                    {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button></div>}
                     </Modal.Content>
             </Modal>
         </div>

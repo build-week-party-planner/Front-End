@@ -25,19 +25,19 @@ const TodoList = props => {
     
     return(
         <div className = 'modal-container'>
-            <Modal trigger={<Button>To Do List</Button>} closeIcon>
-                <Modal.Content>
-                    <Header>To Do List</Header>
+            <Modal className='listModalContainer' trigger={<Button>To Do List</Button>} closeIcon>
+                <Modal.Content className='list-content'>
+                    <Header style={{color:'rgb(16, 30, 68)', textAlign: 'center', fontSize: "1.8rem"}}>To Do List</Header>
                     {todoList.length ? 
                         todoList.map( item => {
                             return(
-                                <ToDoItem item = {item}/>
+                                <ToDoItem key={item.id} item = {item}/>
                             )
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'
                     }
                     <FormikTodoForm match = {match}/>
-                    <Button onClick = {() => props.updateToDoList(todoList)}>Update Changes</Button>
+                    <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateToDoList(todoList)}>Update Changes</Button></div>
                     </Modal.Content>
             </Modal>
         </div>

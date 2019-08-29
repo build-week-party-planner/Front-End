@@ -17,7 +17,7 @@ const NavBar = props => {
               onClick={()=>{
               localStorage.removeItem("token");
               localStorage.removeItem('user_id');
-              localStorage.removeItem("email");
+              localStorage.removeItem("emailDisplay");
               localStorage.removeItem('persist:globalReducer')
             }}
             name={props.location.pathname === "/login" || props.location.pathname === "/register" ? "Login" : "Log Out"}   

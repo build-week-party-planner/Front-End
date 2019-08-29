@@ -12,24 +12,29 @@ function Login(props) {
  const {touched} = props
  const {errors} = props
  return(
+   <>
+   <h1>Login</h1>
    <Form className="form">
+        <div className='ui input'>
          <Field
            placeholder="Enter your email"
            name="email"
            type="text"
          />
+         </div>
          <p>{touched.email && errors.email}</p>
+         <div className='ui input'>
          <Field
            placeholder="Password"
            name="password"
            type="password"
          />
+         </div>
          <p>{touched.password && errors.password}</p>
-         <Button>Log In</Button>
+         <Button color="blue">Log In</Button>
          <br />
-       {/* <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
-       <label for="remember_me">Keep me logged in</label> */}
    </Form>
+   </>
  )
 }
 const FormikLogin = withFormik({

@@ -13,9 +13,6 @@ import { deleteEvent } from '../actions/eventActions';
 
 import { Button, Icon } from 'semantic-ui-react';
 
-
-
-
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'

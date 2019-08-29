@@ -23,7 +23,6 @@
   color: #61dafb;
 }
 .content {
-  margin-top: 75px;
   @include flex(column, start, center);
   flex: 1 0 auto;
   width: 100%;
@@ -33,6 +32,6 @@
 @import './component-styles/Events.scss';
 @import './component-styles/Event.scss';
 @import './component-styles/Footer.scss';
-
+@import './component-styles/Lists.scss';
 
 

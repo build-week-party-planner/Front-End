@@ -4,15 +4,18 @@ import { Form, Field, withFormik} from 'formik'
 import * as Yup from 'yup'
 import { addEventTodo } from '../../actions'
 
+import { Button } from 'semantic-ui-react';
+
 const TodoListForm = props => {
 
     const { match } = props
 
     return(
-        <div class = 'todo-list-form-container'>
-            <Form>
-                <Field type = 'text' name = 'task' placeholder = 'task'/>
-                <button type = 'submit'>Add Task</button>
+        <div class = 'list-form-container'>
+            <Form className='list-form'>
+            {props.touched.task && props.errors.task && <p>{props.errors.task}</p>}
+                <div style={{marginTop: '1rem'}}className='ui input'><Field type = 'text' name = 'task' placeholder = 'Add task'/></div>
+                <Button type = 'submit'>Add Task</Button>
             </Form>
         </div>
     )
@@ -35,6 +38,7 @@ const FormikTodoForm = withFormik({
             todo_list_id: Number(props.props.match.match.params.id),
         }
         props.props.addEventTodo(valuesToSubmit)
+        props.resetForm();
     }
 })(TodoListForm)
 
