@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 //styles
-import { Button, Icon } from 'semantic-ui-react';
 
 //redux
 import { getEvents } from '../actions/index'
@@ -15,7 +14,7 @@ import { deleteEvent } from '../actions/eventActions';
 //components
 import { Button, Icon } from 'semantic-ui-react';
 
-import { deleteEvent } from '../actions/eventActions';
+
 
 
 
