@@ -261,13 +261,7 @@ export const globalReducer = (state = initialState, action) => {
         case UPDATE_SHOPPING_ITEM_SUCCESS:
           return{
             ...state,
-            shoppingListItems: state.shoppingListItems.filter( item => {
-              if(item.id === action.payload.id){
-                return action.payload
-              }else{
-                return item
-              }
-            }),
+            shoppingListItems: state.shoppingListItems.map( item => item.id === action.payload.id ? action.payload : item ),
             isLoading: false
           }
         case UPDATE_SHOPPING_ITEM_ERROR:
