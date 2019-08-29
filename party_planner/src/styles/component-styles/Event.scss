@@ -80,3 +80,13 @@
     }//lists-container
 
 }//event-container
+
+.delete-event-icon{
+
+  cursor: pointer;
+  color: rgb(243, 80, 112);
+
+  &:hover {
+    transform:scale(1.1)
+  }
+}

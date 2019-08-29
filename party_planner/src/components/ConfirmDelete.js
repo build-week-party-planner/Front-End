@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Confirm } from 'semantic-ui-react';
+import { Button, Confirm, Icon } from 'semantic-ui-react';
 
 const ConfirmDelete = ({ deleteEvent, targetObject, history }) => {
 
@@ -17,13 +17,13 @@ const ConfirmDelete = ({ deleteEvent, targetObject, history }) => {
   return (
     <>
       <div>
-        <Button onClick={handleConfirmOpen} color="red" >Delete</Button>
+        <Icon className="delete-event-icon" onClick={handleConfirmOpen} name='trash alternate' />
         <Confirm
           content="Are you sure you want to delete this event?"
           confirmButton={<Button style={{backgroundColor: 'rgb(208, 17, 31)'}}>Delete</Button>}
           open={confirmOpen}
           onCancel={handleConfirmClose}
-          onConfirm={() => deleteEvent(targetObject, history)} color="red" style={{width: 'max-content'}}
+          onConfirm={() => deleteEvent(targetObject, history)} color="red"
         />
       </div>
     </>

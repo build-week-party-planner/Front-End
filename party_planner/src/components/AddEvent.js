@@ -50,7 +50,7 @@ const AddEvent = props => {
           <Modal.Description className="add-event-form">
             <div className="form-header">
             {pageTwoModal && <Icon className="first-page" name="arrow left" onClick={() => setPageTwoModal(false)}/>}
-            <Header style={{fontSize: "1.8rem", marginBottom: 0, marginTop: 0, marginLeft: pageTwoModal || '7rem', marginRight: pageTwoModal && '7rem'}}>New Event</Header>
+            <Header style={{color:'rgb(16, 30, 68)', fontSize: "1.8rem", marginBottom: 0, marginTop: 0, marginLeft: pageTwoModal || '7rem', marginRight: pageTwoModal && '7rem'}}>New Event</Header>
             {pageTwoModal || <Icon className="second-page" name='arrow right' onClick={() => setPageTwoModal(true)}/>}
             </div>
             <Form className="form-inputs">
