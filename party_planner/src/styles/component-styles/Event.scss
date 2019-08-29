@@ -31,12 +31,14 @@
         h3 {
             margin: 0;
         }
+
         .ui.button{
             background: $primary-gray2;
             font-size: 1.4rem;
             width: 5px;
         }
-    }
+
+    }//event-header
 
     .event-info-container {
         display: flex;
@@ -55,7 +57,26 @@
                 font-size: 1.5rem;
                 font-weight: 600;
             }
-        }
-    }
 
-}
+        }//event-info
+        
+    }//event-info-container
+
+    .lists-container {
+        margin-top: 20px;
+
+        h3 {
+            text-align: left;
+        }
+
+        .ui.button {
+            width: 250px;
+            height: 35px;
+            margin: 8px 0px;
+            background: $primary-blue3;
+            color: black;
+        }
+
+    }//lists-container
+
+}//event-container
