@@ -33,8 +33,6 @@ function Login(props) {
          <p>{touched.password && errors.password}</p>
          <Button color="blue">Log In</Button>
          <br />
-       {/* <input type="checkbox" id="remember_me" name="_remember_me"  method="post"/>
-       <label for="remember_me">Keep me logged in</label> */}
    </Form>
    </>
  )

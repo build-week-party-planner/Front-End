@@ -4,6 +4,8 @@ import { Form, Field, withFormik} from 'formik'
 import * as Yup from 'yup'
 import { addShoppingItem, updateShoppingItems } from '../../actions'
 
+import { Button } from 'semantic-ui-react';
+
 const ShoppingListForm = props => {
     const { modalPosition } = props
     const { match } = props
@@ -14,8 +16,8 @@ const ShoppingListForm = props => {
             <Form className='list-form'>
                  <h2>Add Item</h2>
                     {props.touched.item && props.errors.item && <p>{props.errors.item}</p>}
-                    <Field type = 'text' name = 'item' placeholder = 'Item. . .'/>
-                    <button type = 'submit'>Add Item</button>
+                    <div className='ui input'><Field type = 'text' name = 'item' placeholder = 'Item. . .'/></div>
+                    <Button type = 'submit'>Add Item</Button>
             </Form>
         </div> : null}
         </>

@@ -63,7 +63,7 @@ const ShoppingList = props => {
                     {shoppingItems.length && modalPosition === 1?
                         shoppingItems.map( item => {
                             return(
-                                <ShoppingItem key={item.id} item = {item} 
+                                <ShoppingItem item = {item} 
                                 setModalPosition = { setModalPosition }
                                 modalPosition = {modalPosition}
                                 setItemToRender = { setItemToRender }/>
@@ -81,7 +81,7 @@ const ShoppingList = props => {
                       )}) 
                       : null}
                     <FormikShoppingForm modalPosition = {modalPosition} match = {match}/>
-                    {modalPosition === 1 && <Button onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button>}
+                    {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button></div>}
                     </Modal.Content>
             </Modal>
         </div>
