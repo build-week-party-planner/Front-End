@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Checkbox } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { updateShoppingItems } from '../../actions'
-import { Form, Field, withFormik} from 'formik'
+import { Form, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 
 
 const ShoppingItem = props => {
   const { item } = props;
-  const { setModalPosition} = props
+  const { setModalPosition } = props
   const { modalPosition } = props
   const { setItemToRender } = props
 
@@ -26,41 +26,42 @@ const ShoppingItem = props => {
 
 
   return (
-    <div>
-        {modalPosition === 1 ? 
-          item.purchased ? 
-            <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>
-              : <h3>{item.name}</h3>
-          : null}
-        {item.price ? 
-          <p>Cost: ${item.price}</p> 
-          : null }
-        {modalPosition === 1 ?
-          <Checkbox label="Purchased" onClick = {updateCompleted}/> :
-          null}
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {modalPosition === 1 ?
+        item.purchased ?
+          <h3 style={{ textDecorationLine: 'line-through' }}>{modalPosition === 1 ?
+            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            null}{item.name} </h3>
+          : <h3>{modalPosition === 1 ?
+            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            null}{item.name}</h3>
+        : null}
+      {item.price ?
+        <p>Cost: ${item.price}</p>
+        : null}
     </div>
   );
 };
 
- const FormikShoppingItem = withFormik({
-   mapPropsToValues({price}){
-     return{
-       price: price || ''
-     }
-   },
-   validationSchema: Yup.object().shape({
-     price: Yup.number().required('Price is required')
-   }),
-   handleSubmit(values, props){
-      let item = props.props.item
-      const valuesToSubmit = [{...props.props.item, price: values.price}]
-      props.props.updateShoppingItems(valuesToSubmit)
-      props.props.setModalPosition(1)
-   }
- })(ShoppingItem)
+const FormikShoppingItem = withFormik({
+  mapPropsToValues({ price }) {
+    return {
+      price: price || ''
+    }
+  },
+  validationSchema: Yup.object().shape({
+    price: Yup.number().required('Price is required')
+  }),
+  handleSubmit(values, props) {
+    let item = props.props.item
+    const valuesToSubmit = [{ ...props.props.item, price: values.price }]
+    props.props.updateShoppingItems(valuesToSubmit)
+    props.props.setModalPosition(1)
+  }
+})(ShoppingItem)
 
- const mapStateToProps = state => {
-   return state
- }
+const mapStateToProps = state => {
+  return state
+}
 
- export default connect(mapStateToProps, {updateShoppingItems})(FormikShoppingItem)
+export default connect(mapStateToProps, { updateShoppingItems })(FormikShoppingItem)
