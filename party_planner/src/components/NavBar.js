@@ -18,7 +18,7 @@ const NavBar = props => {
               onClick={()=>{
               localStorage.removeItem("token");
               localStorage.removeItem('user_id');
-              localStorage.removeItem("email");
+              localStorage.removeItem("emailDisplay");
               localStorage.removeItem('persist:globalReducer')
             }}
             name={props.location.pathname === "/login" || props.location.pathname === "/register" ? "Login" : "Log Out"}   
@@ -27,10 +27,10 @@ const NavBar = props => {
 
         {!localStorage.getItem('token') && <NavLink style={{marginLeft: '1rem'}}to='/register'><Menu.Item name='Register'/></NavLink>}
 
-        {(!localStorage.email)
+        {(!localStorage.getItem('token'))
           ? <span></span>
           : <Link>
-              <h1 id= "email-letter">{localStorage.email.charAt(0)}</h1>
+              <h1 id= "email-letter">{localStorage.emailDisplay}</h1>
             </Link>
         }
       </Menu.Menu>

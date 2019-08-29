@@ -40,10 +40,8 @@ const SingleEvent = props => {
       <div className='event-header'>
 
         <div className="headerTop">
-          <Link to={`/dashboard/${localStorage.getItem('user_id')}`}>
-            <Button Icon>
-              <Icon name='angle left' />
-            </Button>
+          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
+              <Icon name='angle left' className= 'back-button'/>
           </Link>
 
           <h2>{targetObject.name}</h2>
