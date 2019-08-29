@@ -37,37 +37,37 @@ const SingleEvent = props => {
 
   return (
     <div className='event-container'>
-      <div className='event-header'>
+      <div className= 'top-content'>
 
-        <div className="headerTop">
-          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
-              <Icon name='angle left' className= 'back-button'/>
-          </Link>
+        <div className='event-header'>
+            <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
+                <Icon name='angle left' className= 'back-button'/>
+            </Link>
 
-          <h2>{targetObject.name}</h2>
+            <h2>{targetObject.name}</h2>
 
-          <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
+            <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
+
         </div>
-      </div>
-      <img src=''></img>
-      <div className='event-info-container'>
-        <div className='event-info'>
-          <p>Theme:</p>
-          <p>{targetObject.theme}</p>
+        <div className='event-info-container'>
+          <div className='event-info'>
+            <p>Theme:</p>
+            <p>{targetObject.theme}</p>
+          </div>
+          <div className='event-info'>
+            <p>Date:</p>
+            <p>{targetObject.date}</p>
+          </div>
+          <div className='event-info'>
+            <p>Guests:</p>
+            <p>{targetObject.guests}</p>
+          </div>
+          <div className='event-info'>
+            <p>Budget:</p>
+            <p>${targetObject.budget}</p>
+          </div>
+          <ProgressBar party = {targetObject}/>
         </div>
-        <div className='event-info'>
-          <p>Date:</p>
-          <p>{targetObject.date}</p>
-        </div>
-        <div className='event-info'>
-          <p>Guests:</p>
-          <p>{targetObject.guests}</p>
-        </div>
-        <div className='event-info'>
-          <p>Budget:</p>
-          <p>${targetObject.budget}</p>
-        </div>
-        <ProgressBar party = {targetObject}/>
       </div>
       <div className='lists-container'>
         <h3>Lists :</h3>
