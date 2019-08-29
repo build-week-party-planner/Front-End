@@ -7,10 +7,10 @@ const EntertainmentItem = props => {
   const { item } = props;
 
   return (
-    <div>
-        <p>{item.name}</p>
+    <div className='entertainmentItem'>
+        <h3>{item.name}</h3>
         <p>Cost: ${item.price}</p>
-        <Icon name = 'trash alternate' onClick = {() => props.deleteEntertainmentItem(item.id)}/>
+        <Icon className='delete-item-icon' name = 'trash alternate' onClick = {() => props.deleteEntertainmentItem(item.id)}/>
     </div>
   );
 };

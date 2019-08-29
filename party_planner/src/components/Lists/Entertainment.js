@@ -25,17 +25,17 @@ const EntertainmentList = props => {
     })}
 
     return(
-        <div className = 'modal-container'>
-            <Modal trigger={<Button>Entertainment</Button>} closeIcon>
-                <Modal.Content>
-                    <Header>Entertainment</Header>
-                    {entertainmentList ? 
+        <div>
+            <Modal className='listModalContainer' trigger={<Button>Entertainment</Button>} closeIcon>
+                <Modal.Content className='list-content'>
+                    <Header style={{color:'rgb(16, 30, 68)', textAlign: 'center', fontSize: "1.8rem"}}>Entertainment</Header>
+                    {entertainmentList.length > 0 ? 
                         entertainmentList.map( item => {
                             return(
-                               <EntertainmentItem item = {item}/>
+                               <EntertainmentItem key={item.id} item = {item}/>
                             )
                         })
-                        :'Your entertainment list is currently empty. Click below to add an item.'
+                        :<div style={{marginBottom: '1rem'}}>Your entertainment list is currently empty. Click below to add an item.</div>
                     }
                     <FormikEntertainmentForm match = {match}/>
                     {/*<Button onClick = { () => props.updateEntertainmentItems(entertainmentList)}>Update Entertainment</Button>*/}
