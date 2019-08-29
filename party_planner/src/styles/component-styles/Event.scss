@@ -32,10 +32,27 @@
             margin: 0;
         }
 
-        .ui.button{
-            background: $primary-gray2;
+
+
+        .edit-button{
+            background: $neutral-lightBlue;
             font-size: 1.4rem;
-            width: 5px;
+            color: black;
+            margin: 0 auto;
+            border: none;
+            @include flex(row, center, center);
+        }
+
+        .back-button-link {
+            background: $primary-gray2;
+            @include flex(row, center, center);
+            padding: 5px; 
+            border: 1px solid black;
+            border-radius: 25%;
+            color: black;
+            .back-button {
+                margin: 0 auto;
+            }
         }
 
     }//event-header
@@ -71,10 +88,11 @@
 
         .ui.button {
             width: 250px;
-            height: 35px;
+            height: 50px;
             margin: 8px 0px;
             background: $primary-blue3;
             color: black;
+            font-size: 1.4rem;
         }
 
     }//lists-container

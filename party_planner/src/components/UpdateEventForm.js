@@ -29,7 +29,7 @@ const UpdateEvent = ({ deleteEvent, targetObject, touched, errors, history, matc
 
   return (
     <div className="add-event-modal">
-      <Modal open={modalOpen} className="modalContainer" onClose={handleModalClose} trigger={<Button onClick={handleModalOpen} Icon><Icon name="edit" /></Button>}>
+      <Modal open={modalOpen} className="modalContainer" onClose={handleModalClose} trigger={<button className= 'edit-button' onClick={handleModalOpen} Icon><Icon name="edit" /></button>}>
         <Modal.Content>
           <Modal.Description className="add-event-form">
             <div className="form-header">
