@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Routing
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 
 // CSS
@@ -23,9 +23,11 @@ import Footer from './components/Footer'
 function App() {
   
   return (
+    <>
       <div className="App">
           <Route path = "/" component={NavBar}/>
         <div className= 'content'>
+          <Route exact path = "/" render={() => localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('user_id')}`}/> : <Redirect to={`/login`} />} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={FormikRegister}/>
           <PrivateRoute path="/dashboard/:id" component={Events}/>
@@ -33,6 +35,7 @@ function App() {
         </div>
           <Footer />
       </div>
+      </>
   );
 }
 
