@@ -69,17 +69,16 @@ const ShoppingList = props => {
                                 setItemToRender = { setItemToRender }/>
                             )
                         })
-                    :'Your shopping list is currently empty. Click below to add an item.'}
-                    { modalPosition === 2 ? 
+                      : modalPosition === 2 ? 
                         itemToRender.map( item => {
                         return(
                             <form onSubmit = {handleSubmit}>
                               <h2>{item.name} Cost</h2>
-                              <input type = 'text' name = 'price' placeholder= 'Price. . .' onChange={handleChange} value = {dataToSend.price}/>
-                              <button type = 'submit'>Confirm Price</button>
+                              <div className='ui input'><input type = 'text' name = 'price' placeholder= 'Price. . .' onChange={handleChange} value = {dataToSend.price}/></div>
+                              <Button style={{marginTop: '1rem'}}secondary type = 'submit'>Confirm Price</Button>
                             </form>
                       )}) 
-                      : null}
+                      : 'Your shopping list is currently empty. Click below to add an item.'}
                     <FormikShoppingForm modalPosition = {modalPosition} match = {match}/>
                     {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button></div>}
                     </Modal.Content>

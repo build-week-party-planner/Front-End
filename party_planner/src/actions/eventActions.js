@@ -119,14 +119,13 @@ export const updateShoppingItems = (arr) => {
       price: arr[i].price
     }
     return dispatch => {
-      dispatch({type: UPDATE_EVENT_TODO_LIST_START})
+      dispatch({type: UPDATE_SHOPPING_ITEM_START})
       axiosWithAuth()
         .put(`https://bw-party-planner.herokuapp.com/api/items/${arr[i].id}`, valuesToSubmit)
-        .then( res => dispatch({type: UPDATE_EVENT_TODO_LIST_SUCCESS, payload: res.data}))
+        .then( res => dispatch({type: UPDATE_SHOPPING_ITEM_SUCCESS, payload: res.data}))
         .catch( err => dispatch({type: UPDATE_SHOPPING_ITEM_ERROR, payload: err.response}))
    } 
   }
-
 }
 
 //!! CRUD FOR TODOLIST 
