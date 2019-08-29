@@ -11,9 +11,7 @@ import { connect } from 'react-redux'
 
 import { deleteEvent } from '../actions/eventActions';
 
-//components
 import { Button, Icon } from 'semantic-ui-react';
-
 
 
 

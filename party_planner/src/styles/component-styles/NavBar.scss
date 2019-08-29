@@ -1,20 +1,45 @@
 .ui.menu:first-child {
+  height: 60px;
   top: 0;
-  background: $primary-gray2;
+  background: white;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   position: fixed;
+  padding: 0 10px;
+  box-shadow: none;
+  border: none;
   
   .header.item {
     border: none;
+    font-size: 2rem;
+    padding: 0;
+    margin-right: 5%;
+    width: 100%;
+    color: $neutral-darkBlue;
   }
 
   .item{
     border: none;
+    padding: 0;
+  }
+  .login-logout{
+    
+  }
+  #email-letter {
+    background: $neutral-darkBlue;
+    border-radius: 50%;
+    width: 35px;
+    color: $primary-gray2;
+    margin-left: 15px;
   }
 
 }//.ui.menu:first-child
 
 .ui.menu .item::before{
   background: none;
+}
+
+.ui.menu:not(.vertical) .right.item, .ui.menu:not(.vertical) .right.menu{
+  align-items: center;
 }
