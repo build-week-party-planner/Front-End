@@ -1,4 +1,5 @@
 import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import { ActionAccessibility } from 'material-ui/svg-icons';
 
 export const GET_EVENTS_START = "GET_EVENTS_START"
 export const GET_EVENTS_SUCCESS = "GET_EVENTS_SUCCESS"
@@ -247,6 +248,19 @@ export const updateEntertainmentItems = (arr) => {
 
 }
 
+export const DELETE_ENTERTAINMENT_ITEMS_START = "DELETE_ENTERTAINMENT_ITEM_START"
+export const DELETE_ENTERTAINMENT_ITEMS_SUCCESS = "DELETE_ENTERTAINMENT_ITEM_SUCCESS"
+export const DELETE_ENTERTAINMENT_ITEMS_ERROR = "DELETE_ENTERTAINMENT_ITEM_ERROR"
+
+export const deleteEntertainmentItem = id => {
+   return dispatch => {
+      dispatch({type: DELETE_ENTERTAINMENT_ITEMS_START})
+      axiosWithAuth()
+        .delete(`https://bw-party-planner.herokuapp.com/api/entertainment/${id}`)
+        .then( res => dispatch({type: DELETE_ENTERTAINMENT_ITEMS_SUCCESS, payload: id}))
+        .catch( err => dispatch({type: DELETE_ENTERTAINMENT_ITEMS_ERROR, payload: err.response}))
+  }
+}
 
 
 
