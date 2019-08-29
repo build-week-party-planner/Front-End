@@ -15,6 +15,7 @@
         height: 100px;
         margin: 15px 0px;
         border-radius: 10px;
+        background: $primary-blue3;
         background-image: url(../../images/example-photo.JPG);
 
         h1{
@@ -25,7 +26,7 @@
     
     
         .ui.button {
-            background: rgba(255, 255, 255, .6);
+            background: rgba(255, 255, 255, .5);
             backdrop-filter: blur(8px);
             color: $primary-blue2;
             height: 50px;
@@ -47,3 +48,71 @@
     }//new-event
 
 }//my-events
+
+.ui.modal.transition.visible.active.modalContainer {
+  width: 350px;
+
+  .content {
+    margin: 0;
+    background: rgb(219, 226, 238);
+  }
+
+  .description.add-event-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .form-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      width: 100%;
+      justify-content: center;
+
+      .arrow.left.icon.first-page{
+        text-align: left;
+        margin-right: auto;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1)
+        }
+      }
+
+      .arrow.right.icon.second-page {
+        text-align: right;
+        margin-left: auto;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1)
+        }
+      }
+    }
+
+    .form-inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+
+      .add-event-label {
+        width: 100%;
+        text-align: left;
+      }
+
+      .ui.input {
+        width: 275px;
+        padding: 1rem 0;
+
+        input {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
+

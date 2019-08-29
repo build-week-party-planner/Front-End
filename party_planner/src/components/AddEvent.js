@@ -11,7 +11,7 @@ import { addEvent, createEventShoppingList, createEventTodoList } from '../actio
 import { connect } from 'react-redux';
 
 // Semantic UI components
-import { Button, Header, Modal } from 'semantic-ui-react';
+import { Button, Header, Modal, Icon } from 'semantic-ui-react';
 import { SocialPartyMode } from 'material-ui/svg-icons';
 
 const AddEvent = props => {
@@ -45,47 +45,68 @@ const AddEvent = props => {
 
   return (
     <div className="add-event-modal">
-      <Modal open={modalOpen} onClose={handleModalClose} trigger={<Button onClick={handleModalOpen}>New Event!</Button>} closeIcon>
+      <Modal open={modalOpen} className="modalContainer" onClose={handleModalClose} trigger={<Button onClick={handleModalOpen}>New Event!</Button>}>
         <Modal.Content>
-          <Modal.Description>
-            <Header>New Event</Header>
-            <Form>
+          <Modal.Description className="add-event-form">
+            <div className="form-header">
+            {pageTwoModal && <Icon className="first-page" name="arrow left" onClick={() => setPageTwoModal(false)}/>}
+            <Header style={{fontSize: "2rem", marginBottom: 0, marginTop: 0}}>New Event</Header>
+            {pageTwoModal || <Icon className="second-page" name='arrow right' onClick={() => setPageTwoModal(true)}/>}
+            </div>
+            <Form className="form-inputs">
               {pageTwoModal === false &&
                 <>
+                  <label className="add-event-label">Event Name</label>
+                  <div className="ui input">
                   <Field
                     placeholder="Event Name"
                     name="name"
                     type="text"
                   />
+                  </div>
                   {touched.name && errors.name && <p>{errors.name}</p>}
+                  <label className="add-event-label">Number of Guests</label>
+                  <div className="ui input">
                   <Field
                     placeholder="# of Guests"
                     name="guests"
                     type="number"
                   />
+                  </div>
                   {touched.guests && errors.guests && <p>{errors.guests}</p>}
+                  <label className="add-event-label">Date</label>
+                  <div className="ui icon input">
                   <Field
                     placeholder="dd/mm/yyyy"
                     name="date"
                     type="date"
                   />
+                  <i aria-hidden="true" className="calendar alternate outline icon"></i>
+                  </div>
                   {touched.date && errors.date && <p>{errors.date}</p>}
                   <Button type="button" onClick={() => setPageTwoModal(true)}>Next</Button>
                 </>
               }
               {pageTwoModal &&
                 <>
+                <label className="add-event-label">Budget</label>
+                  <div className="ui left icon input">
                   <Field
                     placeholder="Event budget"
                     name="budget"
                     type="number"
                   />
+                  <i aria-hidden="true" className="dollar icon"></i>
+                  </div>
                   {touched.budget && errors.budget && <p>{errors.budget}</p>}
+                  <label className="add-event-label">Theme</label>
+                  <div className="ui input">
                   <Field
                     placeholder="Theme"
                     name="theme"
                     type="text"
                   />
+                  </div>
                   {touched.theme && errors.theme && <p>{errors.theme}</p>}
                   <Button onClick={() => submitModal()}>Let's Go!</Button>
                 </>

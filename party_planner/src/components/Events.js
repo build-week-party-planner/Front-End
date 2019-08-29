@@ -19,7 +19,7 @@ const Events = ({ history, match, events }) => {
   
   return (
     <div className = "my-events">
-      <header style={{textAlign: "center"}}>
+      <header>
         <h2>My Events</h2>
       </header>
       <div className = 'events-container new-event'>
