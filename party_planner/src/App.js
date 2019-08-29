@@ -24,12 +24,14 @@ function App() {
   
   return (
       <div className="App">
-        <Route path = "/" component={NavBar}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/register" component={FormikRegister}/>
-        <PrivateRoute path="/dashboard/:id" component={Events}/>
-        <PrivateRoute path="/events/:id" component={SingleEvent} />
-        <Footer />
+          <Route path = "/" component={NavBar}/>
+        <div className= 'content'>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/register" component={FormikRegister}/>
+          <PrivateRoute path="/dashboard/:id" component={Events}/>
+          <PrivateRoute path="/events/:id" component={SingleEvent} />
+        </div>
+          <Footer />
       </div>
   );
 }
