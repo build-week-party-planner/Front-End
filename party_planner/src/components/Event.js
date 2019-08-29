@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 //styles
-import { Button, Icon } from 'semantic-ui-react';
 
 //redux
 import { getEvents } from '../actions/index'
@@ -12,11 +11,16 @@ import { connect } from 'react-redux'
 
 import { deleteEvent } from '../actions/eventActions';
 
-//components
+import { Button, Icon } from 'semantic-ui-react';
+
+
+
+
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
 import FormikUpdateEvents from './UpdateEventForm';
+import ProgressBar from './ProgressBar'
 
 const SingleEvent = props => {
 
@@ -68,6 +72,7 @@ const SingleEvent = props => {
           <p>Budget:</p>
           <p>${targetObject.budget}</p>
         </div>
+        <ProgressBar party = {targetObject}/>
       </div>
       <div className='lists-container'>
         <h3>Lists :</h3>
