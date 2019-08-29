@@ -1,7 +1,7 @@
 .my-events{
 
     header {
-        @include flex(row, space-between, center);
+
         h2{
             margin: 0;
             color: $primary-blue2;

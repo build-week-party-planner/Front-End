@@ -39,6 +39,10 @@ const AddEvent = props => {
     setModalOpen(false);
   }
 
+  const submitModal = () => {
+    setTimeout(function () { handleModalClose(); setPageTwoModal(false) }, 0.1);
+  }
+
   return (
     <div className="add-event-modal">
       <Modal open={modalOpen} onClose={handleModalClose} trigger={<Button onClick={handleModalOpen}>New Event!</Button>} closeIcon>
@@ -83,7 +87,7 @@ const AddEvent = props => {
                     type="text"
                   />
                   {touched.theme && errors.theme && <p>{errors.theme}</p>}
-                  <Button onClick={() => setTimeout(function () { handleModalClose(); }, 0.1)}>Let's Go!</Button>
+                  <Button onClick={() => submitModal()}>Let's Go!</Button>
                 </>
               }
 
