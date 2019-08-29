@@ -9,6 +9,7 @@ import { Button, Icon } from 'semantic-ui-react';
 //redux
 import { getEvents } from '../actions/index'
 import { connect } from 'react-redux'
+
 import { deleteEvent } from '../actions/eventActions';
 
 //components
