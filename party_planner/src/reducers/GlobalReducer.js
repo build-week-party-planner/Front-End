@@ -29,6 +29,15 @@ import {
     GET_EVENTS_ENTERTAINMENT_START,
     GET_EVENTS_ENTERTAINMENT_SUCCESS,
     GET_EVENTS_ENTERTAINMENT_ERROR,
+    UPDATE_EVENT_TODO_LIST_START,
+    UPDATE_EVENT_TODO_LIST_SUCCESS,
+    UPDATE_EVENT_TODO_LIST_ERROR,
+    UPDATE_SHOPPING_ITEM_START,
+    UPDATE_SHOPPING_ITEM_SUCCESS,
+    UPDATE_SHOPPING_ITEM_ERROR,
+    UPDATE_ENTERTAINMENT_ITEMS_START,
+    UPDATE_ENTERTAINMENT_ITEMS_SUCCESS,
+    UPDATE_ENTERTAINMENT_ITEMS_ERROR
 } from '../actions'
 
 const initialState = {
@@ -39,7 +48,8 @@ const initialState = {
     hasToken: false,
     shoppingListItems : [],
     todoItems: [],
-    entertainmentList: []
+    entertainmentList: [],
+    purchasedItems: []
 }
 
 export const globalReducer = (state = initialState, action) => {
@@ -211,6 +221,79 @@ export const globalReducer = (state = initialState, action) => {
           return{
             ...state,
             err: action.payload,
+            isLoading: true
+          }
+        case UPDATE_EVENT_TODO_LIST_START:
+          return{
+            ...state,
+            isLoading: false,
+          }
+        case UPDATE_EVENT_TODO_LIST_SUCCESS:
+          return{
+            ...state,
+            todoItems: state.todoItems.filter(item => {
+              if(item.id === action.payload.id){
+                return action.payload
+              }else{
+                return item
+              }
+            }),
+            isLoading: false
+          }
+        case UPDATE_EVENT_TODO_LIST_SUCCESS:
+          return{
+            ...state,
+            isLoading:false,
+            err: action.payload
+          }
+        case UPDATE_EVENT_TODO_LIST_ERROR:
+          return{
+            ...state, err: action.payload, isLoading:false
+          }
+        case UPDATE_SHOPPING_ITEM_START:
+          return{
+            ...state,
+            isLoading: true
+          }
+        case UPDATE_SHOPPING_ITEM_SUCCESS:
+          return{
+            ...state,
+            shoppingListItems: state.shoppingListItems.filter( item => {
+              if(item.id === action.payload.id){
+                return action.payload
+              }else{
+                return item
+              }
+            }),
+            isLoading: false
+          }
+        case UPDATE_SHOPPING_ITEM_ERROR:
+          return{
+            ...state,
+            error: action.payload,
+            isLoading: false,
+          }
+        case UPDATE_ENTERTAINMENT_ITEMS_START:
+          return{
+            ...state,
+            isLoading: true
+          }
+        case UPDATE_ENTERTAINMENT_ITEMS_SUCCESS:
+          return{
+            ...state,
+            entertainmentList:state.entertainmentList.filter( item => {
+              if(item.id === action.payload.id){
+                return action.payload
+              }else{
+                return item
+              }
+            }),
+            isLoading:false
+          }
+        case UPDATE_ENTERTAINMENT_ITEMS_ERROR:
+          return{
+            ...state,
+            error: action.payload,
             isLoading: false
           }
         default:

@@ -1,14 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Menu } from 'semantic-ui-react'
 import { NavLink, Link } from 'react-router-dom'
+import axios from 'axios'
 
 const NavBar = props => {
+  console.log(localStorage.user_id)
+
+  useEffect(() => {
+    axios
+    .get('https://bw-party-planner.herokuapp.com/api/party/list/todo')
+    .then(res => {
+      console.log(res)
+    })
+  },[])
 
   return (
     <Menu>
-      <Menu.Item header>Party Planner</Menu.Item>
       <NavLink to={`/dashboard/${localStorage.getItem('user_id')}`}>
-        <Menu.Item name="My Events"/>
+        <Menu.Item header name="Party Planner"/>
       </NavLink>
       <Link to="/login">
         <Menu.Item        
