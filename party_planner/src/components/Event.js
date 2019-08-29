@@ -49,7 +49,7 @@ const SingleEvent = props => {
             </Button>
           </Link>
 
-          <h3>{targetObject.name}</h3>
+          <h2>{targetObject.name}</h2>
 
           <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
         </div>

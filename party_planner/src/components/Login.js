@@ -46,7 +46,6 @@ const FormikLogin = withFormik({
    }),
    //save token to local storage
    handleSubmit(values, props) {
-     console.log(props)
      const propsToSubmit = {"email": values.email, "password": values.password}
      localStorage.setItem("emailDisplay", values.email.charAt(0));
      const url = "https://bw-party-planner.herokuapp.com/api/auth/login";

@@ -4,7 +4,6 @@ import { NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const NavBar = props => {
-  console.log(localStorage)
   return (
     <Menu>
       <NavLink to={`/dashboard/${localStorage.getItem('user_id')}`}>
