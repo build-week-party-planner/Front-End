@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { getEvents } from '../actions/index'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react';
-import { deleteEvent, uploadImg } from '../actions/eventActions';
+import { deleteEvent } from '../actions/eventActions';
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
@@ -79,4 +79,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getEvents, deleteEvent, uploadImg })(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)

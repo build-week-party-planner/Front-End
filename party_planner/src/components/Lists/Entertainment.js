@@ -21,7 +21,6 @@ const EntertainmentList = props => {
         }
     })
 
-
     return(
         <div className = 'modal-container'>
             <Modal trigger={<Button>Entertainment</Button>} closeIcon>
