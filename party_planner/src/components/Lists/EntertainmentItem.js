@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Checkbox } from "semantic-ui-react";
+import { Checkbox, Icon} from "semantic-ui-react";
+import { connect } from 'react-redux'
+import { deleteEntertainmentItem } from '../../actions'
 
 const EntertainmentItem = props => {
   const { item } = props;
-  let initialState = item.completed
-  const updateCompleted = () => {
-    initialState = !initialState
-    item.completed = initialState
-  }
+
   return (
     <div>
-        {item.completed ? <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>: <p>{item.name}</p>}
+        <p>{item.name}</p>
         <p>Cost: ${item.price}</p>
-        <Checkbox label="Completed" onClick = {updateCompleted}/>
+        <Icon name = 'trash alternate' onClick = {() => props.deleteEntertainmentItem(item.id)}/>
     </div>
   );
 };
-export default EntertainmentItem;
+
+const mapStateToProps = state =>{
+  return state
+}
+export default connect(mapStateToProps, {deleteEntertainmentItem})(EntertainmentItem)

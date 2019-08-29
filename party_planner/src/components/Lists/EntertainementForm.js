@@ -34,7 +34,7 @@ const FormikEntertainmentForm = withFormik({
         console.log(props)
         const valuesToSubmit = {
             name: values.entertainment,
-            completed: false,
+            completed: true,
             todo_list_id: Number(props.props.match.match.params.id),
             price: values.price
         }

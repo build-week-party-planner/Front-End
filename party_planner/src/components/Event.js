@@ -15,6 +15,10 @@ import { deleteEvent } from '../actions/eventActions';
 //components
 import { Button, Icon } from 'semantic-ui-react';
 
+import { deleteEvent } from '../actions/eventActions';
+
+
+
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
@@ -90,4 +94,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getEvents, deleteEvent, uploadImg })(SingleEvent)
+export default connect(mapStateToProps, { getEvents, deleteEvent })(SingleEvent)
