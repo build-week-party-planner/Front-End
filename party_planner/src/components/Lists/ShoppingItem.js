@@ -30,7 +30,7 @@ const ShoppingItem = props => {
         {modalPosition === 1 ? 
           item.purchased ? 
             <p style = {{textDecorationLine: 'line-through'}}>{item.name}</p>
-              : <p>{item.name}</p>
+              : <h3>{item.name}</h3>
           : null}
         {item.price ? 
           <p>Cost: ${item.price}</p> 

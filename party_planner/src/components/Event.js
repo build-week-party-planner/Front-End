@@ -13,9 +13,6 @@ import { deleteEvent } from '../actions/eventActions';
 
 import { Button, Icon } from 'semantic-ui-react';
 
-
-
-
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
@@ -49,7 +46,7 @@ const SingleEvent = props => {
             </Button>
           </Link>
 
-          <h3>{targetObject.name}</h3>
+          <h3 style={{fontSize: '22px'}}>{targetObject.name}</h3>
 
           <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
         </div>
