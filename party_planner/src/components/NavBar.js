@@ -25,6 +25,8 @@ const NavBar = props => {
           />
         </Link>
 
+        {!localStorage.getItem('token') && <NavLink style={{marginLeft: '1rem'}}to='/register'><Menu.Item name='Register'/></NavLink>}
+
         {(!localStorage.email)
           ? <span></span>
           : <Link>
