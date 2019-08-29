@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
-import { Button, Header, Modal, ModalActions } from 'semantic-ui-react';
+import { Button, Header, Modal } from 'semantic-ui-react';
 import { getShoppingItems, updateShoppingItems } from '../../actions'
 import FormikShoppingForm from './ShoppingListForm';
 import ShoppingItem from './ShoppingItem'
-import * as Yup from 'yup'
+// import * as Yup from 'yup'
 
 
 
@@ -19,8 +19,10 @@ const ShoppingList = props => {
     
     
     useEffect(()=> {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         itemToUpdate = itemToRender[0]
         if(itemToUpdate){
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         dataToSend = {
             name: itemToUpdate.name,
             purchased: true,
@@ -28,18 +30,15 @@ const ShoppingList = props => {
             price: itemToRender.price,
             id: itemToUpdate.id
         }}
-        console.log(dataToSend)
     },[itemToRender])
 
     useEffect(() => {
         props.getShoppingItems()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    const shoppingItems = props.shoppingListItems.filter(item => {
-        if(item.shopping_list_id.toString() === match.match.params.id){
-            return item
-        }
-    })
+    const shoppingItems = props.shoppingListItems.filter(item => item.shopping_list_id.toString() === match.match.params.id && item)
+
     const handleChange = event => {
         console.log(dataToSend)
         dataToSend = {...dataToSend, [event.target.name] : Number(event.target.value)}
@@ -63,7 +62,9 @@ const ShoppingList = props => {
                     {shoppingItems.length && modalPosition === 1?
                         shoppingItems.map( item => {
                             return(
-                                <ShoppingItem item = {item} 
+                                <ShoppingItem
+                                key= {item.id}
+                                item = {item} 
                                 setModalPosition = { setModalPosition }
                                 modalPosition = {modalPosition}
                                 setItemToRender = { setItemToRender }/>
@@ -72,7 +73,7 @@ const ShoppingList = props => {
                       : modalPosition === 2 ? 
                         itemToRender.map( item => {
                         return(
-                            <form onSubmit = {handleSubmit}>
+                            <form key={item.id} onSubmit = {handleSubmit}>
                               <h2>{item.name} Cost</h2>
                               <div className='ui input'><input type = 'text' name = 'price' placeholder= 'Price. . .' onChange={handleChange} value = {dataToSend.price}/></div>
                               <Button style={{marginTop: '1rem'}}secondary type = 'submit'>Confirm Price</Button>

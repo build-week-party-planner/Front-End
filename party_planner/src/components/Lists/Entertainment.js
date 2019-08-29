@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { Button, Header, Modal, Icon } from 'semantic-ui-react';
+import { Button, Header, Modal } from 'semantic-ui-react';
 import FormikEntertainmentForm from './EntertainementForm'
 import { getEventEntertainment, updateEntertainmentItems, deleteEntertainmentItem } from '../../actions'
 import EntertainmentItem from './EntertainmentItem'
@@ -13,6 +13,7 @@ const EntertainmentList = props => {
 
     useEffect(() => {
         props.getEventEntertainment()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     let entertainmentList 

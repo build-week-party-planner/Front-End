@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Checkbox } from "semantic-ui-react";
+import React from "react";
+import { Button, Checkbox } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { updateShoppingItems } from '../../actions'
-import { Form, Field, withFormik } from 'formik'
+import { withFormik } from 'formik'
 import * as Yup from 'yup'
 
 
@@ -25,16 +25,22 @@ const ShoppingItem = props => {
   }
 
 
+
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+
+    <div onClick={() => updateCompleted()} 
+    style={{ display: 'flex', 
+    flexDirection: 'column' }}
+    >
       {modalPosition === 1 ?
         item.purchased ?
-          <h3 style={{ textDecorationLine: 'line-through' }}>{modalPosition === 1 ?
+          <h3>{modalPosition === 1 ?
             <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
-            null}{item.name} </h3>
+            null}{item.name} <Button onClick={updateCompleted}primary style={{fontSize:'12px', padding: '0.5rem'}}>Edit</Button></h3>
           : <h3>{modalPosition === 1 ?
             <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
-            null}{item.name}</h3>
+            null}{item.name} <Button onClick={updateCompleted} primary style={{fontSize:'12px', padding: '0.5rem'}}>Edit</Button></h3>
         : null}
       {item.price ?
         <p>Cost: ${item.price}</p>

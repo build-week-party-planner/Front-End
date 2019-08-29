@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 
 import { deleteEvent } from '../actions/eventActions';
 
-import { Button, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import ShoppingList from './Lists/ShoppingList'
 import TodoList from './Lists/ToDo'
@@ -22,16 +22,13 @@ import ProgressBar from './ProgressBar'
 const SingleEvent = props => {
 
 
-  let targetEvent = props.events.filter(event => {
-    if (event.id.toString() === props.match.params.id) {
-      return event
-    }
-  })
+  let targetEvent = props.events.filter(event => event.id.toString() === props.match.params.id && event);
 
   const targetObject = { ...targetEvent[0] }
 
   useEffect(() => {
     props.getEvents()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
@@ -49,7 +46,7 @@ const SingleEvent = props => {
           <FormikUpdateEvents targetObject={targetObject} deleteEvent={props.deleteEvent} history={props.history} match={props.match} />
         </div>
       </div>
-      <img src=''></img>
+      <img src='' alt=''></img>
       <div className='event-info-container'>
         <div className='event-info'>
           <p>Theme:</p>
