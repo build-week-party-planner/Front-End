@@ -8,7 +8,7 @@ const Track = styled.div`
     width:60%;
     margin: 0 auto;
     margin-bottom: 15px;
-    height:25px;
+    height:30px;
     background-color: #132e56;
     border-radius: 10px;
     box-shadow: inset 0 0 px #ebf1fa;
@@ -60,8 +60,8 @@ const ProgressBar = props => {
                     <Thumb percentage ={limit(0,currentPercent,100)}/> 
                     : <Thumb percentage = {limit(0,currentPercent,100)} style={{backgroundColor: 'red'}}/>}
                     {currentPercent < 100 ? 
-                        <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-100%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Remaining</p>
-                        : <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-100%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Over Budget</p>}
+                        <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-106%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Remaining</p>
+                        : <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-106%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Over Budget</p>}
             </Track>
         </div>
     )
