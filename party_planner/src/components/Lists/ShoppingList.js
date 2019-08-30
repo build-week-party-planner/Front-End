@@ -25,7 +25,7 @@ const ShoppingList = props => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dataToSend = {
             name: itemToUpdate.name,
-            purchased: true,
+            purchased: itemToUpdate.purchased,
             shopping_list_id: itemToUpdate.shopping_list_id,
             price: itemToRender.price,
             id: itemToUpdate.id

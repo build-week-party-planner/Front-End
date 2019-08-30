@@ -1,8 +1,9 @@
-import React  from "react";
+    
+import React, { useEffect, useState } from "react";
 import { Checkbox, Button } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { updateShoppingItems } from '../../actions'
-import { withFormik } from 'formik'
+import { Form, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 
 
@@ -18,13 +19,13 @@ const ShoppingItem = props => {
   arrItem.push(item)
 
   const updateCompleted = e => {
-    setItemToRender(arrItem)
-    setModalPosition(2)
+    initialState = !initialState
+    item.purchased = initialState
   }
 
   const toggle = () => {
-    initialState = !initialState
-    item.purchased = initialState
+    setItemToRender(arrItem)
+    setModalPosition(2)
   }
 
 
@@ -32,15 +33,15 @@ const ShoppingItem = props => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {modalPosition === 1 ?
         item.purchased ?
-          <h3>{modalPosition === 1 ?
-            <Checkbox style={{marginRight: '1rem'}} checked={true}/> :
-            null}{item.name} <Button style={{padding: '0.5rem'}} primary onClick={updateCompleted}>Edit</Button> </h3>
+          <h3 style={{ textDecorationLine: 'line-through' }}>{modalPosition === 1 ?
+            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            null}{item.name}<Button primary style={{padding: '0.5rem', marginLeft: '0.5rem'}}onClick={toggle}>Edit</Button> </h3>
           : <h3>{modalPosition === 1 ?
-            <Checkbox style={{marginRight: '1rem'}} /> :
-            null}{item.name} <Button style={{padding: '0.5rem'}}primary onClick={updateCompleted}>Edit</Button></h3>
+            <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
+            null}{item.name}<Button primary style={{padding: '0.5rem', marginLeft: '0.5rem'}}onClick={toggle}>Edit</Button></h3>
         : null}
       {item.price ?
-        <p>Cost: ${item.price}</p>
+        <p>{item.name} cost: ${item.price}</p>
         : null}
     </div>
   );
