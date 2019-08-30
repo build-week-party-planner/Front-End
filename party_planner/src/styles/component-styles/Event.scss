@@ -12,7 +12,7 @@
     padding: 4%;
     .top-content{
         @include desktop {
-            width: 47%;
+            width: 50%;
         }
         .event-header {
             @include flex(row, space-between, center);
@@ -31,11 +31,14 @@
           }
     
     
-            h3 {
+            h2 {
                 margin: 0;
-                font-size: 3rem;
-            }
-    
+                font-size: 2rem;
+
+                @include desktop {
+                    font-size: 3.5rem;
+                }
+            }    
     
     
             .edit-button{
@@ -72,7 +75,9 @@
         .event-info {
             @include flex(column, space-around, space-between);
             margin: 10px;
-
+            @include desktop {
+                font-size: 3rem;
+            }
             p {
                 margin: 0;
 
@@ -91,7 +96,7 @@
         @include flex(column, flex-start, center);
         
         @include desktop {
-            width: 47%;
+            width: 50%;
         }
 
         h3 {

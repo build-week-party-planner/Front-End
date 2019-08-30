@@ -43,7 +43,7 @@ export const FormikRegister = withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().required("Username is required"),
-    password: Yup.string().min(8).required("Password is required")
+    password: Yup.string().min(8).required("Password is ALSO required")
   }),
 
   //save token to local storage
