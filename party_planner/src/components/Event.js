@@ -154,25 +154,11 @@ const SingleEvent = props => {
             <p>Guests:</p>
             <p>{targetObject.guests}</p>
           </div>
-          <div className='event-info-container'>
-            <div className='event-info'>
-              <p>Theme:</p>
-              <p>{targetObject.theme}</p>
-            </div>
-            <div className='event-info'>
-              <p>Date:</p>
-              <p>{targetObject.date}</p>
-            </div>
-            <div className='event-info'>
-              <p>Guests:</p>
-              <p>{targetObject.guests}</p>
-            </div>
             <div className='event-info'>
               <p>Budget:</p>
               <p>${targetObject.budget}</p>
             </div>
             <ProgressBar party = {targetObject}/>
-          </div>
         </div>
       </div>
       <div className='lists-container'>
