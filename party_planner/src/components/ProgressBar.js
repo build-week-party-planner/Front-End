@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { transcode } from 'buffer';
+
 
 const Track = styled.div`
     width:60%;
@@ -45,8 +44,6 @@ const ProgressBar = props => {
     let currentPercent = (totalSpent / party.budget) * 100
 
     let remainingBudget = party.budget - totalSpent
-
-    let remainingPercent = 100 - currentPercent
 
     const limit = (min, currentVal, max) => {
         return Math.min(Math.max(min, currentVal), max)
