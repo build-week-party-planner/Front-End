@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Checkbox } from "semantic-ui-react";
 
 const ToDoItem = props => {
+
+  const [queueToUpdate, setQueueToUpdate] = useState(false);
 
   const { item } = props;
 
@@ -10,14 +12,15 @@ const ToDoItem = props => {
   const updateCompleted = () => {
     initialState = !initialState
     item.completed = initialState
-    console.log(item.completed)
+    setQueueToUpdate(!queueToUpdate)
   }
 
   return (
     <div style={{display: 'flex', alignItems:'center'}}>
-        <Checkbox style = {{marginRight: '1rem'}} onClick = {updateCompleted}/>
+        <Checkbox style = {{marginRight: '1rem'}} onClick = {updateCompleted} checked={initialState ? true : false} />
         {item.completed ? <h3 style = {{textDecorationLine: 'line-through', margin: 0}}>{item.name}</h3> : <h3 style={{margin: 0}}>{item.name}</h3>}
     </div>
+
   );
 };
 

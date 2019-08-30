@@ -18,25 +18,27 @@ const Events = ({ history, match, events }) => {
   })
   
   return (
-    <div className = "my-events">
-      <header>
-        <h2>My Events</h2>
-      </header>
-      <div className = 'events-container new-event'>
-        <FormikAddEvent history={history} match={match} />
-      </div>
-
-      {authObjects.map(event => (
-        <Link key={event.id} to={`/events/${event.id}`}>
-        <div key={event.id} className = 'events-container'>
-          <Button>
-            <EventOnDashboard
-              name={event.name}
-            />
-          </Button>
+    <div className= 'events-content'>
+        <header>
+          <h2>My Events</h2>
+        </header>
+      <div className = "my-events">
+        <div className = 'events-container new-event'>
+          <FormikAddEvent history={history} match={match} />
         </div>
-      </Link>
-      ))}
+
+        {authObjects.map(event => (
+          <Link key={event.id} to={`/events/${event.id}`}>
+          <div key={event.id} className = 'events-container'>
+            <Button>
+              <EventOnDashboard
+                name={event.name}
+              />
+            </Button>
+          </div>
+        </Link>
+        ))}
+      </div>
     </div>
   )
 }
