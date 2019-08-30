@@ -18,10 +18,13 @@ const ShoppingItem = props => {
   arrItem.push(item)
 
   const updateCompleted = e => {
-    initialState = !initialState
-    item.purchased = initialState
     setItemToRender(arrItem)
     setModalPosition(2)
+  }
+
+  const toggle = () => {
+    initialState = !initialState
+    item.purchased = initialState
   }
 
 
@@ -30,7 +33,7 @@ const ShoppingItem = props => {
       {modalPosition === 1 ?
         item.purchased ?
           <h3>{modalPosition === 1 ?
-            <Checkbox style={{marginRight: '1rem'}} /> :
+            <Checkbox style={{marginRight: '1rem'}} checked={true}/> :
             null}{item.name} <Button style={{padding: '0.5rem'}} primary onClick={updateCompleted}>Edit</Button> </h3>
           : <h3>{modalPosition === 1 ?
             <Checkbox style={{marginRight: '1rem'}} /> :
