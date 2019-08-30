@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 
 const ReadPartyStatus = props => {
 
+    console.log()
+
     const { targetObject } = props
 
     const targetObjectShopList = props.shoppingListItems.filter( item => item.shopping_list_id === targetObject.id && (item.purchased === true || item.purchased === 1))
     const targetObjectEntList = props.entertainmentList.filter( item => item.todo_list_id === targetObject.id )
     const targetObjectTodoList = props.todoItems.filter( item => item.todo_list_id === targetObject.id)
 
-    let toDoListRemaining = targetObjectTodoList.filter( todo => todo.completed === true || todo.completed === 1).length + 1
+    let toDoListRemaining = targetObjectTodoList.filter( todo => todo.completed === false || todo.completed === 0).length + 1
     
     const totalShopping = targetObjectShopList.reduce((acc, item, index) => {
         acc += item.price;
