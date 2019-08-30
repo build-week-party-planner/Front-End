@@ -57,8 +57,7 @@ export const FormikRegister = withFormik({
         props.props.history.push('/login')
       })
       .catch(error => {
-        console.log(error)
-        props.setStatus(error.response.data.message)
+        props.setStatus(error)
       })
   }
 })(Register);
