@@ -20,7 +20,7 @@ const ShoppingList = props => {
     
     useEffect(()=> {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        itemToUpdate = itemToRender[0]
+        itemToUpdate = {...itemToRender[0]}
         if(itemToUpdate){
         // eslint-disable-next-line react-hooks/exhaustive-deps
         dataToSend = {
@@ -40,8 +40,8 @@ const ShoppingList = props => {
     const shoppingItems = props.shoppingListItems.filter(item => item.shopping_list_id.toString() === match.match.params.id && item)
 
     const handleChange = event => {
-        console.log(dataToSend)
         dataToSend = {...dataToSend, [event.target.name] : Number(event.target.value)}
+        console.log(dataToSend)
     }
 
     const handleSubmit = event => {
@@ -81,7 +81,7 @@ const ShoppingList = props => {
                       )}) 
                       : 'Your shopping list is currently empty. Click below to add an item.'}
                     <FormikShoppingForm modalPosition = {modalPosition} match = {match}/>
-                    {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateShoppingItems(shoppingItems)}>Update Shopping List</Button></div>}
+                    {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {handleSubmit}>Update Shopping List</Button></div>}
                     </Modal.Content>
             </Modal>
         </div>

@@ -21,6 +21,10 @@ const ShoppingItem = props => {
   const updateCompleted = e => {
     initialState = !initialState
     item.purchased = initialState
+    let temp = []
+    temp.push(item)
+    props.updateShoppingItems(temp)
+    temp.unshift()
   }
 
   const toggle = () => {
