@@ -9,8 +9,10 @@ const ReadPartyStatus = props => {
     const targetObjectEntList = props.entertainmentList.filter( item => item.todo_list_id === targetObject.id )
     const targetObjectTodoList = props.todoItems.filter( item => item.todo_list_id === targetObject.id)
 
-    let toDoListRemaining = targetObjectTodoList.filter( todo => todo.completed === true || todo.completed === 1).length + 1
-    
+    let toDoListRemaining = targetObjectTodoList.filter( todo => todo.completed === false || todo.completed === 0).length + 1
+    if (toDoListRemaining === 1){
+        toDoListRemaining = 0
+    }
     const totalShopping = targetObjectShopList.reduce((acc, item, index) => {
         acc += item.price;
         return acc
@@ -71,11 +73,11 @@ const ReadPartyStatus = props => {
 
     return(
         <div>
-        <button className = 'ask-btn' 
-        onClick = {() => recognition.start()}
-        style={{backgroundColor: '#073c8a', border:'none', padding: '10px 0', color: '#ffffff', width: '25%', borderRadius: '10px', cursor: 'pointer'}}
-        >Ask</button>
-        <h4 className = 'content'>{transcript ? `${transcript}` : 'Ask Me "Whats The Status Of My Party"' }</h4>
+        <button 
+            onClick = {() => recognition.start()}
+            style={{backgroundColor: '#073c8a', border:'none', padding: '10px 0', color: '#ffffff', width: '25%', borderRadius: '10px', cursor: 'pointer'}}
+            >Ask</button>
+        <h4 style = {{ marginBottom : '15px'}}>{transcript ? `${statusResponse}` : 'Ask Me "Whats The Status Of My Party"' }</h4>
         </div>
     )
 }
