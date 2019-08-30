@@ -29,7 +29,6 @@ const SingleEvent = props => {
 
   useEffect(() => {
     props.getEvents()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // ! refs for animation
