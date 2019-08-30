@@ -19,6 +19,7 @@ import TodoList from './Lists/ToDo'
 import EntertainmentList from './Lists/Entertainment'
 import FormikUpdateEvents from './UpdateEventForm';
 import ProgressBar from './ProgressBar'
+import ReadPartyStatus from './ReadPartyStatus'
 
 const SingleEvent = props => {
 
@@ -115,7 +116,10 @@ const SingleEvent = props => {
   useEffect(()=> {
     go()
   },[])
- 
+  
+  useEffect(()=>{
+    console.log()
+  })
   
   return (
     <div className='event-container'>
@@ -156,6 +160,7 @@ const SingleEvent = props => {
               <p>${targetObject.budget}</p>
             </div>
             <ProgressBar party = {targetObject}/>
+            <ReadPartyStatus targetObject = {targetObject}/>
         </div>
       </div>
       <div className='lists-container'>
