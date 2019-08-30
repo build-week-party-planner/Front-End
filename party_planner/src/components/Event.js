@@ -58,7 +58,7 @@ const SingleEvent = props => {
         .set(shoppingBtn, {autoAlpha: 0})
         .set(toDoBtn, {autoAlpha: 0})
         .set(entertainmentBtn, {autoAlpha: 0})
-        .set(listHeader, {autoAlpha: 0, onComplete: displayItems})
+        .set(listHeader, {autoAlpha: 0, onComplete:displayItems})
       ;
 
       function displayItems(){
@@ -120,13 +120,12 @@ const SingleEvent = props => {
     go()
   },[])
  
+  
   return (
     <div className='event-container'>
       <div className='event-header hide' ref={element => {eventHeader = element}}>
-
         <div className="headerTop">
-
-          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
+          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} >
             <div ref={element => {backIcon = element}} className = 'hide'>
               <Icon name='angle left' />
               </div>
