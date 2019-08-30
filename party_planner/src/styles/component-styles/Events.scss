@@ -1,54 +1,80 @@
-.my-events{
+.events-content{
+  h2{
+    margin: 0;
+    color: $primary-blue2;
+    padding-left: 40px;
 
-    header {
-
-        h2{
-            margin: 0;
-            color: $primary-blue2;
-
-        }
-
+    @include desktop{
+      font-size: 3.5rem;
+      text-align: left;
+      margin-left: 75px;
+      text-decoration-line: underline;
+      padding-top: 20px;
     }
-    .events-container {
+  }
+  .my-events{
+      @include desktop{
         @include flex(row, center, center);
-        width: 300px;
-        height: 100px;
-        margin: 15px 0px;
-        border-radius: 10px;
-        background: $primary-blue3;
-        background-image: url(../../images/example-photo.JPG);
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 30px 0;
+      }
 
-        h1{
-            color: $primary-blue2;
-            margin: 0;
-            font-size: 1.6rem
-        }
-    
-    
-        .ui.button {
-            background: rgba(255, 255, 255, .5);
-            backdrop-filter: blur(8px);
-            color: $primary-blue2;
-            height: 50px;
-            border-radius: 10px;
-            
-        }
+      .events-container {
+          @include flex(row, center, center);
+          width: 300px;
+          height: 100px;
+          margin: 15px 0px;
+          border-radius: 10px;
+          background: $primary-blue3;
+          background-image: url(../../images/example-photo.JPG);
+          cursor: pointer;
+          @include desktop{
+            width: 350px;
+            height: 325px;
+            margin: 20px 160px;
+          }
+      
+          .ui.button {
+              background: rgba(255, 255, 255, .5);
+              backdrop-filter: blur(8px);
+              color: $primary-blue2;
+              height: 50px;
+              border-radius: 10px;
+              @include desktop{
+                height: 150px;
+                width: 250px;
+                padding: 20px 0;
+              }
+              
+          }
+          
+  
+      }//.events-container
+      .events-container:hover{
+        box-shadow: 0px 1px 5px $primary-blue2;
+      }
+      .new-event {
+          background: white;
+          border: 2.2px solid $primary-blue2;
+  
+          .ui.button {
+              font-size: 1.4rem;
+              color: $primary-blue2;
 
-    }//.events-container
-    
-    .new-event {
-        background: white;
-        border: 2.2px solid $primary-blue2;
+              @include desktop{
+                font-size: 2.6rem;
+                text-align: center;
+                padding: 20px 0;
+              }
+          }
+  
+      }//new-event
+  
+  }//my-events
 
-        .ui.button {
-            font-size: 1.4rem;
-            color: $primary-blue2;
-        }
-
-    }//new-event
-
-}//my-events
-
+}//.events-container
+  
 .ui.modal.transition.visible.active.modalContainer {
   width: 350px;
 

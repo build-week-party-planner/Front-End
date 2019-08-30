@@ -8,6 +8,10 @@
   padding: 0 10px;
   box-shadow: none;
   border: none;
+
+  @include desktop {
+    padding: 0 5%;
+  }
   
   .header.item {
     border: none;
@@ -21,6 +25,9 @@
   .item{
     border: none;
     padding: 0;
+    @include desktop {
+      font-size: 1.4rem;
+    }
   }
 
   #email-letter {
@@ -29,6 +36,9 @@
     width: 35px;
     color: $primary-gray2;
     margin-left: 15px;
+    @include desktop {
+      margin-left: 40px;
+    }
   }
 
 }//.ui.menu:first-child
