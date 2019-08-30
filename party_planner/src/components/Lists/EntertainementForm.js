@@ -8,8 +8,6 @@ import { Button } from 'semantic-ui-react';
 
 const EntertainmentForm = props => {
 
-    const { match } = props
-
     return(
         <div className = 'list-form-container'>
             <Form className='list-form'>

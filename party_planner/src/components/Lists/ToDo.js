@@ -9,8 +9,6 @@ import { updateToDoList } from '../../actions'
 
 const TodoList = props => {
 
-    console.log(props)
-
     const match = props
 
     useEffect(() => {

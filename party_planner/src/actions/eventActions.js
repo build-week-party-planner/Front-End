@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '../utils/AxiosWithAuth'
-import { ActionAccessibility } from 'material-ui/svg-icons';
 
 export const GET_EVENTS_START = "GET_EVENTS_START"
 export const GET_EVENTS_SUCCESS = "GET_EVENTS_SUCCESS"
