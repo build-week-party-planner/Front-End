@@ -27,7 +27,7 @@ function Register({ touched, errors }) {
      />
      </div>
      <p>{touched.password && errors.password}</p>
-     <Button color="blue">Log In</Button>
+     <Button color="blue">Register</Button>
      <br />
 </Form>
 </>
@@ -43,7 +43,7 @@ export const FormikRegister = withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().required("Username is required"),
-    // password: Yup.string().min(8).required("Password is ALSO required")
+    password: Yup.string().min(8).required("Password is ALSO required")
   }),
 
   //save token to local storage

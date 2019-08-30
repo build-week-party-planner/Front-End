@@ -125,7 +125,8 @@ const SingleEvent = props => {
       <div className='event-header hide' ref={element => {eventHeader = element}}>
 
         <div className="headerTop">
-          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} >
+
+          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
             <div ref={element => {backIcon = element}} className = 'hide'>
               <Icon name='angle left' />
               </div>
