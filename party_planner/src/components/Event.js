@@ -29,7 +29,6 @@ const SingleEvent = props => {
 
   useEffect(() => {
     props.getEvents()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // ! refs for animation
@@ -55,7 +54,7 @@ const SingleEvent = props => {
         .set(shoppingBtn, {autoAlpha: 0})
         .set(toDoBtn, {autoAlpha: 0})
         .set(entertainmentBtn, {autoAlpha: 0})
-        .set(listHeader, {autoAlpha: 0, onComplete: displayItems})
+        .set(listHeader, {autoAlpha: 0, onComplete:displayItems})
       ;
 
       function displayItems(){
@@ -117,17 +116,18 @@ const SingleEvent = props => {
     go()
   },[])
  
+  
   return (
     <div className='event-container'>
       <div className= 'top-content'>
 
         <div className='event-header hide' ref={element => {eventHeader = element}}>
 
+        <div ref={element => {backIcon = element}} className = 'hide'>
             <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
-              <div ref={element => {backIcon = element}} className = 'hide'>
                 <Icon name='angle left' />
-                </div>
-            </Link>
+                </Link>
+        </div>
 
             <h2>{targetObject.name}</h2>
             <div ref={element => {updateBtn = element}} className = 'hide'>
