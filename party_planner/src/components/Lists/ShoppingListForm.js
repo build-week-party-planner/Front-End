@@ -2,17 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Form, Field, withFormik} from 'formik'
 import * as Yup from 'yup'
-import { addShoppingItem, updateShoppingItems } from '../../actions'
+import { addShoppingItem } from '../../actions'
 
 import { Button } from 'semantic-ui-react';
 
 const ShoppingListForm = props => {
     const { modalPosition } = props
-    const { match } = props
+
     return(
         <>
         {modalPosition === 1 ?
-        <div class = 'list-form-container'>
+        <div className = 'list-form-container'>
             <Form className='list-form'>
                  <h2>Add Item</h2>
                     {props.touched.item && props.errors.item && <p>{props.errors.item}</p>}

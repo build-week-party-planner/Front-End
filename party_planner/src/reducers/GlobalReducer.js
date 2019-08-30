@@ -243,12 +243,6 @@ export const globalReducer = (state = initialState, action) => {
             }),
             isLoading: false
           }
-        case UPDATE_EVENT_TODO_LIST_SUCCESS:
-          return{
-            ...state,
-            isLoading:false,
-            err: action.payload
-          }
         case UPDATE_EVENT_TODO_LIST_ERROR:
           return{
             ...state, err: action.payload, isLoading:false

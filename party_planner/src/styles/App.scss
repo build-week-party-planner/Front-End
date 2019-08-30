@@ -28,6 +28,10 @@
   width: 100%;
 }
 
+.strikethrough {
+  text-decoration: line-through;
+}
+
 @import './component-styles/NavBar.scss';
 @import './component-styles/Events.scss';
 @import './component-styles/Event.scss';

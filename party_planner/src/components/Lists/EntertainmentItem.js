@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Checkbox, Icon} from "semantic-ui-react";
+import React from "react";
+import { Icon} from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { deleteEntertainmentItem } from '../../actions'
 

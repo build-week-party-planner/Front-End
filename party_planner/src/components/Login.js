@@ -33,6 +33,7 @@ function Login(props) {
          <p>{touched.password && errors.password}</p>
          <Button color="blue">Log In</Button>
          <br />
+         {props.status && <h3 style={{color: 'red'}}>Try again</h3>}
    </Form>
    </>
  )
@@ -64,7 +65,7 @@ const FormikLogin = withFormik({
          props.props.history.push(`/dashboard/${results.data.id}`);
        })
        .catch(error => {
-         console.log("Error: ", error.response)
+         props.setStatus(error.response.data.message)
        })
    }
  })(Login);

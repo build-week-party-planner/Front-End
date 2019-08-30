@@ -1,5 +1,6 @@
+    
 import React, { useEffect, useState } from "react";
-import { Checkbox } from "semantic-ui-react";
+import { Checkbox, Button } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { updateShoppingItems } from '../../actions'
 import { Form, Field, withFormik } from 'formik'
@@ -20,6 +21,9 @@ const ShoppingItem = props => {
   const updateCompleted = e => {
     initialState = !initialState
     item.purchased = initialState
+  }
+
+  const toggle = () => {
     setItemToRender(arrItem)
     setModalPosition(2)
   }
@@ -31,13 +35,13 @@ const ShoppingItem = props => {
         item.purchased ?
           <h3 style={{ textDecorationLine: 'line-through' }}>{modalPosition === 1 ?
             <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
-            null}{item.name} </h3>
+            null}{item.name}<Button primary style={{padding: '0.5rem', marginLeft: '0.5rem'}}onClick={toggle}>Edit</Button> </h3>
           : <h3>{modalPosition === 1 ?
             <Checkbox style={{marginRight: '1rem'}} onClick={updateCompleted} /> :
-            null}{item.name}</h3>
+            null}{item.name}<Button primary style={{padding: '0.5rem', marginLeft: '0.5rem'}}onClick={toggle}>Edit</Button></h3>
         : null}
       {item.price ?
-        <p>Cost: ${item.price}</p>
+        <p>{item.name} cost: ${item.price}</p>
         : null}
     </div>
   );
