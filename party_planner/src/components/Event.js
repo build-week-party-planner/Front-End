@@ -119,44 +119,44 @@ const SingleEvent = props => {
  
   return (
     <div className='event-container'>
-      <div className='event-header hide' ref={element => {eventHeader = element}}>
+      <div className= 'top-content'>
 
-        <div className="headerTop">
+        <div className='event-header hide' ref={element => {eventHeader = element}}>
 
-          <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
-            <div ref={element => {backIcon = element}} className = 'hide'>
-              <Icon name='angle left' />
-              </div>
-          </Link>
+            <Link to={`/dashboard/${localStorage.getItem('user_id')}`} className= 'back-button-link'>
+              <div ref={element => {backIcon = element}} className = 'hide'>
+                <Icon name='angle left' />
+                </div>
+            </Link>
 
-          <h2>{targetObject.name}</h2>
-          <div ref={element => {updateBtn = element}} className = 'hide'>
-            <FormikUpdateEvents targetObject={targetObject} 
-              deleteEvent={props.deleteEvent} 
-              history={props.history} 
-              match={props.match}
-               />
-             </div>
+            <h2>{targetObject.name}</h2>
+            <div ref={element => {updateBtn = element}} className = 'hide'>
+              <FormikUpdateEvents targetObject={targetObject} 
+                deleteEvent={props.deleteEvent} 
+                history={props.history} 
+                match={props.match}
+                />
+          </div>
         </div>
-      </div>
-      <div className='event-info-container hide' ref={element => {eventInfoContainer = element}}>
-        <div className='event-info'>
-          <p>Theme:</p>
-          <p>{targetObject.theme}</p>
+        <div className='event-info-container hide' ref={element => {eventInfoContainer = element}}>
+          <div className='event-info'>
+            <p>Theme:</p>
+            <p>{targetObject.theme}</p>
+          </div>
+          <div className='event-info'>
+            <p>Date:</p>
+            <p>{targetObject.date}</p>
+          </div>
+          <div className='event-info'>
+            <p>Guests:</p>
+            <p>{targetObject.guests}</p>
+          </div>
+            <div className='event-info'>
+              <p>Budget:</p>
+              <p>${targetObject.budget}</p>
+            </div>
+            <ProgressBar party = {targetObject}/>
         </div>
-        <div className='event-info'>
-          <p>Date:</p>
-          <p>{targetObject.date}</p>
-        </div>
-        <div className='event-info'>
-          <p>Guests:</p>
-          <p>{targetObject.guests}</p>
-        </div>
-        <div className='event-info'>
-          <p>Budget:</p>
-          <p>${targetObject.budget}</p>
-        </div>
-        <ProgressBar party = {targetObject}/>
       </div>
       <div className='lists-container'>
         <h3 ref ={element => {listHeader = element}} className='hide'>Lists :</h3>
