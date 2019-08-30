@@ -1,37 +1,37 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Menu } from 'semantic-ui-react'
-import { NavLink, Link } from 'react-router-dom'
-import axios from 'axios'
+import { NavLink } from 'react-router-dom'
+
 
 const NavBar = props => {
-  console.log(localStorage)
+
   return (
+
     <Menu>
       <NavLink to={`/dashboard/${localStorage.getItem('user_id')}`}>
         <Menu.Item header name="Party Planner"/>
       </NavLink>
       
       <Menu.Menu position= 'right'>
-        <Link to="/login">
-          <Menu.Item
-              id= 'login-logout'        
+        <NavLink to="/login"
+              id= 'login-logout'   
+              className='item'     
               onClick={()=>{
               localStorage.removeItem("token");
               localStorage.removeItem('user_id');
               localStorage.removeItem("emailDisplay");
               localStorage.removeItem('persist:globalReducer')
             }}
-            name={props.location.pathname === "/login" || props.location.pathname === "/register" ? "Login" : "Log Out"}   
-          />
-        </Link>
+        >{props.location.pathname === "/login" || props.location.pathname === "/register" ? "Login" : "Log Out"}
+        </NavLink>
 
         {!localStorage.getItem('token') && <NavLink style={{marginLeft: '1rem'}}to='/register'><Menu.Item name='Register'/></NavLink>}
 
         {(!localStorage.getItem('token'))
           ? <span></span>
-          : <Link>
+          : <span>
               <h1 id= "email-letter">{localStorage.emailDisplay}</h1>
-            </Link>
+            </span>
         }
       </Menu.Menu>
     </Menu>

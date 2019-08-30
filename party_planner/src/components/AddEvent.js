@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 
 // Semantic UI components
 import { Button, Header, Modal, Icon } from 'semantic-ui-react';
-import { SocialPartyMode } from 'material-ui/svg-icons';
 
 const AddEvent = props => {
 
@@ -29,6 +28,7 @@ const AddEvent = props => {
 
   useEffect(() => {
     status && addEvent(status, history, match)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
 
   const handleModalOpen = () => {
