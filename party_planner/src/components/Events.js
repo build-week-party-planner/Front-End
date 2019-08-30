@@ -26,17 +26,16 @@ const Events = ({ history, match, events }) => {
         <div className = 'events-container new-event'>
           <FormikAddEvent history={history} match={match} />
         </div>
-
         {authObjects.map(event => (
-          <Link key={event.id} to={`/events/${event.id}`}>
           <div key={event.id} className = 'events-container'>
-            <Button>
-              <EventOnDashboard
+            <Link key={event.id} to={`/events/${event.id}`}>
+              <Button>
+                <EventOnDashboard
                 name={event.name}
               />
             </Button>
+            </Link>
           </div>
-        </Link>
         ))}
       </div>
     </div>

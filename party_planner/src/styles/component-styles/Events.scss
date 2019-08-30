@@ -1,67 +1,54 @@
-.events-content{
-  h2{
-    margin: 0;
-    color: $primary-blue2;
-    padding-left: 40px;
+.my-events{
 
-    @include desktop{
-      font-size: 3.5rem;
-      text-align: left;
+    header {
+
+        h2{
+            margin: 0;
+            color: $primary-blue2;
+
+        }
+
     }
-  }
-  .my-events{
-      @include desktop{
-        @include flex(row, flex-start, center);
-        flex-wrap: wrap;
-        width: 100%;
-      }
+    .events-container {
+        @include flex(row, center, center);
+        width: 300px;
+        height: 100px;
+        margin: 15px 0px;
+        border-radius: 10px;
+        background: $primary-blue3;
+        background-image: url(../../images/example-photo.JPG);
 
-      .events-container {
-          @include flex(row, center, center);
-          width: 300px;
-          height: 100px;
-          margin: 15px 0px;
-          border-radius: 10px;
-          background: $primary-blue3;
-          background-image: url(../../images/example-photo.JPG);
-          
-  
-          @include desktop{
-            width: 300px;
-            height: 325px;
-            margin: 20px 160px; 
-          }
-      
-          .ui.button {
-              background: rgba(255, 255, 255, .5);
-              backdrop-filter: blur(8px);
-              color: $primary-blue2;
-              height: 50px;
-              border-radius: 10px;
-              
-              @include desktop{
-                height: 100px;
+        h1{
+            color: $primary-blue2;
+            margin: 0;
+            font-size: 1.6rem
+        }
+    
+    
+        .ui.button {
+            background: rgba(255, 255, 255, .5);
+            backdrop-filter: blur(8px);
+            color: $primary-blue2;
+            height: 50px;
+            border-radius: 10px;
+            
+        }
 
-              }
-          }
-  
-      }//.events-container
-      
-      .new-event {
-          background: white;
-          border: 2.2px solid $primary-blue2;
-  
-          .ui.button {
-              font-size: 1.4rem;
-              color: $primary-blue2;
-          }
-  
-      }//new-event
-  
-  }//my-events
+    }//.events-container
+    
+    .new-event {
+        background: white;
+        border: 2.2px solid $primary-blue2;
 
-}//.events-container
-  
+        .ui.button {
+            font-size: 1.4rem;
+            color: $primary-blue2;
+        }
+
+    }//new-event
+
+}//my-events
+
 .ui.modal.transition.visible.active.modalContainer {
   width: 350px;
 
@@ -115,7 +102,6 @@
       .add-event-label {
         width: 100%;
         text-align: left;
-        font-weight: bold;
       }
 
       .ui.input {
@@ -138,5 +124,5 @@
   }
 }
 .hide{
-  display: none;
+  display: none
 }
