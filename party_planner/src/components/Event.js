@@ -160,7 +160,7 @@ const SingleEvent = props => {
               <p>${targetObject.budget}</p>
             </div>
             <ProgressBar party = {targetObject}/>
-  <ReadPartyStatus targetObject = {targetObject}/>
+  {/*<ReadPartyStatus targetObject = {targetObject}/>*/}
         </div>
       </div>
       <div className='lists-container'>
