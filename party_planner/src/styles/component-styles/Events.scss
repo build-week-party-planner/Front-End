@@ -57,12 +57,12 @@
           }
       
           .ui.button {
-              background: rgba(255, 255, 255, .5);
-              backdrop-filter: blur(8px);
-              color: $primary-blue2;
-              height: 50px;
-              border-radius: 10px;
-              @include desktop{
+        
+            @include desktop{
+                color: $primary-blue2;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, .5);
+                backdrop-filter: blur(8px);
                 height: 150px;
                 width: 250px;
                 padding: 20px 0;

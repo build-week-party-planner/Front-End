@@ -1,0 +1,18 @@
+.dashboard-event{
+    height: 9rem;
+    position: relative;
+    .event-left_side{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height:9rem;
+        width: 50vw;
+        position: absolute;
+        right: 0;
+        p{
+            padding: .5rem 0;
+            border-radius: 0 1.8rem 1.8rem 0;
+            background: #898A9E;
+        }
+    }
+}
