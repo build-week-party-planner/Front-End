@@ -23,7 +23,7 @@ import ReadPartyStatus from './ReadPartyStatus'
 
 const SingleEvent = props => {
 
-
+  console.log(props)
   let targetEvent = props.events.filter(event => event.id.toString() === props.match.params.id && event);
 
   const targetObject = { ...targetEvent[0] }

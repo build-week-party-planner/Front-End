@@ -7,7 +7,7 @@ import { addEventTodo } from '../../actions'
 import { Button } from 'semantic-ui-react';
 
 const TodoListForm = props => {
-
+    const { eventId } = props
     return(
         <div className = 'list-form-container'>
             <Form className='list-form'>
@@ -29,11 +29,11 @@ const FormikTodoForm = withFormik({
         task: Yup.string().required('Task name is required'),
     }),
     handleSubmit(values, props){
-        console.log(props)
+        const { eventId } = props.props
         const valuesToSubmit = {
             name: values.task,
             completed: false,
-            todo_list_id: Number(props.props.match.match.params.id),
+            todo_list_id: eventId,
         }
         props.props.addEventTodo(valuesToSubmit)
         props.resetForm();

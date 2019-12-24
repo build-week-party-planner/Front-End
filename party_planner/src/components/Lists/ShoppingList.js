@@ -12,11 +12,12 @@ const ShoppingList = props => {
 
     let itemToUpdate = {}
     let dataToSend = {}
-    const match = props
-
+    const { match } = props
+    const { id } = props 
     const [ modalPosition, setModalPosition ] = useState(1)
     const [ itemToRender, setItemToRender ] = useState([])
     
+    const eventId = id ? id : props.match.params.id 
     
     useEffect(()=> {
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,20 +35,20 @@ const ShoppingList = props => {
 
     useEffect(() => {
         props.getShoppingItems()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  
     },[])
 
-    const shoppingItems = props.shoppingListItems.filter(item => item.shopping_list_id.toString() === match.match.params.id && item)
+    const shoppingItems = props.shoppingListItems.filter(item => item.shopping_list_id === eventId && item)
 
     const handleChange = event => {
         dataToSend = {...dataToSend, [event.target.name] : Number(event.target.value)}
-        console.log(dataToSend)
+        
     }
 
     const handleSubmit = event => {
         let placeHolder = []
         placeHolder.push(dataToSend)
-        console.log(placeHolder)
+        
         event.preventDefault()
         props.updateShoppingItems(placeHolder)
         placeHolder.unshift()
@@ -80,7 +81,7 @@ const ShoppingList = props => {
                             </form>
                       )}) 
                       : 'Your shopping list is currently empty. Click below to add an item.'}
-                    <FormikShoppingForm modalPosition = {modalPosition} match = {match}/>
+                    <FormikShoppingForm modalPosition = {modalPosition} match = {match} eventId = {eventId}/>
                     {modalPosition === 1 && <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {handleSubmit}>Update Shopping List</Button></div>}
                     </Modal.Content>
             </Modal>

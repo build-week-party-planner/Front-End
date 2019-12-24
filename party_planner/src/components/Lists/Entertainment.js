@@ -9,18 +9,19 @@ import EntertainmentItem from './EntertainmentItem'
 const EntertainmentList = props => {
 
 
-    const match = props
-
+    const { match } = props
+    const { id } = props 
     useEffect(() => {
         props.getEventEntertainment()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     let entertainmentList 
 
+    const eventId = id ? id : props.match.params.id 
+
     if(props.entertainment){
     entertainmentList = props.entertainment.filter(item => {
-        if(item.todo_list_id.toString() === match.match.params.id){
+        if(item.todo_list_id === eventId){
             return item
         }
     })}
@@ -38,7 +39,7 @@ const EntertainmentList = props => {
                         })
                         :<div style={{marginBottom: '1rem'}}>Your entertainment list is currently empty. Click below to add an item.</div>
                     }
-                    <FormikEntertainmentForm match = {match}/>
+                    <FormikEntertainmentForm match = {match} eventId = {eventId}/>
                     {/*<Button onClick = { () => props.updateEntertainmentItems(entertainmentList)}>Update Entertainment</Button>*/}
                     </Modal.Content>
             </Modal>

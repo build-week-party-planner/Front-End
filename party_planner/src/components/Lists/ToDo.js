@@ -9,18 +9,22 @@ import { updateToDoList } from '../../actions'
 
 const TodoList = props => {
 
-    const match = props
+    const { match } = props
+    const { id } = props
+    
+    const eventId = id ? id : props.match.params.id 
 
     useEffect(() => {
         props.getEventTodoList()
     },[])
 
     let todoList = props.todoItems.filter(item => {
-        if(item.todo_list_id.toString() === match.match.params.id){
+        if(item.todo_list_id === eventId){
             return item
         }
     })
-    
+
+    useEffect(() => console.log(todoList))
     return(
         <div className = 'modal-container'>
             <Modal className='listModalContainer' trigger={<Button>To Do List</Button>} closeIcon>
@@ -34,9 +38,9 @@ const TodoList = props => {
                         })
                         :'Your shopping list is currently empty. Click below to add an item.'
                     }
-                    <FormikTodoForm match = {match}/>
+                    <FormikTodoForm match = {match} eventId = {eventId}/>
                     <div style={{width: '100%', textAlign: 'center'}}><Button secondary style={{marginTop: '1rem'}} onClick = {() => props.updateToDoList(todoList)}>Update Changes</Button></div>
-                    </Modal.Content>
+                </Modal.Content>
             </Modal>
         </div>
     )

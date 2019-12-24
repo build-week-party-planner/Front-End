@@ -1,6 +1,7 @@
 //mixins and variables
 @import './mixins.scss';
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Crete+Round&display=swap');
 
 .App {
   @include flex(column, center, center);

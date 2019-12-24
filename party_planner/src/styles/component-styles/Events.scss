@@ -1,10 +1,9 @@
 .events-content{
   h2{
     margin: 0;
-    color: $primary-blue2;
-    padding-left: 40px;
 
     @include desktop{
+      padding-left: 4rem;
       font-size: 3.5rem;
       text-align: left;
       margin-left: 75px;
@@ -12,7 +11,31 @@
       padding-top: 20px;
     }
   }
+  .new-event{
+    color: #fff;
+    display: flex;
+    width: 100vw;
+    height: 6rem;
+    justify-content: space-between;
+    align-items: center;
+    background: #898A9E;
+
+    h2{
+      margin-left: 1.2rem;
+      font-family: 'Crete Round', 'Times New Roman', Times, serif;
+      font-weight: 100;
+      font-size: 1.8rem
+    }
+    i.icon{
+      margin-right: 1.2rem;
+      font-size:2rem;
+      transform: translateY(20%);
+      align-self: center;
+    }
+  }
+  
   .my-events{
+
       @include desktop{
         @include flex(row, center, center);
         flex-wrap: wrap;
@@ -22,12 +45,10 @@
 
       .events-container {
           @include flex(row, center, center);
-          width: 300px;
-          height: 100px;
-          margin: 15px 0px;
-          border-radius: 10px;
+          width: 100vw;
+          height: 9rem;
           background: $primary-blue3;
-          background-image: url(../../images/example-photo.JPG);
+
           cursor: pointer;
           @include desktop{
             width: 350px;

@@ -7,10 +7,10 @@ import { addEntertainment } from '../../actions'
 import { Button } from 'semantic-ui-react';
 
 const EntertainmentForm = props => {
-
+    const { eventId } = props
     return(
         <div className = 'list-form-container'>
-            <Form className='list-form'>
+            <Form className='list-form' >
                 {props.touched.entertainment && props.errors.entertainment && <p>{props.errors.entertainment}</p>}
                 <div className="ui input"><Field type = 'text' name = 'entertainment' placeholder = 'Add Item. . .'/></div>
                 {props.touched.price && props.errors.price && <p>You must enter a number</p>}
@@ -33,11 +33,12 @@ const FormikEntertainmentForm = withFormik({
         price: Yup.number().required('Price is required')
     }),
     handleSubmit(values, props){
-        console.log(props)
+        const { eventId } = props.props
+
         const valuesToSubmit = {
             name: values.entertainment,
             completed: true,
-            todo_list_id: Number(props.props.match.match.params.id),
+            todo_list_id: Number(eventId),
             price: values.price
         }
         props.props.addEntertainment(valuesToSubmit)

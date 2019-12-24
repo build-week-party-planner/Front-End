@@ -45,7 +45,7 @@ const AddEvent = props => {
 
   return (
     <div className="add-event-modal">
-      <Modal open={modalOpen} className="modalContainer" onClose={handleModalClose} trigger={<Button onClick={handleModalOpen}>New Event!</Button>}>
+      <Modal open={modalOpen} className="modalContainer" onClose={handleModalClose} trigger={<Icon name = 'add circle' onClick={handleModalOpen}></Icon>}>
         <Modal.Content>
           <Modal.Description className="add-event-form">
             <div className="form-header">
