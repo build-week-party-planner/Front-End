@@ -2,6 +2,7 @@ import React from 'react'
 import ShoppingList from './Lists/ShoppingList'
 import EntertainmentList from './Lists/Entertainment'
 import TodoList from './Lists/ToDo'
+import { Icon } from 'semantic-ui-react'
 
 
 const EventOnDashboard = (props) => {
@@ -62,14 +63,16 @@ const EventOnDashboard = (props) => {
   return(
     <div className = 'dashboard-event'>
       <div className = 'event-left_side'>
-        <div className = 'days-left'>
-          <p>{remainingDays} Days Until Event</p>
-        </div>
-        <h1>{event.name}</h1>
+        <p>{remainingDays} Days Until Event</p>
+        <h4>{event.name}</h4>
+      </div>
+      <div className = 'event-right_side'>
+        
       </div>
 {/*       <ShoppingList id={event.id} />
       <TodoList id={event.id} />
       <EntertainmentList id={event.id} /> */}
+      <Icon name = 'arrow down' style = {{color: '#fff'}} className = 'expand-arrow'/>
     </div>
   )
 }

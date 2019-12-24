@@ -1,18 +1,37 @@
 .dashboard-event{
     height: 9rem;
     position: relative;
+    padding-bottom: rem;
     .event-left_side{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
         height:9rem;
         width: 50vw;
         position: absolute;
         right: 0;
         p{
+            width: 90%;
             padding: .5rem 0;
             border-radius: 0 1.8rem 1.8rem 0;
             background: #898A9E;
+            text-align: left;
+            padding-left: 1.2rem;
         }
+        h4{
+            font-size: 1.2rem;
+            height: auto;
+            transform: translateY(-150%);
+            text-align: left;
+            margin-left: 1.2rem;
+        }
+
+    }
+    .expand-arrow{
+        position: absolute;
+        bottom: 0rem;
+        // padding-bottom: .5rem;
+        font-size:1.4rem;
+        transform: translateX(-50%);
     }
 }
