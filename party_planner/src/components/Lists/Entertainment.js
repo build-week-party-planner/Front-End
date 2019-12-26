@@ -27,7 +27,7 @@ const EntertainmentList = props => {
     })}
 
     return(
-        <div>
+        <div className = 'modal-container'>
             <Modal className='listModalContainer' trigger={<Button>Entertainment</Button>} closeIcon>
                 <Modal.Content className='list-content'>
                     <Header style={{color:'rgb(16, 30, 68)', textAlign: 'center', fontSize: "1.8rem"}}>Entertainment</Header>

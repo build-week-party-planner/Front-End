@@ -9,6 +9,8 @@ import dots from '../assets/images/dots.svg'
 
 const EventOnDashboard = (props) => {
 
+  const colors = ['#FFE9F9', '#F2FFE1', '#FFF0E5', '#EEE9FF']
+
   const months = {
     '01' : 31,
     '02' : 28,
@@ -67,25 +69,35 @@ const EventOnDashboard = (props) => {
 
   calendarDateFormat = calendarDateFormat.split(' ')
 
+  const daysRemainingBackground = remainingDays <= 4 ? '#E3696A' : '#898A9E' 
 
+  const random = colors[Math.floor(Math.random() * colors.length)]
+  console.log(random)
   return(
-    <div className = 'dashboard-event'>
-      <div className = 'event-left_side'>
-        <p>{remainingDays} Days Until Event</p>
-        <h4>{event.name}</h4>
-        <span>4:00 P.M.</span>
-      </div>
-      <div className = 'event-right_side'>
-        <img src = { dots } alt = 'settings icon'/>
-        <div className = 'calendar'>
-          <p>{calendarDateFormat[0]}</p>
-          <span/>
-          <p>{`${calendarDateFormat[1].toUpperCase()} ${calendarDateFormat[2]}`}</p>
+    <div className = 'dashboard-event' style = {{background: random}}>
+      <div className = 'event-info'>
+        <div className = 'event-left_side'>
+          <p style = {{background: daysRemainingBackground}}>{remainingDays} Days Until Event</p>
+          <h4>{event.name}</h4>
+          <span>4:00 P.M.</span>
+        </div>
+        <div className = 'event-right_side'>
+          <img src = { dots } alt = 'settings icon'/>
+          <div className = 'calendar'>
+            <p>{calendarDateFormat[0]}</p>
+            <span/>
+            <p>{`${calendarDateFormat[1].toUpperCase()} ${calendarDateFormat[2]}`}</p>
+          </div>
         </div>
       </div>
-{/*       <ShoppingList id={event.id} />
-      <TodoList id={event.id} />
-      <EntertainmentList id={event.id} /> */}
+      <div className = 'container-lists'>
+        <h4>Organize your lists</h4>
+        <div className = 'lists'>
+          <ShoppingList id={event.id} />
+          <TodoList id={event.id} />
+          <EntertainmentList id={event.id} />
+        </div>
+      </div>
       <img src = { arrow } alt = 'arrow pointing down' className = 'expand-arrow'/>
     </div>
   )
