@@ -15,84 +15,25 @@
     color: #fff;
     display: flex;
     width: 100vw;
-    height: 6rem;
+    height: 7.7rem;
     justify-content: space-between;
     align-items: center;
     background: #898A9E;
 
     h2{
-      margin-left: 1.2rem;
+      margin-left: 5.53%;
       font-family: 'Crete Round', 'Times New Roman', Times, serif;
       font-weight: 100;
-      font-size: 1.8rem
+      font-size: 2.2rem
     }
+
     i.icon{
-      margin-right: 1.2rem;
-      font-size:2rem;
+      padding-right: 3.8rem;
+      font-size:2.67rem;
       transform: translateY(20%);
-      align-self: center;
     }
   }
   
-  .my-events{
-
-      @include desktop{
-        @include flex(row, center, center);
-        flex-wrap: wrap;
-        width: 100%;
-        padding: 30px 0;
-      }
-
-      .events-container {
-          @include flex(row, center, center);
-          width: 100vw;
-          height: 9rem;
-          background: $primary-blue3;
-
-          cursor: pointer;
-          @include desktop{
-            width: 350px;
-            height: 325px;
-            margin: 20px 160px;
-          }
-      
-          .ui.button {
-        
-            @include desktop{
-                color: $primary-blue2;
-                border-radius: 10px;
-                background: rgba(255, 255, 255, .5);
-                backdrop-filter: blur(8px);
-                height: 150px;
-                width: 250px;
-                padding: 20px 0;
-              }
-              
-          }
-          
-  
-      }//.events-container
-      .events-container:hover{
-        box-shadow: 0px 1px 5px $primary-blue2;
-      }
-      .new-event {
-          background: white;
-          border: 2.2px solid $primary-blue2;
-  
-          .ui.button {
-              font-size: 1.4rem;
-              color: $primary-blue2;
-
-              @include desktop{
-                font-size: 2.6rem;
-                text-align: center;
-                padding: 20px 0;
-              }
-          }
-  
-      }//new-event
-  
-  }//my-events
 
 }//.events-container
   

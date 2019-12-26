@@ -1,12 +1,16 @@
 //mixins and variables
 @import './mixins.scss';
 @import './variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Crete+Round&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Crete+Round|Heebo&display=swap');
+
+html{
+  font-size: 62.5%;
+}
 
 .App {
   @include flex(column, center, center);
   text-align: center;
-  min-height: 100vh
+  min-height: 100vh;
 }
 
 .App-header {

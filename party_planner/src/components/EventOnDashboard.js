@@ -3,6 +3,8 @@ import ShoppingList from './Lists/ShoppingList'
 import EntertainmentList from './Lists/Entertainment'
 import TodoList from './Lists/ToDo'
 import { Icon } from 'semantic-ui-react'
+import arrow from '../assets/images/arrow.svg'
+import dots from '../assets/images/dots.svg'
 
 
 const EventOnDashboard = (props) => {
@@ -25,6 +27,7 @@ const EventOnDashboard = (props) => {
   const { event } = props
 
   const today =  new Date().toISOString().slice(0, 10).split('-')
+
   const eventDate = event.date.split('-')
 
   const findDaysLeft = (currentDate, eventDate) => {
@@ -35,7 +38,6 @@ const EventOnDashboard = (props) => {
 
     const todaysMonth = today[1]
     const eventMonth = eventDate[1]
-
 
     if (Number(yearsLeft) === 0){
 
@@ -60,19 +62,31 @@ const EventOnDashboard = (props) => {
 
   const remainingDays = findDaysLeft(today, eventDate)
 
+  
+  let calendarDateFormat = new Date(Number(eventDate[0]), Number(eventDate[1]) - 1, Number(eventDate[2])).toDateString()    
+
+  calendarDateFormat = calendarDateFormat.split(' ')
+
+
   return(
     <div className = 'dashboard-event'>
       <div className = 'event-left_side'>
         <p>{remainingDays} Days Until Event</p>
         <h4>{event.name}</h4>
+        <span>4:00 P.M.</span>
       </div>
       <div className = 'event-right_side'>
-        
+        <img src = { dots } alt = 'settings icon'/>
+        <div className = 'calendar'>
+          <p>{calendarDateFormat[0]}</p>
+          <span/>
+          <p>{`${calendarDateFormat[1].toUpperCase()} ${calendarDateFormat[2]}`}</p>
+        </div>
       </div>
 {/*       <ShoppingList id={event.id} />
       <TodoList id={event.id} />
       <EntertainmentList id={event.id} /> */}
-      <Icon name = 'arrow down' style = {{color: '#fff'}} className = 'expand-arrow'/>
+      <img src = { arrow } alt = 'arrow pointing down' className = 'expand-arrow'/>
     </div>
   )
 }
