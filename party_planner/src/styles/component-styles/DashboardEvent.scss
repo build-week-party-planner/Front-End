@@ -1,4 +1,4 @@
-.dashboard-event{
+.dashboard-event {
     height: 35.6rem;
     position: relative;
     padding-bottom: .5rem;
@@ -10,40 +10,43 @@
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 1px solid lighten(#898A9E, 10%);
-    .event-left_side{
+
+    .event-left_side {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height:19.2rem;
+        height: 19.2rem;
         width: 50vw;
         position: absolute;
         left: 0;
-   
-        p{
+
+        p {
             color: #ffffff;
             margin-top: .5rem;
-            width: 95%; 
+            width: 95%;
             padding: .8rem 0;
             border-radius: 0 20px 20px 0;
             text-align: left;
             padding-left: 1.2rem;
-            font-size:1.6rem;
+            font-size: 1.6rem;
         }
 
-        h4{
+        :nth-child(2) {
             font-size: 1.2rem;
             height: auto;
             position: absolute;
-            bottom: 9rem;
+            top: 5rem;
             text-align: left;
             margin-left: 1.2rem;
-            font-family: 'Heebo', 'Times New Roman', Times, serif;;
+            font-family: 'Heebo', 'Times New Roman', Times, serif;
+            ;
             font-size: 1.8rem;
             color: #6B7078;
         }
-        span{
+
+        :nth-child(3) {
             position: absolute;
-            bottom: 7rem;
+            top: 10rem;
             text-align: left;
             margin-left: 1.2rem;
             font-size: 1.8rem;
@@ -51,7 +54,8 @@
         }
 
     }
-    .event-right_side{
+
+    .event-right_side {
         position: absolute;
         right: 0;
         display: flex;
@@ -61,81 +65,90 @@
         height: 19.2rem;
         margin-right: 1.2rem;
 
-        img{
+        img {
             width: 25%;
             align-self: flex-end;
             position: absolute;
             right: 1.2rem;
         }
 
-        .calendar{
-            height: 45%;
+        .calendar {
+            height: 48%;
             border: 1px solid #E3696A;
             background: #ffffff;
             border-radius: 15px;
             position: absolute;
-            top: 5.5rem;
-            right:1.2rem;
+            top: 6.25rem;
+            right: 1.2rem;
             width: 80%;
             display: flex;
             flex-direction: column;
-        
 
-            :nth-child(1){
+
+            :nth-child(1) {
                 color: #6B7078;
                 font-size: 1.8rem;
                 margin: auto 0;
             }
 
-            span{
+            span {
                 width: 100%;
                 height: 1px;
-                border-bottom: 1px solid #E3696A;;
+                border-bottom: 1px solid #E3696A;
+                ;
             }
 
-            :nth-child(3){
-                color:#E3696A;
-                font-size:2.4rem;
+            :nth-child(3) {
+                color: #E3696A;
+                font-size: 2.4rem;
                 margin: auto 0;
 
             }
         }
     }
-    .container-lists{
+
+    .container-lists {
         height: 16.4rem;
-        position: relative;
-        h4{
+
+        position: absolute;
+        bottom: 1.6rem;
+        width: 100%;
+
+        h4 {
             text-align: left;
             margin-left: 1.2rem;
             font-size: 1.6rem;
         }
-        .lists{
-            position: absolute;
-            bottom: 1.2rem;
+
+        .lists {
+
             width: 100%;
             display: flex;
             flex-wrap: wrap;
             align-content: space-around;
             justify-content: space-around;
-            .modal-container{
+            margin-bottom: 3rem;
+
+            .modal-container {
                 width: 40%;
-                button{
+
+                button {
                     width: 100%;
                     margin: 1.2rem 0;
                     padding: 1.2rem 0;
                     border: 1px solid rgba(30, 56, 93, 0.95);
                     border-radius: 14px;
                     background-color: transparent;
-                    font-size:1.6rem;
+                    font-size: 1.6rem;
                     color: rgba(30, 56, 93, 0.95)
                 }
             }
         }
     }
-    .expand-arrow{
-        position: absolute;
-        bottom: 1rem;
-        width: 4%;
+
+    .expand-arrow {
+        height: 1.6rem;
+        width: 1.6rem;
         margin: 0 auto;
     }
 }

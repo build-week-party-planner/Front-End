@@ -6,6 +6,7 @@ import { Icon } from 'semantic-ui-react'
 import arrow from '../assets/images/arrow.svg'
 import dots from '../assets/images/dots.svg'
 
+// TODO set max chars on event name creation
 
 const EventOnDashboard = (props) => {
 
@@ -79,7 +80,7 @@ const EventOnDashboard = (props) => {
         <div className = 'event-left_side'>
           <p style = {{background: daysRemainingBackground}}>{remainingDays} Days Until Event</p>
           <h4>{event.name}</h4>
-          <span>4:00 P.M.</span>
+          <h4>4:00 P.M.</h4>
         </div>
         <div className = 'event-right_side'>
           <img src = { dots } alt = 'settings icon'/>
