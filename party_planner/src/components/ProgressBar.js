@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 const Track = styled.div`
     width:96%;
-    // margin: 0 12px;
     margin-bottom: 15px;
     height:3.8rem;
-    background-color: #898A9E;
+    background: transparent;
+    border: 1.2px solid #ACC1AD;
     border-radius: 10px;
     box-shadow: inset 0 0 px #ebf1fa;
     color:#898A9E
@@ -17,11 +17,13 @@ const Track = styled.div`
 const Thumb = styled.div`
     width: ${props => props.percentage}%;
     height: 100%;
-    background-color:#39DB80;
+
+    background-color: #C7DDC8
     border-radius: 8px;
     transition: width 0.5s ease-in-out;
 `
-
+    // background-color:#39DB80;
+    
 const ProgressBar = props => {
 
     const { event } = props 
@@ -57,8 +59,8 @@ const ProgressBar = props => {
                     <Thumb percentage ={limit(0,currentPercent,100)}/> 
                     : <Thumb percentage = {limit(0,currentPercent,100)} style={{backgroundColor: 'red'}}/>}
                     {currentPercent < 100 ? 
-                        <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-106%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Remaining</p>
-                        : <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-106%)', color:'#ffffff', marginRight: '20px'}}>${remainingBudget} Over Budget</p>}
+                        <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-135%)', color:'#6B7078', marginRight: '20px'}}>${remainingBudget} Remaining</p>
+                        : <p style = {{display: 'flex', justifyContent:'flex-end', transform: 'translateY(-135%)', color:'#6B7078', marginRight: '20px'}}>${remainingBudget} Over Budget</p>}
             </Track>
         </div>
     )

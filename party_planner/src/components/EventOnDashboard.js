@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ShoppingList from './Lists/ShoppingList'
 import EntertainmentList from './Lists/Entertainment'
 import TodoList from './Lists/ToDo'
@@ -28,7 +28,7 @@ const EventOnDashboard = (props) => {
     '11' : 30,
     '12' : 31
   }
-
+  
   const { event } = props
 
   const today =  new Date().toISOString().slice(0, 10).split('-')
@@ -75,7 +75,10 @@ const EventOnDashboard = (props) => {
   const daysRemainingBackground = remainingDays <= 4 ? '#E3696A' : '#898A9E' 
 
   const random = colors[Math.floor(Math.random() * colors.length)]
-  console.log(random)
+  
+  const [ show, setShow ] = useState(false)
+
+  const toggleMeta = (bool) => setShow(!bool)
 
   return(
     <div className = 'dashboard-event' style = {{background: random}}>
@@ -94,7 +97,7 @@ const EventOnDashboard = (props) => {
           </div>
         </div>
       </div>
-      <div className = 'event-meta'>
+      <div className = {show ? 'event-meta' : 'hide event-meta'}>
         <div className = 'event-info-extra'>
           <div >
               <h4>THEME</h4>
@@ -127,8 +130,21 @@ const EventOnDashboard = (props) => {
           <EntertainmentList id={event.id} />
         </div>
       </div>
-
-      <img src = { arrow } alt = 'arrow pointing down' className = 'expand-arrow'/>
+      {!show ? 
+        <img 
+          src = { arrow } 
+          alt = 'arrow pointing down' 
+          className = 'expand-arrow' 
+          onClick = {() => toggleMeta(show)}
+        /> 
+      : <img 
+          src = { arrow } 
+          alt = 'arrow pointing down' 
+          className = 'expand-arrow'
+          style = {{transform: 'rotate(180deg)'}}
+          onClick = {() => toggleMeta(show)}/>
+    }
+      
     </div>
   )
 }

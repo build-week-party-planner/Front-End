@@ -140,7 +140,7 @@
         }
         
         .progress-bar{
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
 
 
@@ -185,5 +185,8 @@
         height: 1.6rem;
         width: 1.6rem;
         margin: 0 auto;
+    }
+    .hide{
+        display: none;
     }
 }
