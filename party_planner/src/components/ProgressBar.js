@@ -24,10 +24,10 @@ const Thumb = styled.div`
 
 const ProgressBar = props => {
 
-    const { party } = props 
+    const { event } = props 
 
-    const purchasedShopping = props.shoppingListItems.filter( item => item.shopping_list_id === party.id && (item.purchased === true || item.purchased === 1))
-    const purchasedEntertainment = props.entertainmentList.filter( item => item.todo_list_id === party.id)
+    const purchasedShopping = props.shoppingListItems.filter( item => item.shopping_list_id === event.id && (item.purchased === true || item.purchased === 1))
+    const purchasedEntertainment = props.entertainmentList.filter( item => item.todo_list_id === event.id)
 
     const totalShopping = purchasedShopping.reduce((acc, item, index) => {
         acc += item.price;
@@ -41,9 +41,9 @@ const ProgressBar = props => {
 
     const totalSpent = totalShopping + totalEntertainment
 
-    let currentPercent = (totalSpent / party.budget) * 100
+    let currentPercent = (totalSpent / event.budget) * 100
 
-    let remainingBudget = party.budget - totalSpent
+    let remainingBudget = event.budget - totalSpent
 
     const limit = (min, currentVal, max) => {
         return Math.min(Math.max(min, currentVal), max)

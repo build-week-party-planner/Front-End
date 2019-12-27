@@ -6,6 +6,8 @@ import { Icon } from 'semantic-ui-react'
 import arrow from '../assets/images/arrow.svg'
 import dots from '../assets/images/dots.svg'
 
+import ProgressBar from './ProgressBar'
+
 // TODO set max chars on event name creation
 
 const EventOnDashboard = (props) => {
@@ -74,6 +76,7 @@ const EventOnDashboard = (props) => {
 
   const random = colors[Math.floor(Math.random() * colors.length)]
   console.log(random)
+
   return(
     <div className = 'dashboard-event' style = {{background: random}}>
       <div className = 'event-info'>
@@ -91,6 +94,31 @@ const EventOnDashboard = (props) => {
           </div>
         </div>
       </div>
+      <div className = 'event-meta'>
+        <div>
+          <div>
+              <h4>Theme</h4>
+              <p>Ugly Christmas Sweater Party</p>
+          </div>
+          <div>
+              <h4>Location</h4>
+              <p>123 Main St.</p>
+          </div>
+          <div>
+              <h4>Theme</h4>
+              <p>Ugly Christmas Sweater Party</p>
+          </div>
+          <div>
+              <h4>Guest Count</h4>
+              <p>20 Adults, 10 Children</p>
+          </div>
+          <div>
+              <h4>Budget</h4>
+              <p>$3,000</p>
+          </div>
+        </div>
+        <ProgressBar event = {event}/>
+      </div>
       <div className = 'container-lists'>
         <h4>Organize your lists</h4>
         <div className = 'lists'>
@@ -99,6 +127,7 @@ const EventOnDashboard = (props) => {
           <EntertainmentList id={event.id} />
         </div>
       </div>
+
       <img src = { arrow } alt = 'arrow pointing down' className = 'expand-arrow'/>
     </div>
   )
