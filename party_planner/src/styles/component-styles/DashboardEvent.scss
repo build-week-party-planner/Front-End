@@ -107,8 +107,43 @@
 
     }
     .event-meta{
-        height:30rem;
-      
+        text-align: left;
+        margin-left: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: -1rem;
+        h4{
+            color: rgba(70, 76, 86, 0.55);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .event-info-extra{
+            border-top:  2px solid rgba(117, 107, 115, 0.4);
+            
+            border-bottom:  2px solid rgba(117, 107, 115, 0.4);
+            p{
+                font-size: 1.8rem;
+                margin-top: -.5rem;
+                padding-bottom: 1.2rem;
+            }
+            
+            :nth-child(1){
+                margin-top: 2rem;
+            }
+            :nth-last-child(1){
+                padding-bottom: 0;
+                margin-bottom: 2rem;
+            }
+
+        }
+        
+        .progress-bar{
+            margin-top: 2rem;
+        }
+
+
     }
     .container-lists {
         height: 16.4rem;

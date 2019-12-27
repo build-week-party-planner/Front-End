@@ -12,8 +12,8 @@ import ProgressBar from './ProgressBar'
 
 const EventOnDashboard = (props) => {
 
-  const colors = ['#FFE9F9', '#F2FFE1', '#FFF0E5', '#EEE9FF']
-
+  // const colors = ['#FFF']
+  const colors = ['#FFE9F9', '#F2FFE1', '#FFF0E5', '#EEE9FF', '#fff']
   const months = {
     '01' : 31,
     '02' : 28,
@@ -95,25 +95,25 @@ const EventOnDashboard = (props) => {
         </div>
       </div>
       <div className = 'event-meta'>
-        <div>
-          <div>
-              <h4>Theme</h4>
-              <p>Ugly Christmas Sweater Party</p>
+        <div className = 'event-info-extra'>
+          <div >
+              <h4>THEME</h4>
+              <p>Ugly Christmas Sweater</p>
           </div>
           <div>
-              <h4>Location</h4>
+              <h4>LOCATION</h4>
+              <p>Roman Household</p>
+          </div>
+          <div>
+              <h4>ADDRESS</h4>
               <p>123 Main St.</p>
           </div>
           <div>
-              <h4>Theme</h4>
-              <p>Ugly Christmas Sweater Party</p>
-          </div>
-          <div>
-              <h4>Guest Count</h4>
+              <h4>GUEST COUNT</h4>
               <p>20 Adults, 10 Children</p>
           </div>
           <div>
-              <h4>Budget</h4>
+              <h4>BUDGET</h4>
               <p>$3,000</p>
           </div>
         </div>

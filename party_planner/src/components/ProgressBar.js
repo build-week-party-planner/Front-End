@@ -4,14 +4,14 @@ import styled from 'styled-components'
 
 
 const Track = styled.div`
-    width:60%;
-    margin: 0 auto;
+    width:96%;
+    // margin: 0 12px;
     margin-bottom: 15px;
-    height:30px;
-    background-color: #132e56;
+    height:3.8rem;
+    background-color: #898A9E;
     border-radius: 10px;
     box-shadow: inset 0 0 px #ebf1fa;
-    color:#132e56
+    color:#898A9E
 `;
 
 const Thumb = styled.div`
@@ -50,8 +50,8 @@ const ProgressBar = props => {
     }
 
     return(
-        <div> 
-        <h3>Current Budget Progress</h3>
+        <div className = 'progress-bar'> 
+        <h4>CURRENT BUDGET</h4>
             <Track>
                 {currentPercent < 100 ? 
                     <Thumb percentage ={limit(0,currentPercent,100)}/> 
