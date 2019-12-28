@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ShoppingList from './Lists/ShoppingList'
 import EntertainmentList from './Lists/Entertainment'
 import TodoList from './Lists/ToDo'
 import { Icon } from 'semantic-ui-react'
 import arrow from '../assets/images/arrow.svg'
 import dots from '../assets/images/dots.svg'
+
 
 import ProgressBar from './ProgressBar'
 
@@ -144,7 +145,7 @@ const EventOnDashboard = (props) => {
           style = {{transform: 'rotate(180deg)'}}
           onClick = {() => toggleMeta(show)}/>
     }
-      
+
     </div>
   )
 }

@@ -113,6 +113,8 @@
         flex-direction: column;
         justify-content: space-around;
         margin-top: -1rem;
+       
+        
         h4{
             color: rgba(70, 76, 86, 0.55);
             font-size: 1.4rem;
@@ -182,11 +184,14 @@
     }
 
     .expand-arrow {
-        height: 1.6rem;
-        width: 1.6rem;
-        margin: 0 auto;
+        height: 2rem;
+        width: 2rem;
+        margin: 1.2rem auto;
+    
     }
+
     .hide{
         display: none;
+        
     }
 }

@@ -62,10 +62,10 @@ const Events = ({ history, match, events }) => {
 
   return (
     <div className= 'events-content'>
-        <header className = 'new-event'>
+        <div className = 'new-event'>
           <h2 ref ={element => {eventsHeader = element}} className = 'hide'>My Events</h2>
           <FormikAddEvent history={history} match={match}/>
-        </header>
+        </div>
       <div className = "my-events hide" ref ={element => {eventCards = element}}>
         {authObjects.map(event => (
           <div key={event.id} className = 'events-container' >
@@ -74,6 +74,10 @@ const Events = ({ history, match, events }) => {
               />
           </div>
         ))}
+      </div>
+      <div className = 'new-event add'>
+        <h2>Add Event</h2>
+        <FormikAddEvent history={history} match={match}/>
       </div>
     </div>
   )
