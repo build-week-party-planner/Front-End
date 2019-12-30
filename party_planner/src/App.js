@@ -13,7 +13,7 @@ import NavBar from './components/NavBar'
 import Login from './components/Login';
 import { FormikRegister } from './components/Register'
 import Events from './components/Events';
-
+import EventForm from './components/EventForm'
 import SingleEvent from './components/Event'
 
 
@@ -30,6 +30,7 @@ function App() {
           <Route exact path = "/" render={() => localStorage.getItem('token') ? <Redirect to={`/dashboard/${localStorage.getItem('user_id')}`}/> : <Redirect to={`/login`} />} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={FormikRegister}/>
+          <PrivateRoute path="/create-event" component={EventForm}/>
           <PrivateRoute path="/dashboard/:id" component={Events}/>
           <PrivateRoute path="/events/:id" component={SingleEvent} />
         </div>

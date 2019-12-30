@@ -9,8 +9,9 @@ html{
 
 .App {
   @include flex(column, center, center);
-  text-align: center;
   min-height: 100vh;
+  padding-bottom: .5rem;
+  font-family: 'Heebo', 'Times New Roman', Times, serif;
 }
 
 .App-header {
@@ -31,6 +32,7 @@ html{
   @include flex(column, start, center);
   flex: 1 0 auto;
   width: 100%;
+  background: #fff;
 }
 
 .strikethrough {
@@ -43,6 +45,7 @@ html{
 @import './component-styles/Footer.scss';
 @import './component-styles/Lists.scss';
 @import './component-styles/DashboardEvent.scss';
+@import './component-styles/EventForm.scss';
 
 .hide{
   display: none;
