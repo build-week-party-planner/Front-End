@@ -65,21 +65,25 @@ const Events = ({ history, match, events }) => {
             <Icon name = 'add circle' />
           </Link>
         </div>
-      <div className = "my-events hide" ref ={element => {eventCards = element}}>
-        {authObjects.map(event => (
+      <div className = "my-events" ref ={element => {eventCards = element}}>
+
+        {authObjects.length ? authObjects.map(event => (
           <div key={event.id} className = 'events-container' >
                 <EventOnDashboard
                 event = {event}
               />
           </div>
-        ))}
+        )) : <h2 className = 'no-events'>You have no events yet.</h2>}
       </div>
-      <div className = 'new-event add'>
-        <h2>Add Event</h2>
-        <Link to = '/create-event'>
-          <Icon name = 'add circle'/>
-        </Link>
-      </div>
+      {authObjects.length ?
+        <div className = 'new-event add'>
+          <h2>Add Event</h2>
+          <Link to = '/create-event'>
+            <Icon name = 'add circle'/>
+          </Link>
+        </div>
+        : null
+      }
     </div>
   )
 }
