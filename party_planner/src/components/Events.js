@@ -60,9 +60,9 @@ const Events = ({ history, match, events }) => {
   return (
     <div className= 'events-content'>
         <div className = 'new-event'>
-          <h2 ref ={element => {eventsHeader = element}} className = 'hide'>My Events</h2>
+          <h2 ref ={element => {eventsHeader = element}}>My Events</h2>
           <Link to = '/create-event'>
-            <Icon name = 'add circle'/>
+            <Icon name = 'add circle' />
           </Link>
         </div>
       <div className = "my-events hide" ref ={element => {eventCards = element}}>

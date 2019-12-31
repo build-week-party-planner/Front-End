@@ -14,7 +14,7 @@ import Login from './components/Login';
 import { FormikRegister } from './components/Register'
 import Events from './components/Events';
 import EventForm from './components/EventForm'
-import SingleEvent from './components/Event'
+
 
 
 import Footer from './components/Footer'
@@ -32,7 +32,6 @@ function App() {
           <Route exact path="/register" component={FormikRegister}/>
           <PrivateRoute path="/create-event" component={EventForm}/>
           <PrivateRoute path="/dashboard/:id" component={Events}/>
-          <PrivateRoute path="/events/:id" component={SingleEvent} />
         </div>
           <Footer />
       </div>
